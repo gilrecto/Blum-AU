@@ -1,0 +1,346 @@
+{{ 'mb_installation-videos.css' | asset_url | stylesheet_tag: preload: true  }}
+{%- assign setting = section.settings -%}
+{%- liquid
+  assign heading = setting.header_text
+  assign subtext = setting.header_sub_text
+  assign btn_label = setting.link_text
+  assign btn_link = setting.link_url
+  assign desktop_pad = setting.pad_desk
+  assign laptop_pad = setting.pad_lap
+  assign tablet_pad = setting.pad_tab
+  assign mobile_pad = setting.pad_mob
+  assign bg_color = setting.bg_color
+  assign video_install_on = false
+%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    padding: {{ desktop_pad }}px 0;
+    {%- if setting.bg_img != blank -%}
+      background: {{ bg_color }} url('{{ setting.bg_img | image_url: width: setting.bg_img.width }}') center/cover no-repeat;
+    {%- else -%}
+      background-color: {{ bg_color }};
+    {%- endif -%}
+  }
+
+  {% if setting.fullwidth %}
+    @media only screen and (min-width: 1441px) {
+      .installation-videos .container-fluid {
+        padding: 0 {{ setting.side_pad }}px;
+      }
+    }
+  {% endif %}
+  
+  @media only screen and (max-width: 1199px) {
+    #shopify-section-{{ section.id }} {
+      padding: {{ laptop_pad }}px 0;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    #shopify-section-{{ section.id }} {
+      padding: {{ tablet_pad }}px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} {
+      padding: {{ mobile_pad }}px 0;
+    }
+  }
+{%- endstyle -%}
+
+<div id="mb_{{section.id}}"  class="section-wrapper">
+  <div class="{% if setting.fullwidth %}container-fluid{% else %}container{% endif %}">
+    <div class="row">
+      <div class="col col-12">
+        <div class="title-area text-{{ setting.t_alignment }}">
+          {%- if heading != blank -%}
+          <h2 class="heading">{{ heading }}</h2>
+          {%- endif -%}
+        
+          {%- if subtext != blank -%}
+            <div class="subtext">{{ subtext }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+      
+      {%- if section.blocks.size > 0 -%}
+         {%- for block in section.blocks -%}
+          {%- liquid
+            assign block_title = block.settings.title
+            assign vid_link = block.settings.video_link
+
+            if request.page_type == 'product'
+             assign vid_link = block.settings.video
+            endif
+            
+            if request.page_type == 'product' and block.settings.video == blank and block.settings.poster == blank 
+             assign vid_link = block.settings.video_link
+            endif
+          -%}
+
+          {%- capture poster -%}
+            {%- if request.page_type == 'product' and block.settings.video == blank and block.settings.poster != blank -%}
+              poster="{{ block.settings.poster  | image_url: width: 720 }}"
+            {%- endif -%}
+          {%- endcapture -%}
+           
+          <div class="col col-md-4 col-12{% if forloop.last %} mb-0{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block_title != blank -%}
+              <h3 class="title">{{ block_title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.video == blank and block.settings.poster != blank -%}
+              {% assign image = block.settings.poster %}
+             <div class="img-wrapper media" style="aspect-ratio: 1;">
+               {% comment %}{% render 'lazy_image', image: image, class: "poster-img" %}{% endcomment %}
+              {%- if image != blank -%}
+                <img class="Image--lazyLoad lazyload img-fluid lazy2 poster-img"
+                   fetchpriority="auto"
+                   srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                   data-aspectratio="{{ image.aspect_ratio }}"
+                   alt="{{ image.alt | escape }}"
+                   data-src="{{ image | image_url }}"
+                   data-srcset="{{ image | image_url: width: 400 }} 360w,
+                                {{ image | image_url: width: 600 }} 600w,
+                                {{ image | image_url: width: 800 }} 800w"
+                   width="{{ image.width }}"
+                   height="{{ image.height }}"
+                   style="aspect-ratio: {{ image.aspect_ratio }};">
+              	{%- endif -%}
+              </div>
+            {%- endif -%}
+            {%- if vid_link != blank -%}
+              {% assign video_install_on = true %}
+              <div class="embed-responsive embed-responsive-1by1" aria-hidden="true">
+                <video type="video/mp4" {{ poster }} src="" data-src="{{ vid_link }}#t=0.001" playsinline="" loop="" width="100%" class="installation-video embed-responsive-item" muted="true">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if btn_label != blank or btn_link != blank -%}
+        <div class="col col-12">
+          <div class="btn-wrapper text-center">
+            <a href="{{ btn_link }}" class="btn">{{ btn_label }}</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- if video_install_on -%}
+  <script type="lazyload2">
+    $(function() {
+      const setImgSrc = () => {
+        const poster_imgs = document.querySelectorAll('.poster-img');
+  
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                let src = img.dataset.src
+    
+                img.srcset = `${src}&width=${img.clientWidth}`;
+                observer.unobserve(img);
+            }
+          });
+        });
+  
+        if(poster_imgs.length > 0) {
+          poster_imgs.forEach(img => {
+              observer.observe(img);
+          });
+        }
+      }
+    
+      $(window).one('scroll', function() {
+        let player = $('.installation-video');
+  
+        player.each(function(i, elem) {
+          let scroll_position = $(window).scrollTop();
+          let data_src = $(this).data('src');
+  
+          if( scroll_position > 0 ) {  
+            $(this).attr('src', data_src)
+            $(this)[0].play();
+          }
+        });
+      });
+  
+      setImgSrc();
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "MB Installation Videos",
+	"class": "installation-videos",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_img",
+        "label": "Background Image"
+      },
+      {
+        "type":"text",
+        "id":"header_text",
+        "label":"Header Text"
+      },
+      {
+        "type":"richtext",
+        "id":"header_sub_text",
+        "label":"Header Sub Text"
+      },
+      {
+        "type": "select",
+        "id": "t_alignment",
+        "label": "Content alignment",
+		"default": "center",
+        "options": [
+          {
+            "value": "start",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "end",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type":"url",
+        "id":"link_url",
+        "label":"Url Link"
+      },
+      {
+        "type":"text",
+        "id":"link_text",
+        "label":"Url Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "fullwidth",
+        "label": "Use full-width section",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "side_pad",
+        "label": "Side spacing",
+        "unit": "px",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 15,
+		"info": "Padding left and right"
+      },
+      {
+        "type": "header",
+        "content": "Section spacing",
+        "info": "Top and bottom padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_desk",
+        "label": "Dektop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 100,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_lap",
+        "label": "Laptop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 80,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_tab",
+        "label": "Tablet",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 60,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_mob",
+        "label": "Mobile",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 40,
+		"info": "Padding"
+      }
+	],
+	"max_blocks": 3,
+    "blocks":[
+      {
+        "type":"step_block",
+        "name":"Step",
+        "settings":[
+          {
+            "type":"textarea",
+            "id":"title",
+            "label":"Step Title"
+          },
+          {
+            "type": "url",
+            "id": "video_link",
+            "label": "Step video link"
+          },
+          {
+            "type": "url",
+            "id": "video",
+            "label": "Step Video",
+            "info": "Use this to render specific installation video of a product, it will get the content form product metafields."
+          },
+          {
+            "type": "image_picker",
+            "id": "poster",
+            "label": "Poster Image",
+            "info": "If no video available use static image instead. Used in product page only."
+          }
+      	]
+      }
+    ],
+    "presets":[
+      {
+        "name":"MB Installation Videos",
+        "category":"MB Custom Section",
+        "blocks": [
+          { "type": "step_block" },
+          { "type": "step_block" },
+          { "type": "step_block" }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "mb_partners_map",
+      "settings": {
+        "title": "Our Partners",
+        "sub_text": "<p>We only work with quality wholesale partners who have authentic, local stores that help tell our rich brand story.</p>",
+        "map_api": "mapbox"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,15 @@
+<img class="lazyloaded lazy2{% if class != blank %} {{ class }}{% endif %}"
+     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" 
+     data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+     data-aspectratio="{{ image.aspect_ratio }}"
+     data-sizes="auto"
+     data-parent-fit="cover"
+     alt="{{ image.alt | escape }}"
+     data-srcset="{{ image | image_url: width: 400 }} 360w,
+                  {{ image | image_url: width: 400 }} 540w,
+                  {{ image | image_url: width: 400 }} 720w,
+                  {{ image | image_url: width: 400 }} 900w,
+                  {{ image | image_url: width: 1600 }} 1600w,
+                  {{ image | image_url: width: 1900 }} 1900w"
+     width="{{ image.width }}"
+     height="{{ image.height }}">

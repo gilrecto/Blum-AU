@@ -1,0 +1,169 @@
+{{ 'lotr_lp_img_carousel.css' | asset_url | stylesheet_tag: preload: true }}
+{% assign text_align = 'text-' | append: section.settings.alignment %}
+{%- if section.settings.alignment == 'left' -%}
+  {% assign text_align = 'text-start' %}
+{% elsif section.settings.alignment == 'right' %}
+  {% assign text_align = 'text-end' %}
+{%- endif -%}
+
+<div class="lp-img-carousel position-relative ts:z-1" style="background-color: {{ section.settings.bg_color }};color: {{ section.settings.color }};">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col col-12">
+        {%- if section.settings.title != blank or section.settings.body != blank -%}
+          <div class="title-area {{ text_align }}">
+            {%- if section.settings.title != blank -%}
+              <h2 class="heading" style="color: {{ section.settings.head_color }};">
+                {{ section.settings.title }}
+              </h2>
+            {%- endif -%}
+            
+            {%- if section.settings.body != blank -%}
+              <div class="rte rte-body">
+                {{ section.settings.body }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="img-carousel-wrapper">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                {%- for block in section.blocks -%}
+                  <div class="swiper-slide image-slide image--slide-{{ forloop.index }}">
+                    {%- if block.settings.image != blank -%}
+                      {%- if block.settings.link != blank -%}
+                        <a href="{{ block.settings.link }}" class="sr-only" {% if block.settings.new_tab %} target="_blank"{% endif %}>{{ block.settings.image.alt | default: 'Carousel Image' }}</a>
+                      {%- endif -%}
+                      <div class="media" style="aspect-ratio: {{ block.settings.image.aspect_ratio }};">
+                        {% render 'lazy_image', image: block.settings.image, section: section %}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endfor -%}
+              </div>
+              <div class="swiper-arrows">
+                <div class="swiper-arrow swiper-button-prev"></div>
+                <div class="swiper-arrow swiper-button-next"></div>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="lazyload2">
+  const imgCarousel = new Swiper('.img-carousel-wrapper .swiper', {
+    spaceBetween: 10,
+    slidesPerView: 2.3,
+    centeredSlides: true,
+    loop: true,
+    grabCursor: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: 15
+      },
+      992: {
+        slidesPerView: 3.5,
+        spaceBetween:25,
+      },
+      1200: {
+        slidesPerView: 4.3,
+        spaceBetween: 35,
+      },
+    }
+  });
+  
+  {%- if section.settings.show_anim -%}
+    circleAnimate('.lp-img-carousel', '::before', 1000);
+    scrollToAnimate('.lp-img-carousel', 'anim', 0.5);
+  {%- endif -%}
+</script>
+
+{% schema %}
+  {
+    "name": "[LOTR LP] Image Carousel",
+    "class": "lotr-lp--img-carousel",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "Some Cool Heading"
+      },
+      {
+        "type": "color",
+        "id": "head_color",
+        "label": "Heading Color",
+        "default": "#000000"
+      },
+      {
+        "type": "richtext",
+        "id": "body",
+        "label": "Body Text",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+      },
+      {
+        "type": "text_alignment",
+        "id": "alignment",
+        "label": "Content alignment",
+        "default": "center"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_anim",
+        "label": "Enable Animation",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link To"
+          },
+          {
+            "type": "checkbox",
+            "id": "new_tab",
+            "label": "New Tab",
+            "default": false,
+            "info": "Open link in new browser tab."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

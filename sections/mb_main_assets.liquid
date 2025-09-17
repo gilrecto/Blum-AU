@@ -1,0 +1,504 @@
+{{ 'photoswipe.css' | asset_url | stylesheet_tag }}
+{%- liquid 
+   assign setting = section.settings
+   assign blocks = section.blocks
+-%}
+
+{% stylesheet %}
+  .mbau-wholesale div#adobe-dc-view {
+    z-index: 100002;
+  }
+  .mb-main-assets .banner {
+    padding-bottom: 40px;
+  }
+  .mb-main-assets .banner h1 {
+    text-transform: uppercase;
+    font-size: 30px;
+    margin: 0;
+  }
+  .mb-main-assets .gallery-wrapper .rw:not(.pswp-gallery) {
+    margin-bottom: 30px;
+  }
+  .mb-main-assets .thumb-wrapper,
+  .mb-main-assets .img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-bottom: 75%;
+    background: rgba(0, 0, 0, 0.4) url(https://cdn.shopify.com/s/files/1/0536/2624/1223/files/mb_pdf_thumb_3ee5106e-542b-4be0-ad34-0354f44fe8ac.jpg?v=1677200448) center/cover no-repeat;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+  }
+  .mb-main-assets .thumb-wrapper:hover {
+    background-blend-mode: overlay;
+  }
+  .mb-main-assets .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    color: #ffffff;
+    background-color: #C30631;
+    border: 2px solid #C30631;
+    padding: 12px 25px;
+  }
+  .mb-main-assets .btn:hover {
+    background-color: #000000;
+    border-color: #000000;
+  }
+  .mb-main-assets .thumb-wrapper:hover .btn,
+  .mb-main-assets .img-wrapper:hover .btn,
+  .mb-main-assets .asset-wrapper:hover .btn {
+    visibility: visible;
+    opacity: 1;
+  }
+  .mb-main-assets .img-wrapper {
+    background-image: none;
+    padding: 0;
+    height: 100%;
+    background-color: #000000;
+  }
+  .mb-main-assets .img-wrapper:hover img {
+    opacity: 0;
+  }
+  .mb-main-assets .img-wrapper .btn-download-pack:hover {
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+  #mb-gallery {
+    margin: 0 -8px;
+  }
+  .mb-main-assets #mb-gallery .asset-wrapper {
+    padding: 8px;
+  }
+  .mb-main-assets #mb-gallery .asset-wrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    z-index: 0;
+    pointer-events: none;
+    transition: all .3s ease-in-out;
+  }
+  .mb-main-assets #mb-gallery .asset-wrapper:hover:after {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .mb-main-assets #mb-gallery .asset-wrapper img {
+    height: 100%;
+    object-fit: cover;
+  } 
+  a.pswp__button.pswp__button--download-asset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+  a.pswp__button.pswp__button--download-asset:hover {
+    color: #ffffff;
+  }
+  .mb-main-assets .btn.btn-download-asset {
+    font-size: 14px;
+    line-height: 1;
+    padding: 10px 20px;
+    z-index: 2;
+  }
+
+  @media only screen and (min-width: 992px) {
+    .mb-main-assets .ctnr {
+      max-width: 930px;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .mb-main-assets .ctnr {
+      max-width: 1340px;
+    }
+    .mb-main-assets span:not(.icon-wrap) {
+      display: block !important;
+    }
+    .mb-main-assets .btn .mb-only {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .mb-main-assets .btn {
+      top: 10px;
+      left: 10px;
+      transform: unset;
+      visibility: visible;
+      opacity: 1;
+      color: #fff;
+      background-color: #C30631;
+      border: 0;
+      padding: 6px !important;
+      min-width: 1px;
+      border-radius: 50%;
+    }
+    .mb-main-assets .btn svg {
+      stroke: none;
+      width: 15px;
+      height: auto;
+      display: block;
+    }
+    .mb-main-assets .btn:hover {
+      color: #000000;
+      background-color: #ffffff;
+      border-color: #ffffff;
+    }
+  }
+  
+  @media only screen and (max-width: 575px) {
+    .mb-main-assets .banner {
+      padding-bottom: 20px;
+    }
+    .mb-main-assets .gallery-wrapper .row:not(.pswp-gallery) {
+      margin: 0 -4px 15px;
+    }
+    .mb-main-assets .gallery-wrapper .row:not(.pswp-gallery) .col {
+      padding: 0 4px;
+    }
+    #mb-gallery {
+      margin: 0 -4px;
+    }
+    .mb-main-assets #mb-gallery .asset-wrapper {
+      padding: 4px;
+    }
+  }
+{% endstylesheet %}
+
+<div class="has-animation section section-alone">
+  <div class="banner">
+    <div class="ctnr">
+      <div class="rw">
+        <div class="clm title-area ta-{{ setting.t_alignment }}" style="--w-xs: 12;">
+          <h1 class="page-title" style="color: {{ setting.t_color }};">
+            {%- if setting.title !=blank -%}
+              {{ setting.title }} {%- else -%} {{ page.title }}
+            {%- endif -%}
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-wrapper">
+    <div class="ctnr">
+      <div class="rw js-animate anm">
+        <div class="clm js-seq-animate anm anm-fadeInUp" style="--w-xs: 6; --duration: .6s;">
+          <div class="thumb-wrapper">
+            <button id="open-pdf" class="btn btn-open-pdf" title="View Brand Guidelines" data-action="open">
+              <span style="display: none;">View Brand Guidelines</span>
+              <span class="mb-only icon-wrap">{% render 'icon-pdf-view' %}</span>
+            </button>
+          </div>
+        </div>
+        <div class="clm js-seq-animate anm anm-fadeInUp" style="--w-xs: 6; --duration: .6s;">
+          <div class="img-wrapper">
+            <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0536/2624/1223/files/Metalbird_Wordmark_Original_white.png?v=1677222967" alt="MB Logo White" width="632" height="234">
+            <a href="https://drive.google.com/uc?export=download&id=1OT1FhATsbDj56zWqoK7ZYXEVkVASDe8q" class="btn btn-download-pack" target="_blank" rel="noopener" title="Download Logo Pack" data-action="download">
+              <span style="display: none;">Download Logo Pack</span>
+              <span class="mb-only icon-wrap">{% render 'icon-download' %}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      {%- if blocks.size > 0 -%}
+        <div id="mb-gallery" class="pswp-gallery rw js-animate anm">
+          {% assign index = 0 %}
+          {%- for block in blocks -%}
+            {% for i in (1..10) %}
+              {% assign index = index | plus: 1 %}
+              {% assign img = 'img_' | append: i %}
+              {% assign image = block.settings[img] %}
+              {% assign cap = 'cap_' | append: i %}
+              {% assign caption = block.settings[cap] %}
+              {% assign fid = 'd_ID_' | append: i %}
+              {% assign file_ID = block.settings[fid] %}
+              
+              {%- if image != blank -%}
+                <div class="asset-wrapper clm js-seq-animate anm anm-fadeInUp p-relative"  style="--w-xs: 6; --w-md: 3; --duration: .6s;">
+                  <button data-href="https://drive.google.com/uc?export=download&id={{ file_ID }}" class="btn btn-download-asset" title="Download Asset" data-action="download">
+                    <span style="display: none;">Download</span>
+                    <span class="mb-only icon-wrap">{% render 'icon-download' %}</span>
+                  </button>
+                  <a href="{{ image | image_url: width: image.width }}" data-fid="{{ file_ID }}" title="{{ caption |default: image.alt }}" data-pswp-width="{{ image.width }}" data-pswp-height="{{ image.height }}">
+                    {% render 'mb_render_image', image: image %}
+                  </a>
+                </div>
+              {%- endif -%}
+            {% endfor %}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script type="lazyload2" data-src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+<script type="lazyload2" data-src="{{ 'mb_pdf_viewer.js' | asset_url }}"></script>
+<script type="module">
+  import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
+
+  const options = {
+    gallery: '#mb-gallery',
+    children: 'a',
+    pswpModule: () => import('{{ 'photoswipe.esm.js' | asset_url }}')
+  };
+
+  const lightbox = new PhotoSwipeLightbox(options);
+
+  lightbox.on('uiRegister', function () {
+    lightbox.pswp.ui.registerElement({
+      name: 'download-asset',
+      ariaLabel: 'Download Asset',
+      title: "Download Asset",
+      order: 9,
+      isButton: true,
+      tagName: 'a',
+      html: `{% render 'icon-download' %}`,
+      onInit: (el, pswp) => {
+        el.setAttribute('target', '_blank');
+        el.setAttribute('rel', 'noopener');
+        el.setAttribute('download', '');
+        
+        pswp.on('change', () => {
+          let element = pswp.currSlide.data.element;
+          let fileID = element.dataset.fid;
+
+          console.log('change');
+          el.href = `https://drive.google.com/uc?export=download&id=${fileID}`;
+        });
+      }
+    });
+  });
+  
+  lightbox.init();
+</script>
+
+{% schema %}
+  {
+    "name": "Main Assets",
+    "tag": "section",
+    "class": "mb-main-assets",
+    "settings": [
+       {
+        "type": "text",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "select",
+        "id": "t_alignment",
+        "label": "Content alignment",
+		"default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "t_color",
+        "label": "Title color",
+        "default": "#000000"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "gal_img",
+        "name": "Gallery Images",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img_1",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_1",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_1",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_2",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_2",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_2",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_3",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_3",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_3",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_4",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_4",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_4",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_5",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_5",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_5",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_6",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_6",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_6",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_7",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_7",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_7",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_8",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_8",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_8",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_9",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_9",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_9",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_10",
+            "label": "Add image"
+          },
+          {
+            "type": "text",
+            "id": "cap_10",
+            "label": "Image Caption",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "d_ID_10",
+            "label": "File ID",
+            "info": "Google drive file ID"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

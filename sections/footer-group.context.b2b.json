@@ -1,0 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "footer-group.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "footer": {
+      "custom_css": [
+        "footer {padding-bottom: 30px;}",
+        ".footer__content__bottom {margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #4d4d4d; max-width: unset !important;}",
+        ".footer__content__bottom .subtext {width: 100%;}",
+        "@media (min-width: 1025px) {.footer__content__bottom {margin-inline: calc(var(--spacing) * -4); padding-inline: calc(var(--spacing) * 4); }}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "enable_newsletter": false,
+        "enable_embed": false,
+        "show_region_selector": false,
+        "show_socical_icons": false,
+        "show_brand_icon": false
+      },
+      "blocks": {
+        "menu-0": {
+          "settings": {
+            "heading": "CONTACT",
+            "menu": "b2b-contact"
+          }
+        },
+        "menu-1": {
+          "settings": {
+            "heading": "LINKS",
+            "menu": "b2b-footer-links"
+          }
+        }
+      },
+      "block_order": [
+        "menu-0",
+        "menu-1"
+      ]
+    }
+  }
+}

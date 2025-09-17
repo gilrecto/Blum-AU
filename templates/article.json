@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "baada2a6-fc99-462b-aafc-0a84ac755fc8": {
+          "type": "featured_image",
+          "settings": {
+            "show_date": true
+          }
+        },
+        "5f96aa1a-5963-4a9b-8cff-3c9405f07836": {
+          "type": "title",
+          "settings": {
+            "show_author": false,
+            "show_date": false,
+            "show_share": false
+          }
+        },
+        "35ba53d6-1735-4ebb-bca5-ff1935027917": {
+          "type": "content",
+          "settings": {
+            "show_tag": false
+          }
+        }
+      },
+      "block_order": [
+        "baada2a6-fc99-462b-aafc-0a84ac755fc8",
+        "5f96aa1a-5963-4a9b-8cff-3c9405f07836",
+        "35ba53d6-1735-4ebb-bca5-ff1935027917"
+      ],
+      "custom_css": [
+        ".main-article {padding-top: 3rem;}",
+        "article > div {--w-xs: 11 !important; --w-md: 12 !important; --w-xl: 10 !important;}",
+        ".article__header {text-align: center;}",
+        "@media (min-width: 1025px) {.ctnr {padding-inline: calc(var(--spacing) * 2); max-width: 1920px; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "blog_post_font_base": 18,
+        "remove_padding_top": true,
+        "remove_padding_bottom": true
+      }
+    },
+    "text_mqWrXm": {
+      "type": "text",
+      "custom_css": [
+        ".s-header__content {--w-md: 12 !important;}",
+        ".s-header__title {display: none;}",
+        ".s-header__buttons {margin-top: calc(var(--spacing) * 2); max-width: 100rem; display: flex; width: 100%; justify-content: space-between; margin-inline: auto; padding-block: 2rem; flex-wrap: nowrap;}",
+        ".s-header__buttons a.btn {width: 100%; max-width: 38rem; color: var(--color-btn-label); background: var(--primary_button_background_gradient);}",
+        "@media only screen and (max-width: 575px) {.s-header__buttons a.btn {font-size: 1.1rem; padding-inline: 1rem; }}"
+      ],
+      "name": "t:sections.text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "ta-center m-auto",
+        "remove_padding_top": true,
+        "remove_padding_bottom": true,
+        "subheading": "",
+        "heading": "d",
+        "heading_size": "h2",
+        "description": "",
+        "button_main_text": "READ MORE BLOGS",
+        "button_main_link": "shopify:\/\/blogs\/word-from-the-bird",
+        "button_sub_text": "SHOP THE BIRDS",
+        "button_sub_link": "shopify:\/\/collections\/the-birds",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--star"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_mqWrXm"
+  ]
+}

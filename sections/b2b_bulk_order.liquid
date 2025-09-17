@@ -1,0 +1,97 @@
+{{ 'b2b_bulk_order.css' | asset_url | stylesheet_tag: preload: true }}
+
+<div class="bulk-order-table">
+  <div class="ctnr">
+    <div class="rw">
+      <div class="clm" style="--w-xs: 12;">
+        <div class="title-area ta-center mb-20 mb-md-48">
+          <h2 class="title">{{ page.title | escape }}</h2>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="img-colmn" style="width: 150px;"></th>
+                <th class="item-colmn">Item</th>
+                <th class="sku-colmn">SKU</th>
+                <th class="price-colmn">Price</th>
+                <th class="qty-colmn" style="width: 150px;">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for product in collections.all.products %}
+                <tr>
+                  <td class="img-colmn">
+                    <div class="img-wrapper">{% render 'mb_render_image', image: product.featured_image.src, class: 'product-img' %}</div>
+                  </td>
+                  <td class="item-colmn"><a href="{{ product.url }}" class="product-link" title="{{ product.title | escape }}">{{ product.title }}</a></td>
+                  <td class="sku-colmn">{{ product.variants.first.sku }}</td>
+                  <td class="price-colmn">{{ product.variants.first.price | money }}</td>
+                  <td class="qty-colmn">
+                    <div class="quantity-selector">
+                      <button class="quantity-decrease" data-target="{{ product.first_available_variant.id }}">{%- render 'icon-minus', size: 12 -%}</button>
+                      <input type="number" name="quantity_{{ product.id }}" id="quantity_{{ product.first_available_variant.id }}" class="input-number b-zero ta-center" min="0" value="0">
+                      <button class="quantity-increase" data-target="{{ product.first_available_variant.id }}">{%- render 'icon-plus', size: 12 -%}</button>
+                    </div>
+                  </td>
+                </tr>
+                {% if product.variants.size > 1 %}
+                  <tr class="variant-details" id="variant-details-{{ product.id }}">
+                    <td colspan="5">
+                      <button class="toggle-variants" data-target="{{ product.id }}">Show Variants</button>
+                      <div class="variants" id="variants-{{ product.id }}">
+                        {% for variant in product.variants %}
+                          <tr>
+                            <td class="img-colmn">
+                              <div class="img-wrapper">{% render 'mb_render_image', image: variant.image.src, class: 'product-img product-variant-img' %}</div>
+                            </td>
+                            <td class="item-colmn">{{ variant.title }}</td>
+                            <td class="sku-colmn">{{ variant.sku }}</td>
+                            <td class="price-colmn">{{ variant.price | money }}</td>
+                            <td class="qty-colmn">
+                              <div class="quantity-selector">
+                                <button class="quantity-decrease" data-target="{{ variant.id }}">{%- render 'icon-minus', size: 12 -%}</button>
+                                <input type="number" name="quantity_{{ variant.id }}" id="quantity_{{ variant.id }}" min="0" value="0">
+                                <button class="quantity-increase" data-target="{{ variant.id }}">{%- render 'icon-plus', size: 12 -%}</button>
+                              </div>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </div>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="btn-wrapper">
+          <button class="btn bulk--add-to-cart btn-large btn-primary" id="add-to-cart--bulk">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loader ts:fixed ts:inset-0 ts:z-100000 ts:bg-[rgba(0,0,0,0.3)] ts:flex ts:items-center ts:justify-center ts:opacity-0 ts:invisible">
+  <svg class="ts:size-14 ts:animate-spin ts:text-red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle class="ts:opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="ts:opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+  </svg>
+</div>
+
+<div class="error-modal modal ts:fixed ts:inset-0 ts:z-100000 ts:bg-[rgba(0,0,0,0.3)] ts:flex ts:items-center ts:justify-center ts:opacity-0 ts:invisible">
+  <div class="modal-inner ts:py-6 ts:px-12 ts:text-white ts:bg-red ts:text-[clamp(14px,1.25vw,16px)] ts:leading-none">
+    <div class="error-message">Error message</div>
+  </div>
+  </div>
+</div>
+
+<script type="lazyload2" data-src="{{ 'b2b_bulk_order.js' | asset_url }}"></script>
+
+{% schema %}
+  {
+    "name": "Quick Order Form",
+    "settings": []
+  }
+{% endschema %}

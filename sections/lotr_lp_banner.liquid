@@ -1,0 +1,224 @@
+{{ 'lotr_lp_banner.css' | asset_url | stylesheet_tag: preload: true }}
+{% assign setting = section.settings %}
+{%- if section.settings.animate_it -%}
+  {%- style -%}
+    .lotr-lp--banner .img-colmn:not(.show) {
+      transform: scale(5);
+      opacity: 0;
+    }
+    .lotr-lp--banner .row > .title-colmn:not(.show) {
+      opacity: 0;
+    }
+    .lotr-lp--banner .btn-review-colmn:not(.show) {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<div class="lp-banner position-relative">
+  {%- liquid
+     assign image = setting.image
+     assign img_class= 'Image--lazyLoad lazyload img-fluid lazy2'
+     assign mb_imageurl = image
+
+     if setting.mb_image != blank
+       assign mb_image = setting.mb_image
+       assign mb_imageurl = mb_image | image_url: width: mb_image.width
+     endif
+  -%}
+  {%- capture supported_sizes -%}{%- render 'supported_sizes', sizes: '300,400,600,800,900,1900,2048', image: image -%}{%- endcapture -%}
+  
+  {%- if image != blank -%}
+    <div class="img-wrapper media"{% if image != blank %} style="aspect-ratio: {{ image.aspect_ratio }};"{% endif %}>
+      <picture class="ts:h-full ts:w-full"> 
+        <source data-srcset="{{ mb_imageurl | image_url: width: 400 }} 300w,
+                             {{ mb_imageurl | image_url: width: 400 }} 400w,
+                             {{ mb_imageurl | image_url: width: 600 }} 600w,"
+                media="(max-width: 767px)"/>
+        <img fetchpriority="high"
+             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" 
+             alt="{{ image.alt | escape }}"
+             data-src="{{ image | image_url: width: image.width }}"
+             class="{{ img_class }}"
+             data-widths="[{{ supported_sizes }}]"
+             data-aspectratio="{{ image.aspect_ratio }}"
+             data-sizes="auto"
+             data-parent-fit="cover"
+             data-srcset="{{ image | image_url: width: 800 }} 800w,
+                          {{ image | image_url: width: 900 }} 900w,
+                          {{ image | image_url: width: 1600 }} 1600w,
+                          {{ image | image_url: width: 1920 }} 1920w"
+             width="{{ image.width }}"
+             height="{{ image.height }}">
+      </picture>
+    </div>
+  {%- else -%}
+    <div class="media placeholder" style="padding-bottom: 56.25%;">
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {%- endif -%}
+  
+  {%- if section.blocks.size > 0 -%}
+    <div class="container-fluid">
+      <div class="row justify-content-center text-start">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {% when 'title' %}
+              {%- if block.settings.title != blank -%}
+                <div class="col col-12 title-colmn">
+                  <h2 class="banner-title mb-0">
+                    {{ block.settings.title }}
+                  </h2>               
+                </div>
+              {%- endif -%}
+            {% when 'image' %}
+              {%- assign image = block.settings.title_img -%}
+              {%- if image != blank -%}
+                <div class="col col-12 img-colmn">
+                  <div class="img-wrapper media"style="aspect-ratio: {{ image.aspect_ratio }};">
+                    {% render 'lazy_image', image: image, section: section %}
+                  </div>
+                </div>
+              {%- endif -%}
+            {% when 'button' %}
+              {%- if block.settings.label != blank or block.settings.show_review -%}
+                <div class="col col-12 btn-review-colmn">
+                  {%- if block.settings.show_review -%}
+                    <div class="review-count">
+                      {% if shop.metafields.loox["global_stats"] %}
+                        {% comment %}
+                          {% assign looxstats = shop.metafields.loox["global_stats"] | split: ',' %} 
+                          <a href="/pages/customer-reviews" class="loox-rating loox-rating-hp" data-rating="{{ looxstats[0] }}" data-raters="{{ looxstats[1] }}">
+                          <span class="loox-rating-label">{{ looxstats[1] | times: 100 | money_without_currency | remove: '.00' }} Reviews</span></a>
+                        {% endcomment %} 
+                        <a href="/pages/customer-reviews" class="loox-rating loox-rating-hp">
+                          <span class="loox-rating-label"><stars>★★★★★</stars> 4.9 Stars | 50,000+ Reviews</span>
+                        </a> 
+                      {% endif %}
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.label != blank -%}
+                    <a href="{{ block.settings.link | default: "#" }}" class="btn lotr-banner-btn">
+                      {{ block.settings.label | escape }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {% when 'text' %}
+              <div class="col col-12 caption-colmn text-center">
+                {%- if block.settings.caption != blank -%}
+                  <p>{{ block.settings.caption | escape }}</p>
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{%- if section.settings.animate_it -%}
+  <script type="lazyload2">
+    const animate = () => {
+      let column = document.querySelectorAll('.lotr-lp--banner .row > .col');
+    
+      column.forEach((col) => {
+        col.classList.add('show');
+      });
+    }
+  
+    animate();
+  </script>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "[LOTR LP] Banner",
+    "class": "lotr-lp--banner",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop Banner Image"
+      },
+       {
+        "type": "image_picker",
+        "id": "mb_image",
+        "label": "Mobile Banner Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "animate_it",
+        "label": "Enable Animate",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "title",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Heading Text",
+            "default": "Some Cool Banner Text"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": "Image",
+        "limit": 1,
+        "settings": [
+           {
+            "type": "image_picker",
+            "id": "title_img",
+            "label": "Tittle Image"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "caption",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "caption",
+            "label": "Caption",
+            "default": "Some caption text"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Button Label",
+            "default": "Button"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Button Link"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_review",
+            "label": "Show Reviews Widget",
+            "default": true
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

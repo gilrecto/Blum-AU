@@ -1,0 +1,52 @@
+<script>
+	window.routes = {
+		root_url: `{{ routes.root_url }}`,
+		cart_add_url: `{{ routes.cart_add_url }}`,
+		cart_change_url: `{{ routes.cart_change_url }}`,
+		cart_update_url: `{{ routes.cart_update_url }}`,
+		predictive_search_url: `{{ routes.predictive_search_url }}`,
+		cart_url: `{{ routes.cart_url }}`
+	};
+
+	window.theme_variables = {
+		settings: {
+			money_format: "{{ shop.money_format }}",
+			money_with_currency_format: "{{ shop.money_with_currency_format }}",
+
+		}
+	}
+	var SHTHelper = window.SHTHelper || {};
+	SHTHelper.qs = document.querySelector.bind(document);
+	SHTHelper.qsa = document.querySelectorAll.bind(document);
+	SHTHelper.qid = document.getElementById.bind(document);
+	SHTHelper.qde = document.documentElement;
+
+	var SHTLanguage = window.SHTLanguage || {};
+	SHTLanguage.cart = {
+		ERROR: `{{ 'sections.cart.cart_error' | t }}`,
+		QUANTITY_ERROR: `{{ 'sections.cart.cart_quantity_error' | t: quantity: '[quantity]' }}`,
+	};
+
+	SHTLanguage.free_shipping_bar = {
+		UNFULFILLED: `{{ 'sections.cart.free_shipping_notification_html' | t: remaining_amount: '[remaining_amount]' }}`,
+		FULFILLED: `{{ 'sections.cart.free_shipping_notification_qualified' | t }}`,
+	};
+
+	SHTLanguage.product = {
+		PRODUCT_ADD_TO_CART: `{{ 'products.product.add_to_cart' | t }}`,
+		PRODUCT_SOLD_OUT: `{{ 'products.product.sold_out' | t }}`,
+		PRODUCT_UNAVAILABLE: `{{ 'products.product.unavailable' | t }}`,
+		PRODUCT_UNAVAILABLE_WITH_OPTION: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+		PRODUCT_REVIEW: `{{ 'products.product.review' | t }}`,
+		PRODUCT_REVIEWS: `{{ 'products.product.reviews' | t }}`,
+	};
+
+
+	SHTHelper.qde.className = SHTHelper.qde.className.replace('no-js', 'js');
+	Shopify.designMode && SHTHelper.qde.classList.add('shopify-design-mode');
+	var SHTDefer = [];
+
+	document.addEventListener('DOMContentLoaded', function () {
+		while (SHTDefer.length) SHTDefer.shift().call();
+	});
+</script>

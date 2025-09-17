@@ -1,0 +1,5 @@
+{% if product.price == 0 or product.tags contains settings.no_view_tag %}
+    <script>
+      window.location.href = "{{ settings.no_view_url }}";
+	</script>
+{% endif %}

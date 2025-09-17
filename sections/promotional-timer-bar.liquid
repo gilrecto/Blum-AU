@@ -1,0 +1,387 @@
+{%- liquid
+  assign is_expired = false
+  assign hide_countdown_cls = ''
+  assign hide_countdown_message_cls = 'd-none'
+  assign today = "now" | date: "%Y-%m-%d"
+  assign end_time = section.settings.end_time | default: '23:59' | append: ':00'
+  assign end_date = section.settings.end_date | default: today
+
+  assign timezone_offset = "now" | date: "%z"
+  assign expired_at = end_date | append: ' ' | append: end_time | append: ' ' | append: timezone_offset
+
+  assign expired_at_timestamp = expired_at | date: '%s'
+  assign now_timestamp = 'now' | date: '%s'
+
+  assign diff_seconds = expired_at_timestamp | minus: now_timestamp
+
+  assign days = diff_seconds | divided_by: 86400 | floor
+  assign hours = diff_seconds | modulo: 86400 | divided_by: 3600 | floor
+  assign minutes = diff_seconds | modulo: 3600 | divided_by: 60 | floor
+  assign seconds = diff_seconds | modulo: 60 | floor
+
+  assign days_string = '00'
+  assign hours_string = '00'
+  assign minutes_string = '00'
+  assign seconds_string = '00'
+
+  if diff_seconds > 0 and days < 10
+    assign days_string = days | prepend: '0'
+  elsif diff_seconds > 0 and days >= 10
+    assign days_string = days
+  endif
+
+  if diff_seconds > 0 and hours < 10
+    assign hours_string = hours | prepend: '0'
+  elsif diff_seconds > 0 and hours >= 10
+    assign hours_string = hours
+  endif
+
+  if diff_seconds > 0 and minutes < 10
+    assign minutes_string = minutes | prepend: '0'
+  elsif diff_seconds > 0 and minutes >= 10
+    assign minutes_string = minutes
+  endif
+
+  if diff_seconds > 0 and seconds < 10
+    assign seconds_string = seconds | prepend: '0'
+  elsif diff_seconds > 0 and seconds >= 10
+    assign seconds_string = seconds
+  endif
+
+  if diff_seconds <= 0
+    assign is_expired = true
+    if section.settings.hide_on_end
+      assign hide_countdown_cls = "d-none-important"
+    endif
+    if section.settings.end_text != blank
+      assign hide_countdown_message_cls = ''
+    endif
+  endif
+
+  assign bg_style = ''
+  if section.settings.background_image != blank
+    assign bg_img = section.settings.background_image | image_url: width: section.settings.background_image.width
+    assign bg_style = '--bg-img: url(' | append: bg_img | append: ');'
+  endif
+  assign font_size = section.settings.m_font_size | append: 'px,' | append: '1.6vw,' | append: section.settings.d_font_size | append: 'px'
+-%}
+
+{%- if section.settings.enable_timer_bar -%}
+<div class="ts:relative ts:w-full color-{{ section.settings.color_scheme }} {{ hide_countdown_cls }} ts:shadow-md{% if section.settings.background_image != blank %} ts:!bg-[image:var(--bg-img)] ts:!bg-cover ts:bg-center ts:!bg-no-repeat {% endif %}" 
+     data-ui-component="Promotional Timer Bar" 
+     style="{{ bg_style }}">
+  
+  {%- if section.settings.background_image != blank -%}
+    <div class="ts:absolute ts:inset-0 ts:bg-black ts:opacity-40"></div>
+  {%- endif -%}
+  
+  {% if section.settings.enable_countdown %}
+    <sht-countdown class="ts:block ts:relative ts:z-10" 
+                   data-is-expired="{{ is_expired }}" 
+                   data-hide-on-end="{{ section.settings.hide_on_end }}" 
+                   data-time-zone-name="{{ "now" | date: "%Z" }}" 
+                   data-time-zone-offset="{{ timezone_offset }}" 
+                   data-end-time="{{ end_time }}" 
+                   data-end-date="{{ end_date }}">
+      
+      <div class="ctnr ts:flex ts:items-center ts:justify-between ts:py-4 ts:!px-8 ts:gap-x-4 ts:w-full ts:!max-w-[var(--max-w)]" style="--max-w: {{ section.settings.max_width }}px;">
+        <!-- Promotional Text -->
+        <div class="timer-text ts:flex-1 ts:flex ts:items-center ts:!text-[clamp(var(--font-size))] ts:leading-[1.4]" style="--font-size: {{ font_size }};">
+          <span class="ts:hidden md:ts:block ts:font-bold ts:uppercase">{{ section.settings.promotional_text }}</span>
+          <span class="ts:block md:ts:hidden ts:font-bold ts:uppercase">{{ section.settings.promotional_text_mobile | default: section.settings.promotional_text }}</span>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="timer ts:flex ts:items-center{% if section.settings.button_text == blank %} ts:justify-center {% endif %} ts:justify-center ts:flex-1 ts:gap-2 ts:md:gap-3">
+          <div class="ts:flex ts:flex-col ts:items-center ts:text-center ts:min-w-[32px] ts:p-2 ts:bg-black ts:rounded-lg">
+            <span class="ts:md:text-[1.8rem] ts:text-sm ts:leading-none js-counter-days">{{ days_string }}</span>
+            <span class="ts:text-[10px] ts:uppercase ts:opacity-90 ts:leading-none">{{ 'sections.promotional_timer_bar.days' | t }}</span>
+          </div>
+          <div class="ts:flex ts:flex-col ts:items-center ts:text-center ts:min-w-[32px] ts:p-2 ts:bg-black ts:rounded-lg">
+            <span class="ts:md:text-[1.8rem] ts:text-sm ts:leading-none js-counter-hours">{{ hours_string }}</span>
+            <span class="ts:text-[10px] ts:uppercase ts:opacity-90 ts:leading-none">{{ 'sections.promotional_timer_bar.hours' | t }}</span>
+          </div>
+          <div class="ts:flex ts:flex-col ts:items-center ts:text-center ts:min-w-[32px] ts:p-2 ts:bg-black ts:rounded-lg">
+            <span class="ts:md:text-[1.8rem] ts:text-sm ts:leading-none js-counter-minutes">{{ minutes_string }}</span>
+            <span class="ts:text-[10px] ts:uppercase ts:opacity-90 ts:leading-none">{{ 'sections.promotional_timer_bar.minutes' | t }}</span>
+          </div>
+          <div class="ts:flex ts:flex-col ts:items-center ts:text-center ts:min-w-[32px] ts:p-2 ts:bg-black ts:rounded-lg">
+            <span class="ts:md:text-[1.8rem] ts:text-sm ts:leading-none js-counter-seconds">{{ seconds_string }}</span>
+            <span class="ts:text-[10px] ts:uppercase ts:opacity-90 ts:leading-none">{{ 'sections.promotional_timer_bar.seconds' | t }}</span>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        {%- if section.settings.button_text != blank -%}
+          <div class="timer-btn ts:flex-1 ts:max-md:hidden">
+            <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn-small btn-primary" style="--form-field-sm: 3.8rem">
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Expired Message -->
+      <div class="ts:text-center ts:py-3 {{ hide_countdown_message_cls }} js-counter-message">
+        <span class="ts:text-sm ts:font-semibold">{{ section.settings.end_text }}</span>
+      </div>
+    </sht-countdown>
+  {% else %}
+    <!-- Static Promotional Bar (No Timer) -->
+    <div class="ts:block ts:relative ts:z-10">
+      <div class="ctnr ts:flex ts:items-center ts:justify-center ts:py-4 ts:!px-8 ts:gap-x-4 ts:w-full ts:!max-w-[var(--max-w)] ts:leading-[1.4]" style="--max-w: {{ section.settings.max_width }}px;">
+        <!-- Promotional Text Only -->
+        <div class="ts:flex ts:items-center ts:justify-center ts:text-center ts:!text-[clamp(var(--font-size))]" style="--font-size: {{ font_size }};">
+          <span class="ts:hidden md:ts:block ts:font-bold ts:uppercase">{{ section.settings.promotional_text }}</span>
+          <span class="ts:block md:ts:hidden ts:font-bold ts:uppercase">{{ section.settings.promotional_text_mobile | default: section.settings.promotional_text }}</span>
+        </div>
+
+        <!-- CTA Button -->
+        {%- if section.settings.button_text != blank -%}
+          <div class="ts:ml-4">
+            <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn-small btn-primary" style="--form-field-sm: 3.8rem">
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script defer>
+  document.addEventListener('DOMContentLoaded', function() {
+    const promoBar = document.querySelector('[data-ui-component="Promotional Timer Bar"]');
+    const stickyHeader = document.querySelector('.js-sticky-header');
+    
+    if (!promoBar) return;
+    
+    // Store original position
+    const originalPosition = promoBar.style.position;
+    const originalTop = promoBar.style.top;
+    const originalZIndex = promoBar.style.zIndex;
+    let isSticky = false;
+    let promoBarOriginalTop = promoBar.getBoundingClientRect().top + window.scrollY;
+    
+    // Set initial CSS custom property for promo bar height
+    function updatePromoBarHeight() {
+      const promoBarHeight = promoBar.offsetHeight;
+      document.documentElement.style.setProperty('--promo-bar-height', `${promoBarHeight}px`);
+    }
+    
+    // Update header top position to account for promo bar
+    function updateHeaderPosition() {
+      if (stickyHeader && isSticky) {
+        const promoBarHeight = promoBar.offsetHeight;
+        stickyHeader.style.top = `${promoBarHeight}px`;
+        stickyHeader.style.position = 'fixed';
+        stickyHeader.style.width = '100%';
+      } else if (stickyHeader && !isSticky) {
+        stickyHeader.removeAttribute('style');
+      }
+    }
+    
+    // Handle scroll events
+    function handleScroll() {
+      const scrollTop = window.scrollY;
+      
+      if (scrollTop > promoBarOriginalTop && !isSticky) {
+        // Make sticky
+        isSticky = true;
+        promoBar.style.position = 'fixed';
+        promoBar.style.top = '0';
+        promoBar.style.left = '0';
+        promoBar.style.right = '0';
+        promoBar.style.zIndex = '998'; // Below header's z-index
+        document.body.style.paddingTop = `${promoBar.offsetHeight}px`;
+        updateHeaderPosition();
+      } else if (scrollTop <= promoBarOriginalTop && isSticky) {
+        // Remove sticky
+        isSticky = false;
+        promoBar.style.position = originalPosition;
+        promoBar.style.top = originalTop;
+        promoBar.style.left = '';
+        promoBar.style.right = '';
+        promoBar.style.zIndex = originalZIndex;
+        document.body.style.paddingTop = '0';
+        updateHeaderPosition();
+      }
+    }
+    
+    // Initialize
+    updatePromoBarHeight();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Update on resize
+    window.addEventListener('resize', function() {
+      updatePromoBarHeight();
+      promoBarOriginalTop = promoBar.getBoundingClientRect().top + window.scrollY;
+      if (isSticky) {
+        document.body.style.paddingTop = `${promoBar.offsetHeight}px`;
+      }
+      updateHeaderPosition();
+    });
+    
+    // Handle timer expiration
+    const countdown = promoBar.querySelector('sht-countdown');
+    if (countdown) {
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.target.classList.contains('d-none-important')) {
+            // Timer expired and hidden, remove body padding and reset header
+            document.body.style.paddingTop = '0';
+            if (stickyHeader) {
+              stickyHeader.style.top = '0';
+            }
+            isSticky = false;
+          }
+        });
+      });
+      
+      observer.observe(promoBar, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    }
+  });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Promotional Timer Bar",
+  "class": "promotional-timer-bar-section",
+  "tag": "section",
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_timer_bar",
+      "label": "Enable Timer Bar",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Optional background image. Will add dark overlay for text readability."
+    },
+    {
+      "type": "header",
+      "content": "Promotional Text"
+    },
+    {
+      "type": "text",
+      "id": "promotional_text",
+      "label": "Promotional Text (Desktop)",
+      "default": "TODAY ONLY - FREE SHIPPING! ENDS:"
+    },
+    {
+      "type": "text",
+      "id": "promotional_text_mobile",
+      "label": "Promotional Text (Mobile)",
+      "info": "Leave blank to use desktop text"
+    },
+    {
+      "type": "header",
+      "content": "Countdown Timer"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_countdown",
+      "label": "Enable Countdown Timer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "End Date",
+      "info": "Format: YYYY-MM-DD (e.g., 2024-12-31)"
+    },
+    {
+      "type": "text",
+      "id": "end_time",
+      "label": "End Time",
+      "info": "Format: HH:MM (e.g., 23:59)",
+      "default": "23:59"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_end",
+      "label": "Hide timer when expired",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "end_text",
+      "label": "Expired Message",
+      "default": "Promotion has ended"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Container Width",
+      "min": 600,
+      "max": 1600,
+      "step": 10,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "d_font_size",
+      "label": "Font Size",
+      "min": 15,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "info": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "m_font_size",
+      "label": "Font Size",
+      "min": 8,
+      "max": 18,
+      "step": 0.1,
+      "unit": "px",
+      "default": 10,
+      "info": "Mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promotional Timer Bar",
+      "category":"MB Custom Section"
+    }
+  ]
+}
+{% endschema %}
+

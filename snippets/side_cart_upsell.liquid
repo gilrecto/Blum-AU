@@ -1,0 +1,154 @@
+{% liquid
+	assign show_upsell = false
+	assign upsell_in_cart = false
+
+	if settings.upsell_enable
+		assign cart_qty = cart.item_count
+		assign upsell_condition_minqty = settings.upsell_condition_minqty | plus: 0
+
+		for item in cart.items
+			if item.product_id == settings.upsell_product.id
+				assign upsell_in_cart = true
+				break
+			endif
+		endfor
+
+		if upsell_in_cart == false and cart_qty >= upsell_condition_minqty
+			case settings.upsell_trigger
+				when 'collection'
+					for item in cart.items
+						if item.product.collections contains collections[settings.upsell_collection.handle]
+							assign show_upsell = true
+							break
+						endif
+					endfor
+
+				when 'specific_products'
+					for product in settings.upsell_products
+						for item in cart.items
+							if item.product_id == product.id
+								assign show_upsell = true
+								break
+							endif
+						endfor
+						if show_upsell
+							break
+						endif
+					endfor
+
+				when 'product_tags'
+					assign upsell_tags = settings.upsell_product_tags | split: ','
+					for item in cart.items
+						assign this_product = all_products[item.product.handle]
+						if this_product != blank
+							for tag in this_product.tags
+								if upsell_tags contains tag
+									assign show_upsell = true
+									break
+								endif
+							endfor
+						endif
+						if show_upsell
+							break
+						endif
+					endfor
+			endcase
+		endif
+	endif
+
+	if settings.upsell_discount_type == 'percentage'
+		assign upsell_discount_value = settings.upsell_product.price | times: settings.upsell_discount_value | divided_by: 100
+	else
+		assign upsell_discount_value = settings.upsell_product.price | minus: settings.upsell_discount_value
+	endif
+%}
+
+{% if show_upsell and settings.upsell_product != blank %}
+	<div class="drawer__upsell ts:min-[1681px]:px-[3.2rem] ts:min-[459px]:p-[2.4rem] ts:p-8 ts:!pt-0">
+		{%- liquid
+			assign upsell_product = settings.upsell_product
+			assign product_form_id = 'featuredProductForm-' | append: section.id
+		-%}
+		<div class="cart-drawer-upsell ts:bg-[#f2efec] ts:rounded-[1.2rem] ts:md:px-8 ts:md:py-6 ts:p-4 ts:flex ts:items-center ts:gap-5">
+			
+			<a href="{{ upsell_product.url }}" class="ts:md:flex-[0_0_6rem] ts:flex-[0_0_5rem] ts:overflow-hidden ts:rounded-[1.2rem]">
+				{%- liquid
+					assign image_raw = upsell_product.featured_image
+					assign image_alt = image_raw.alt | default: image_raw.image | split: '/' | last
+					assign img_class = 'js-image-lazy media of-cover w-100 h-100'
+
+					assign image = image_raw | image_url: width: image_raw.width | image_tag: widths: '50, 60', sizes: '(min-width: 768px) calc(100vw/2), 100vw', alt: image_alt, class: img_class, loading: 'lazy', fetchpriority: 'low', decoding: 'async'
+				-%}
+
+				{% render 'image', image_item: image, image_wrap_classes: 'w-100 h-100', ratio: '1/1' %}
+			</a>
+
+			<div class="ts:flex-1 ts:flex ts:flex-wrap ts:gap-[0.8rem]">
+				<a href="{{ upsell_product.url }}" class="block ts:!mr-6">
+					<h4 class="ts:md:!text-sm ts:!text-xs ts:leading-none ts:!mb-0">{{ upsell_product.title }}</h4>
+				</a>
+
+				<p class="ts:md:!text-sm ts:!text-xs ts:leading-none ts:!mb-0">
+					{%- assign discounted_price = upsell_product.price | minus: settings.upsell_discount_value -%}
+					<span class="ts:line-through ts:text-gray-400">{{ upsell_product.price | money }}</span>
+					<span class="ts:text-red ts:font-semibold ts:ml-1">NOW {{ upsell_discount_value | money }}</span>
+				</p>
+
+				{%- render 'product-rating', product: upsell_product, star_rating_color: true -%}
+			</div>
+
+			<sht-featured-prd-frm data-section="{{ section.id }}" class="ts:flex-[0_0_3rem]">
+				<div class="js-featured-product-form-error-wrapper mb-16" data-type="error-wrapper" role="alert" hidden>
+					<span class="d-flex middle-xs">
+						<span class="icon--error icon icon--small mr-8 fs-0">{%- render 'icon-error', size: 16 -%}</span>
+						<span class="js-featured-product-form-error-message" data-type="error-message"></span>
+					</span>
+				</div>
+				{%- if upsell_product != blank -%}
+					{%- form 'product', upsell_product, id: product_form_id, class: 'form form__fields', novalidate: 'novalidate' -%}
+						<div class="form__field">
+							<input type="hidden" class="form__control" name="id" value="{{ upsell_product.selected_or_first_available_variant.id }}" disabled>
+						</div>
+						<div class="product-form__buttons d-flex top-xs fd-column">
+							<div class="gap-16 d-flex w-100 middle-xs">
+								<div class="product__quantity visually-hidden" id="featuredProductQuantity-{{ section.id }}" data-show="false">
+									<label class="field__label visually-hidden" for="featuredProductQuantityInput-{{ section.id }}">{{ 'products.product.quantity.label' | t }}:</label>
+									<sht-qty-inp class="field_quantity d-inline-flex middle-xs center-xs">
+										<button class="no-js-hidden js-quantity-btn js-quantity-btn-minus btn btn-icon btn-large btn-plain" aria-label="{{ 'accessibility.minus' | t }}" name="minus" data-name="minus" type="button">
+											{%- render 'icon-minus', size: 20 -%}
+										</button>
+										<input class="js-quantity-input qty-element input-number btn-plain b-zero ta-center" type="number" name="quantity" aria-label="{{ 'products.product.quantity.input_label' | t: product: upsell_product.title | escape }}" id="featuredProductQuantityInput-{{ block.id }}-{{ section.id }}" min="1" value="1" form="{{ product_form_id }}">
+										<button class="no-js-hidden js-quantity-btn js-quantity-btn-plus btn btn-icon btn-large btn-plain" aria-label="{{ 'accessibility.plus' | t }}" name="plus" data-name="plus" type="button">
+											{%- render 'icon-plus', size: 20 -%}
+										</button>
+									</sht-qty-inp>
+								</div>
+								<button type="submit" name="add" class="js-featured-product-form-submit-btn product-btn-atc btn btn-small btn-icon w-100 ts:bg-red ts:text-white ts:rounded-[1.2rem]"
+									title="Add {{ upsell_product.title | escape }} to cart"
+									{% if upsell_product.selected_or_first_available_variant.available == false %}
+										disabled
+									{% endif %}
+									style="--form-field-sm: 2.5rem;"
+								>
+									<span class="p-relative d-flex middle-xs center-xs ta-center">
+										<span class="hidden js-featured-product-form-spinner product-form-spinner p-absolute icon">
+											{% render 'icon-spinner' %}
+										</span>
+										<span class="js-featured-product-form-submit-btn-text wb-break-word ts:text-white">
+											{% render 'icon-cart-1', size: 15 %}
+										</span>
+									</span>
+									<span class="visually-hidden">{{ 'products.product.add_to_cart' | t }}</span>
+								</button>
+							</div>
+						</div>
+					{%- endform -%}
+				{%- else -%}
+					<button type="submit" name="add" class=" product-btn-atc btn btn-small ts:md:!text-sm ts:!text-xs w-100" disabled>
+						{{ 'products.product.sold_out' | t }}
+					</button>
+				{%- endif -%}
+			</sht-featured-prd-frm>
+		</div>
+	</div>
+{% endif %}

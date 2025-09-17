@@ -1,0 +1,33 @@
+swiper-slider {
+	@apply ts:block ts:relative ts:overflow-visible ts:py-8;
+}
+swiper-slider.spotlight .swiper-slide {
+	@apply ts:transition-all ts:delay-300 ts:ease-linear ts:md:scale-[90%] ts:select-none;
+}
+swiper-slider.spotlight .swiper-slide-active {
+		@apply ts:md:scale-100 ts:z-[2]
+}
+swiper-slider.spotlight .grayscale .swiper-slide:not(.swiper-slide-active) {
+	@apply ts:grayscale;
+
+}swiper-slider.spotlight[destroy-on-mobile] .grayscale .swiper-slide:not(.swiper-slide-active) {
+	@apply ts:max-md:grayscale-0;
+}
+swiper-slider .swiper-pagination {
+	@apply ts:!-bottom-10 ts:z-3;
+}
+swiper-slider .swiper-pagination-bullet {
+	@apply ts:w-[12px] ts:h-[12px] ts:bg-transparent ts:opacity-100 ts:border ts:border-[rgba(var(--color-normal-text-rgb),0.3)];
+}
+swiper-slider .swiper-pagination-bullet-active {
+	@apply ts:bg-black;
+}
+swiper-slider .swiper-nav {
+	@apply ts:w-[4.4rem] ts:h-[4.4rem] ts:bg-[var(--color-normal-text)] ts:p-4 ts:font-normal ts:text-[var(--color-page-bg)] ts:top-[var(--swiper-navigation-top-offset,40%)];
+}
+swiper-slider .s-footer ~ .swiper-navigations > .swiper-nav {
+	@apply ts:top-[var(--swiper-navigation-top-offset-footer,32%)];
+}
+swiper-slider .swiper-nav:after {
+	@apply ts:text-[2.4rem];
+}

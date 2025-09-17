@@ -1,0 +1,84 @@
+{%- assign setting = section.settings -%}
+{{ 'mb_partners_map.css' | asset_url | stylesheet_tag: preload: true  }}
+
+{%- if setting.map_api == 'google' -%}
+  {{ 'store_locator_gmaps.css' | asset_url | stylesheet_tag: preload: true  }}
+{% else %}
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet" />
+  {{ 'store_locator_mapbox.css' | asset_url | stylesheet_tag: preload: true  }}
+{%- endif -%}
+
+<div class="partners-map">
+  <div class="ctnr">
+    {%- if setting.title != blank or setting.sub_text != blank -%}
+      <div class="title-area ta-center">
+        {%- if setting.title != blank -%}
+          <h2 class="heading">{{ setting.title }}</h2>
+        {%- endif -%}
+        
+        {%- if setting.sub_text != blank -%}
+          <div class="rte">{{ setting.sub_text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="store-locator-wrapper">
+      <store-locator></store-locator>
+      
+      <template id="store-locator-template">
+        <div id="store-locator">
+          <div id="map"></div>
+          <div class="store-list-container">
+            <input type="text" id="storeSearch" placeholder="Search stores.." />
+            <ul id="store-list"></ul>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</div>
+
+{% if setting.map_api == 'google' %}
+  <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js" defer></script>
+  <script type="module" src="{{ 'store_locator_gmaps.js' | asset_url }}" defer></script>
+{% else %}
+  <script type="module" src="{{ 'store_locator_mapbox.js' | asset_url }}" defer></script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "[MB Partners Map]",
+    "tag": "section",
+    "class": "mb-partners-map",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Title",
+        "default": "Our Partners"
+      },
+      {
+        "type":"richtext",
+        "id":"sub_text",
+        "label":"Subtext"
+      },
+      {
+        "type": "select",
+        "id": "map_api",
+        "label": "Map Library",
+        "options": [
+          {
+            "value": "google",
+            "label": "Google Maps"
+          },
+          {
+            "value": "mapbox",
+            "label": "Mapbox"
+          }
+        ],
+        "default": "google",
+        "info": "Choose which map library to use."
+      }
+    ]
+  }
+{% endschema %}

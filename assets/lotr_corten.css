@@ -1,0 +1,54 @@
+.lotr-corten .section-title-area {
+  margin-bottom: 20px;
+}
+.lotr-corten .section-title-area h2 {
+  color: #a9925c;
+  font-family: 'Ringbearer', sans-serif !important;
+  text-transform: none;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 1.2;
+}
+.lotr-corten .rte-body p {
+  font-family: Minion Pro, sans-serif;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  line-height: 1.6;
+}
+.lotr-corten .corteen-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+.lotr-corten .corteen-wrapper .corteen {
+  flex: 0 0 calc(33.33% - 15px);
+  font-size: 14px;
+}
+.lotr-corten .btn-wrapper {
+  display: none;
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .lotr-corten .section-title-area {
+    flex-wrap: no-wrap;
+    margin-bottom: 40px;
+  }
+  .lotr-corten .corteen-wrapper {
+    margin-bottom: 60px;
+  }
+  .lotr-corten .corteen-wrapper .corteen {
+    flex: 1 ;
+    font-size: 18px;
+  }
+  .lotr-corten .btn-wrapper {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .lotr-corten .section-title-area {
+    margin-bottom: 50px;
+  }
+}

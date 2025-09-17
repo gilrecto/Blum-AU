@@ -1,0 +1,28 @@
+{% liquid
+	assign image = image
+	assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+	assign image_class = 'Image--lazyLoad img-fluid lazy2'
+	assign fetch_priority = 'auto'
+
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+
+	if class != blank
+		assign image_class = image_class | append: ' '| append: class
+	endif
+%}
+
+<div class="img-wrapper media"{% if image != blank %} style="aspect-ratio: {{ image.aspect_ratio }};"{% endif %}>
+	{%- if image != blank -%}
+		{{
+			image | image_url: width: image.width | image_tag:
+				width: image.width,
+				height: image.height ,
+				class: image_class, 
+				sizes: '100vw',
+				widths: widths,
+				fetchpriority: fetch_priority
+		}}
+	{%- endif -%}
+</div>

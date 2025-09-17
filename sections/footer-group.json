@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu-0": {
+          "type": "menu",
+          "settings": {
+            "heading": "METALBIRD",
+            "menu": "footer-menu-mb"
+          }
+        },
+        "menu-1": {
+          "type": "menu",
+          "settings": {
+            "heading": "HELP",
+            "menu": "footer-menu-help"
+          }
+        },
+        "menu-2": {
+          "type": "menu",
+          "settings": {
+            "heading": "INFO",
+            "menu": "footer-menu-info"
+          }
+        }
+      },
+      "block_order": [
+        "menu-0",
+        "menu-1",
+        "menu-2"
+      ],
+      "custom_css": [
+        "footer {padding-bottom: 30px;}",
+        "footer .rw {justify-content: space-between;}",
+        ".clm.footer-blocks--menu__type {--w-lg: 7 !important;}",
+        ".clm:not(.footer-blocks--menu__type) {--w-lg: 4 !important;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_back_to_top": false,
+        "enable_collapse": true,
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "logo_width": 110,
+        "heading": "",
+        "description": "",
+        "show_follow_on_shop": false,
+        "contact_heading": "",
+        "show_info": false,
+        "enable_newsletter": true,
+        "enable_embed": true,
+        "embed_code": "<div class=\"klaviyo-form-VQezqy\"></div>",
+        "newsletter_heading": "JOIN THE FLOCK",
+        "newsletter_description": "",
+        "newsletter_color_background": "#ffffff",
+        "newsletter_color": "#000000",
+        "show_currency_selector": false,
+        "show_language_selector": false,
+        "show_region_selector": true,
+        "region_menu": "mb-regions",
+        "open_in_new_tab": false,
+        "social_heading": "",
+        "show_socical_icons": true,
+        "show_brand_icon": true,
+        "brand_icon": "shopify://shop_images/willie_flatlay_black.svg",
+        "show_payment_methods": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

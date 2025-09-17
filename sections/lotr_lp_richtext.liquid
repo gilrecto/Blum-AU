@@ -1,0 +1,69 @@
+{{ 'lotr_lp_richtext.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% assign text_align = 'text-' | append: section.settings.alignment %}
+{%- if section.settings.alignment == 'left' -%}
+  {% assign text_align = 'text-start' %}
+{% elsif section.settings.alignment == 'right' %}
+  {% assign text_align = 'text-end' %}
+{%- endif -%}
+
+<div class="lp-rte position-relative"{% if section.settings.bg_img != blank -%} style="background: url('{{ section.settings.bg_img | image_url: width: section.settings.bg_img.width }}') center/cover no-repeat;"{% endif %}>
+  {%- if section.settings.title != blank or section.settings.body != blank -%}
+    <div class="container-fluid">
+      <div class="row justify-content-end">
+        <div class="col col-xl-6 col-12"></div>
+        <div class="col col-xl-6 col-12 {{ text_align }}">
+          {%- if section.settings.title != blank -%}
+            <h2 class="heading">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          
+          {%- if section.settings.body != blank -%}
+            <div class="rte rte-body">
+              {{ section.settings.body }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<script type="lazyload2">
+  let section = document.querySelector('.lp-rte');
+
+  circleAnimate('.lp-rte', '::before', 1000);
+  scrollToAnimate('.lp-rte', 'anim', 0.5);
+</script>
+
+{% schema %}
+  {
+    "name": "[LOTR LP] Richtext",
+    "class": "lotr-lp--rte",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_img",
+        "label": "Background Image"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "Some Cool Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "body",
+        "label": "Body Text",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+      },
+      {
+        "type": "text_alignment",
+        "id": "alignment",
+        "label": "Text alignment",
+        "default": "center"
+      }
+    ]
+  }
+{% endschema %}

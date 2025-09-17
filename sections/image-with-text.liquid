@@ -1,0 +1,661 @@
+{%- liquid
+  assign loading = "lazy"
+  assign decoding ="async"
+  assign fetchpriority = "auto"
+  assign image_classes = 'w-100 h-100 js-animate anm anm-zoomOut'
+  if section.index == 1
+    assign loading = "eager"
+    assign fetchpriority = "high"
+    assign image_classes = 'w-100 h-100'
+  endif
+  assign primary_image = section.settings.primary_image
+  assign secondary_image = section.settings.secondary_image
+  assign primary_image_ratio = section.settings.primary_image_ratio
+  assign secondary_image_ratio = section.settings.secondary_image_ratio
+  assign heading_style = section.settings.enable_large_heading | default: 'ts-default' | replace: 'true', 'headline ts-default'
+
+
+  assign placeholder = 'image' | placeholder_svg_tag: 'h-100 w-100 placeholder media of-cover js-image-lazy'
+  assign primary_image_alt = primary_image.alt | default: primary_image.image | split: '/' | last
+  assign primary_media = primary_image | image_url: width: primary_image.width | image_tag: widths: '320, 450, 550, 750, 950, 1024, 1200, 1400, 1600, 1800, 2000', sizes: '(min-width: 459px) calc(100vw/2), 100vw', alt: primary_image_alt, class: 'js-image-lazy media of-cover w-100 h-100', loading: loading, fetchpriority: fetchpriority, decoding: decoding
+
+  assign secondary_media_alt = secondary_image.alt | default: secondary_image.image | split: '/' | last
+  assign secondary_media = secondary_image | image_url: width: secondary_image.width | image_tag: widths: '320, 450, 550, 750, 950, 1024, 1200, 1400, 1600, 1800, 2000', sizes: '(min-width: 459px) calc(100vw/2), 100vw', alt: secondary_media_alt, class: 'js-image-lazy media of-cover w-100 h-100', loading: 'lazy', fetchpriority: 'auto', decoding: decoding
+  assign classes = 's-header s-header--special pt-zero-mb zi-1 ts:lg:!pl-[var(--side-spacing)] ts:relative'
+  assign class_swap = 'd-rtl'
+
+
+  assign primary_img_style = primary_image_ratio | replace: 'landscape', '--gc-xs: 1/6; --gr-xs: 1/5;' | replace: 'square', '--gc-xs: 1/6; --gr-xs: 1/6;' | replace: 'portrait', '--gc-xs: 2/6; --gr-xs: 1/6;'
+  assign secondary_img_style = secondary_image_ratio | replace: 'landscape', '--gc-xs: 1/6; --gr-xs: 1/5;' | replace: 'square', '--gc-xs: 1/6; --gr-xs: 1/6;' | replace: 'portrait', '--gc-xs: 2/6; --gr-xs: 1/6;'
+
+  if primary_image != blank and secondary_image != blank
+    assign primary_img_style = '--gc-xs: 2/6; --gr-xs: 1/4;'
+    assign secondary_img_style = secondary_image_ratio | replace: 'portrait', '--gc-xs: 1/3; --gr-xs: 3/6;' | replace: 'square', '--gc-xs: 1/3; --gr-xs: 3/5;' | replace: 'landscape', '--gc-xs: 1/4; --gr-xs: 3/5;'
+
+    if primary_image_ratio == 'portrait'
+      assign primary_img_style = '--gc-xs: 3/6; --gr-xs: 1/5;'
+      assign secondary_img_style = secondary_image_ratio | replace: 'portrait', '--gc-xs: 2/4; --gr-xs: 3/6;' | replace: 'square', '--gc-xs: 2/4; --gr-xs: 4/6;' | replace: 'landscape', '--gc-xs: 1/4; --gr-xs: 4/6;'
+    elsif primary_image_ratio == 'square'
+      assign primary_img_style = '--gc-xs: 2/6; --gr-xs: 1/5;'
+      assign secondary_img_style = secondary_image_ratio | replace: 'portrait', '--gc-xs: 1/3; --gr-xs: 3/6;' | replace: 'square', '--gc-xs: 1/3; --gr-xs: 4/6;' | replace: 'landscape', '--gc-xs: 1/4; --gr-xs: 4/6;'
+    endif
+  endif
+
+  assign header_style = section.settings.content_alignment | replace: 'ta-left', '--gc-xs: 1/13; --gc-md: 1/8; --gr-xs: 1;' | replace: 'ta-center', '--gc-md: 3/11; --gc-xs: 1/13; --gr-xs: 1' | replace: 'ta-right', '--gc-xs: 1/13; --gc-md: 7/13; --gr-xs: 1;'
+  assign media_style = section.settings.content_alignment | replace: 'ta-left', '--gc-xs: 1/13; --gc-md: 7/13; --gr-xs: 2; --gr-md: 1;' | replace: 'ta-center', '--gc-xs: 1/13; --gc-md: 3/11;' | replace: 'ta-right', '--gc-xs: 1/13; --gc-md: 1/7; --gr-xs: 2; --gr-md: 1;'
+  assign class_swap = ''
+  assign content_align = section.settings.content_alignment
+  assign content_align_wrapper = section.settings.content_alignment
+
+  if section.settings.content_alignment == 'ta-center'
+    assign description_extra_class = ' m-sides'
+    assign btn_position = 'center-xs'
+    assign classes = classes | replace: 's-header--special', ''
+    assign classes = classes | replace: 'ts:lg:!pl-[var(--side-spacing)]', ''
+  elsif section.settings.content_alignment == 'ta-right'
+    assign class_swap = 'd-rtl'
+  endif
+
+  if content_align == 'ta-right'
+    assign content_align = 'iwt-content--right'
+    assign content_align_wrapper = section.settings.content_alignment | replace: 'ta-right', 'iwt-content--right'
+
+    if section.settings.remove_img_side_padding
+      assign content_align_wrapper = content_align_wrapper | append: ' ts:min-[769px]:!pl-0'
+    endif
+  endif
+
+  if content_align == 'ta-left' and section.settings.remove_img_side_padding
+    assign content_align_wrapper = content_align_wrapper | append: ' ts:min-[769px]:!pr-0'
+  endif
+
+  unless content_align == 'ta-center'
+    assign classes = classes | append: ' ts:flex ' | append: section.settings.vertical_alignment
+  endunless
+
+  if section.settings.heading != blank
+    assign unique_class = section.settings.heading | handleize
+  endif
+-%}
+
+{%- capture custom_content -%}
+  {%- if section.settings.custom_content == true -%}
+    {%- if section.settings.custom_content_image != blank -%}
+      {%- liquid
+        assign image_raw = section.settings.custom_content_image
+        assign image_alt = image_raw.alt | default: image_raw.image | split: '/' | last
+        assign img_class = 'js-image-lazy media of-cover ts:lg:!max-w-[28rem] ts:!max-w-[18rem] w-100 h-100 js-animate anm anm-fadeInUp'
+
+        if content_align == 'ta-center'
+          assign img_class = img_class | append: ' m-auto'
+          assign description_class = ' m-sides'
+        endif
+
+        assign image = image_raw | image_url: width: image_raw.width | image_tag: widths: '180, 280', sizes: '(min-width: 459px) calc(100vw/2), 100vw', alt: image_alt, class: img_class, loading: loading, fetchpriority: fetchpriority, decoding: decoding
+      -%}
+
+      {%- render 'image', image_item: image, image_wrap_classes: 'h-100 ts:md:mt-10', media_wrap_style: '--duration: .6s; --delay: .9s;' -%}
+    {%- endif -%}
+
+    {%- if section.settings.custom_content_text != blank -%}
+      <div class="s-header__desc text-block hide-empty ts:!mt-0 {{ description_class }}">{{- section.settings.custom_content_text -}}</div>
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if section.settings.background_image != blank -%}
+  {%- assign bg_img = section.settings.background_image | image_url: width: section.settings.background_image.width -%}
+  {%- assign bg_img_style = '--bg-img: url(' | append: bg_img | append: ');' -%}
+{%- endif -%}
+
+{%- if section.settings.bg_size == 'ts:bg-size-[var(--bg-size)]' -%}
+  {%- assign bg_size_style = '--bg-size: ' | append: section.settings.bg_size_custom | append: '%;' -%}
+{%- endif -%}
+
+{%- capture bg_class -%}
+  {%- if section.settings.background_type == 'image' -%}
+    ts:bg-[image:var(--bg-img)] {{ section.settings.bg_size }} {{ section.settings.bg_position }} {{ section.settings.bg_repeat }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture image_badge -%}
+  {%- if section.settings.image_badge != blank -%}
+    <div class="p-absolute {{ section.settings.img_badge_position }} ts:min-[769px]:bottom-[calc(var(--spacing)*4)] ts:bottom-[calc(var(--spacing)*18)] ts:top-[unset]">
+      {%- liquid
+        assign image_raw = section.settings.image_badge
+        assign image_alt = image_raw.alt | default: image_raw.image | split: '/' | last
+        assign img_class = 'js-image-lazy media of-cover ts:lg:!max-w-[15rem] ts:!max-w-[12rem] w-100 h-100 js-animate anm anm-fadeInUp'
+
+        assign image = image_raw | image_url: width: image_raw.width | image_tag: widths: '120, 150', sizes: '(min-width: 459px) calc(100vw/2), 100vw', alt: image_alt, class: img_class, loading: loading, fetchpriority: fetchpriority, decoding: decoding
+      -%}
+
+      {%- render 'image', image_item: image, image_wrap_classes: 'h-100', media_wrap_style: '--duration: .6s; --delay: .12s;' -%}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="section color-{{- section.settings.color_scheme }} {{ section.settings.remove_padding_top | replace: 'true', 'section-top-zero' | replace: section.settings.remove_padding_top, '' }} {{ section.settings.remove_padding_bottom | replace: 'true', 'section-bottom-zero' | replace: section.settings.remove_padding_bottom, '' }} {% render 'animation-loader', section: section %}" data-ui-component="Image With Text Section" role="region" aria-labelledby="sectionHeading-{{ section.id | md5 | truncate: 12, "" }}">
+  <div class="ctnr {{ unique_class }} d-grid c-gap {{ content_align_wrapper }}{% if section.settings.image_first_mobile %} ts:max-[769px]:!flex ts:max-[769px]:flex-col-reverse ts:max-[769px]:gap-12 ts:max-[769px]:*:!p-0{% endif %} {{ bg_class }}{% if section.settings.heading != blank %} {{ section.settings.heading | handleize }}{% endif %}" style="--gtc-equal:12;--side-spacing: {{ section.settings.side_spacing }}vw; {{ bg_size_style }} {{ bg_img_style }}">
+    {% render 'section-header',
+      btn_position: btn_position,
+      classes: classes,
+      content_align: content_align,
+      header_style: header_style,
+      subheading: section.settings.subheading,
+      heading: section.settings.heading,
+      description: section.settings.description,
+      description_extra_class: description_extra_class,
+      heading_classes: heading_style,
+      button_main_text: section.settings.button_main_text,
+      button_main_link: section.settings.button_main_link,
+      button_sub_text: section.settings.button_sub_text,
+      button_sub_link: section.settings.button_sub_link,
+      badge_text: section.settings.badge_text,
+      badge_position: section.settings.badge_position,
+      badge_shape: section.settings.badge_shape,
+      badge_color: section.settings.badge_color,
+      advance_content: custom_content,
+      image_badge: image_badge,
+      section: section %}
+    <div style="{{ media_style }}">
+      <div class="section-content__media p-relative{% if section.settings.equalize_image_height %} h-100{% endif %}">
+        <div class="p-absolute left-0 top-0 d-grid h-100 w-100 {{ class_swap }}" style="--gtc-equal: 5; --gtr-equal: 5">
+          {% if primary_image %}
+            <div class="o-hidden" style="{{ primary_img_style }}">
+              {% render 'image', image_item: primary_media, image_wrap_classes: 'h-100', image_classes: image_classes, media_wrap_style: '--delay: .6s', order: section.index %}
+            </div>
+          {% endif %}
+          {% if secondary_image %}
+            <div class="f-default o-hidden" style="{{ secondary_img_style }}">
+              {% render 'image', image_item: secondary_media, image_wrap_classes: 'h-100', image_classes: image_classes, media_wrap_style: '--delay: .6s', order: section.index %}
+            </div>
+          {% endif %}
+          {% if primary_image == blank and secondary_image == blank %}
+            <div style="{{ primary_img_style }}">
+              {% render 'image', image_item: placeholder, image_wrap_classes: 'h-100', image_classes: 'd-block h-100 js-animate anm anm-zoomOut', order: section.index %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image_with_text.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.header_general.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:general.settings.color_scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_large_heading",
+      "label": "t:general.settings.enable_large_heading.label",
+      "info": "t:general.settings.enable_large_heading.info"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.header_layout.content"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "select",
+      "id": "bg_size",
+      "label": "Background Size",
+      "default": "ts:bg-cover",
+      "options": [
+        {
+          "value": "ts:bg-cover",
+          "label": "Cover"
+        },
+        {
+          "value": "ts:bg-contain",
+          "label": "Contain"
+        },
+        {
+          "value": "ts:bg-auto",
+          "label": "Auto"
+        },
+        {
+          "value": "ts:bg-size-[var(--bg-size)]",
+          "label": "Custom"
+        }
+      ],
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "range",
+      "id": "bg_size_custom",
+      "label": "Background Size (Custom)",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ section.settings.background_type == 'image' and section.settings.bg_size == 'ts:bg-size-[var(--bg-size)]' }}"
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Background Position",
+      "default": "ts:bg-center",
+      "options": [
+        {
+          "value": "ts:bg-top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "ts:bg-top",
+          "label": "Top"
+        },
+        {
+          "value": "ts:bg-top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "ts:bg-left",
+          "label": "Left"
+        },
+        {
+          "value": "ts:bg-center",
+          "label": "Center"
+        },
+        {
+          "value": "ts:bg-right",
+          "label": "Right"
+        },
+        {
+          "value": "ts:bg-bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "ts:bg-bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "ts:bg-bottom-right",
+          "label": "Bottom Right"
+        }
+      ],
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "select",
+      "id": "bg_repeat",
+      "label": "Background Repeat",
+      "default": "ts:bg-no-repeat",
+      "options": [
+        {
+          "value": "ts:bg-repeat",
+          "label": "Repeat"
+        },
+        {
+          "value": "ts:bg-repeat-x",
+          "label": "Repeat X"
+        },
+        {
+          "value": "ts:bg-repeat-y",
+          "label": "Repeat Y"
+        },
+        {
+          "value": "ts:bg-repeat-space",
+          "label": "Repeat Space"
+        },
+        {
+          "value": "ts:bg-repeat-round",
+          "label": "Repeat Round"
+        },
+        {
+          "value": "ts:bg-no-repeat",
+          "label": "No Repeat"
+        }
+      ],
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "t:general.settings.content_alignment.label",
+      "default": "ta-left",
+      "options": [
+        {
+          "value": "ta-left",
+          "label": "t:sections.image_with_text.settings.option_text_left_image_right.label"
+        },
+        {
+          "value": "ta-right",
+          "label": "t:sections.image_with_text.settings.option_text_right_image_left.label"
+        },
+        {
+          "value": "ta-center",
+          "label": "t:sections.image_with_text.settings.option_text_center_image_below.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "side_spacing",
+      "label": "Side Spacing",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "unit": "vw",
+      "default": 0,
+      "visible_if": "{{ section.settings.content_alignment != 'ta-center' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_img_side_padding",
+      "label": "Remove Image Side Padding",
+      "default": false,
+      "info": "This will make the image stick to the side of the page.",
+      "visible_if": "{{ section.settings.content_alignment != 'ta-center' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "equalize_image_height",
+      "label": "Equalize Height",
+      "default": false,
+      "info": "This will make the image height equal to the text height.",
+      "visible_if": "{{ section.settings.content_alignment != 'ta-center' }}"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "default": "ts:items-start",
+      "options": [
+        {
+          "value": "ts:items-start",
+          "label": "Top"
+        },
+        {
+          "value": "ts:items-center",
+          "label": "Middle"
+        },
+        {
+          "value": "ts:items-end",
+          "label": "Bottom"
+        }
+      ],
+      "visible_if": "{{ section.settings.content_alignment != 'ta-center' }}",
+      "info": "Text contents vertical alignment."
+    },
+    {
+      "type": "checkbox",
+      "id": "image_first_mobile",
+      "label": "Image First On Mobile",
+      "default": false,
+      "info": "This will make the image appear before the text on mobile."
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_padding_top",
+      "label": "t:general.settings.remove_padding_top.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_padding_bottom",
+      "label": "t:general.settings.remove_padding_bottom.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.header_image.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "primary_image",
+      "label": "t:sections.image_with_text.settings.primary_image.label"
+    },
+    {
+      "type": "select",
+      "id": "primary_image_ratio",
+      "label": "t:sections.image_with_text.settings.primary_image_ratio.label",
+      "default": "square",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:general.settings.image_ratio.options.option_square.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:general.settings.image_ratio.options.option_portrait_1.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:general.settings.image_ratio.options.option_landscape_1.label"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "secondary_image",
+      "label": "t:sections.image_with_text.settings.secondary_image.label"
+    },
+    {
+      "type": "select",
+      "id": "secondary_image_ratio",
+      "label": "t:sections.image_with_text.settings.secondary_image_ratio.label",
+      "default": "portrait",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:general.settings.image_ratio.options.option_square.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:general.settings.image_ratio.options.option_portrait_1.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:general.settings.image_ratio.options.option_landscape_1.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.header_text.content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:general.settings.subheading.label",
+      "default": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:general.settings.heading.label",
+      "default": "Image with text"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:general.settings.description.label",
+      "default": "<p>Use this text to share brand information with your customers. Introduce a new product, share an announcement or welcome customers.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_content",
+      "label": "Custom Content",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_content_image",
+      "label": "Custom Content Image",
+      "visible_if": "{{ section.settings.custom_content == true }}"
+    },
+    {
+      "type": "text",
+      "id": "custom_content_text",
+      "label": "Custom Content Text",
+      "visible_if": "{{ section.settings.custom_content == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.header_buttons.content"
+    },
+    {
+      "type": "text",
+      "id": "button_main_text",
+      "label": "t:general.settings.primary_button_label.label",
+      "info": "t:general.settings.hide_if_empty.info",
+      "default": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_main_link",
+      "label": "t:general.settings.primary_button_link.label"
+    },
+    {
+      "type": "text",
+      "id": "button_sub_text",
+      "label": "t:general.settings.secondary_button_label.label",
+      "info": "t:general.settings.hide_if_empty.info",
+      "default": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_sub_link",
+      "label": "t:general.settings.secondary_button_link.label"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.header_prominent_badge.content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "t:general.settings.text.label",
+      "info": "t:general.settings.prominent_badge.text.info",
+      "default": "Get ready"
+    },
+    {
+      "type": "select",
+      "id": "badge_color",
+      "label": "t:general.settings.accent_scheme.label",
+      "default": "color-accent-1",
+      "options": [
+        {
+          "value": "color-accent-1",
+          "label": "t:general.settings.main.label"
+        },
+        {
+          "value": "color-accent-2",
+          "label": "t:general.settings.extra.label"
+        }
+      ],
+      "visible_if": "{{ section.settings.badge_text != blank }}"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "label": "t:general.settings.badge_position.label",
+      "default": "p-badge--bottom-right",
+      "options": [
+        {
+          "value": "p-badge--bottom-left",
+          "label": "t:general.settings.option_left.label"
+        },
+        {
+          "value": "p-badge--bottom-right",
+          "label": "t:general.settings.option_right.label"
+        }
+      ],
+      "visible_if": "{{ section.settings.badge_text != blank }}"
+    },
+    {
+      "type": "select",
+      "id": "badge_shape",
+      "label": "t:general.settings.badge_shape.label",
+      "default": "badge--star",
+      "options": [
+        {
+          "value": "badge--star",
+          "label": "t:general.settings.badge_shape.options.option_star.label"
+        },
+        {
+          "value": "badge--diamond",
+          "label": "t:general.settings.badge_shape.options.option_diamond.label"
+        },
+        {
+          "value": "badge--asterisk",
+          "label": "t:general.settings.badge_shape.options.option_asterisk.label"
+        }
+      ],
+      "visible_if": "{{ section.settings.badge_text != blank }}"
+    },
+    {
+      "type": "header",
+      "content": "Image Badge",
+      "visible_if": "{{ section.settings.badge_text == blank }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_badge",
+      "label": "Image Badge",
+      "visible_if": "{{ section.settings.badge_text == blank }}"
+    },
+    {
+      "type": "select",
+      "id": "img_badge_position",
+      "label": "t:general.settings.badge_position.label",
+      "default": "ts:right-0",
+      "options": [
+        {
+          "value": "ts:left-0",
+          "label": "t:general.settings.option_left.label"
+        },
+        {
+          "value": "ts:right-0",
+          "label": "t:general.settings.option_right.label"
+        }
+      ],
+      "visible_if": "{{ section.settings.image_badge != blank }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image_with_text.name"
+    }
+  ]
+}
+{% endschema %}

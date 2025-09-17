@@ -1,0 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "color_scheme": "",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false
+      }
+    },
+    "featured_collections_hwtdab": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_JtTKWA": {
+          "type": "collection",
+          "settings": {
+            "collection": "all-birds",
+            "heading": "{{ block.settings.collection.title }}"
+          }
+        }
+      },
+      "block_order": [
+        "collection_JtTKWA"
+      ],
+      "name": "t:sections.featured_collection.name",
+      "settings": {
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "You May Also Like",
+        "description": "",
+        "desktop_layout": "carousel",
+        "style_card": "card",
+        "items_per_row_on_desktop": "4",
+        "items_per_row_on_mobile": "2",
+        "content_alignment": "ta-left",
+        "items_to_show": 4,
+        "enable_carousel": false,
+        "show_navigation": false,
+        "remove_padding_top": true,
+        "remove_padding_bottom": true,
+        "show_view_all_button": true,
+        "button_text": "See all products",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--top-right",
+        "badge_shape": "badge--star"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_collections_hwtdab"
+  ]
+}

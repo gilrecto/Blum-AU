@@ -1,0 +1,81 @@
+<script type="lazyload2">
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++
+)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=i+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+    
+      ttq.load('CDLKMSBC77U6CO7MMBMG');
+      ttq.page();
+    }(window, document, 'ttq');
+</script>
+
+
+<script type="lazyload2">
+  var checkout_btn = document.querySelectorAll(".quickview-form__buttons .js-product-form-submit-btn");
+  
+  checkout_btn.forEach((checkout) => {
+    checkout.addEventListener('click', (e) => {
+      fetch(window.Shopify.routes.root + 'cart.js', {
+        method: 'GET'
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(cart => { 
+        console.log(cart);
+        const cartItems = cart.items.map(item => ({
+          content_id: item.variant_id,
+          content_type: 'product',
+          content_name: item.title,
+          quantity: item.quantity,
+          price: item.price / 100
+        }));
+  
+        ttq.track(('InitiateCheckout'), {
+          contents: cartItems,
+          value: cart.total_price / 100,
+          currency: cart.currency,
+          });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    });
+  });
+</script>
+
+{% if request.page_type contains 'product' %}
+  <script type="lazyload2">
+      ttq.track('ViewContent',{
+        content_id: {{ product.id }},
+        content_name: '{{ product.title }}',
+        quantity: 1,
+        price: {{ product.price | money_without_currency }},
+        value: {{ product.price | money_without_currency }},
+        currency: '{{ cart.currency.iso_code }}'
+      });
+  </script>
+
+  <script type="lazyload2">
+    var productAddToCart = document.querySelector("form[action] button.product-btn-atc");
+    var stickyAddToCart = document.querySelector("sht-prd-frm-sticky button.product-btn-atc");
+
+    const track = () => {
+      ttq.track('AddToCart', {
+        content_id: {{ product.id }},
+        content_name: '{{ product.title }}',
+        quantity: 1,
+        price: {{ product.price | money_without_currency }},
+        value: {{ product.price | money_without_currency }},
+        currency: '{{ cart.currency.iso_code }}'
+      });
+    }
+    
+    productAddToCart.addEventListener('click', (e) => {
+      track();
+    });
+
+    stickyAddToCart.addEventListener('click', (e) => {
+      track();
+    });
+  </script>
+{% endif %}

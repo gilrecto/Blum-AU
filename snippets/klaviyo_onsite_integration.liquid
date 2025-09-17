@@ -1,0 +1,177 @@
+<script type="lazyload2" data-src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TDUDcK"></script>
+<script type="lazyload2">
+ var _learnq = _learnq || [];
+ if ('{{ customer.email }}') {
+   _learnq.push(['identify', {
+       '$email' : '{{ customer.email }}'
+     }]);
+  }
+</script>
+
+{% if request.page_type == 'collection' or request.page_type == 'product' %}
+  <script type="lazyload2" data-src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+   <script type="lazyload2">
+      var klaviyo = klaviyo || [];
+      klaviyo.init({
+        account: "TDUDcK",
+        platform: "shopify",
+        collection_urls: ["/collections/"],
+        include_on_tags: "COMIN BACK SOON, COMIN BACK REAL SOON, COMIN' BACK REAL SOON, MBB COMING SOON"
+      });
+      klaviyo.enable("backinstock",{ 
+      trigger: {
+        product_page_text: "Notify Me",
+        product_page_class: "btn klaviyo-bis-trigger",
+        product_page_text_align: "center",
+        product_page_margin: "0px",
+        product_page_width: "100%",
+        replace_anchor: false,
+        collection_page_class: 'btn klaviyo-bis-trigger',    
+        collection_page_text_align: 'center',    
+        collection_page_text: 'Notify Me',    
+        collection_page_padding: 'inherit',  
+      },
+      modal: {
+       headline: "{product_name}",
+       body_content: "Register to receive a notification when the <b>{product_name}</b> comes back in stock.",
+       email_field_label: "Email",
+       button_label: "Notify Me",
+       subscription_success_label: "You're in! We'll let you know when it's back.",
+       footer_content: '',
+       additional_styles: "@import url('https://www.metalbird.co.nz/cdn/shop/t/248/assets/mb_font_family.css?v=62581745787108002091718065101');",
+       drop_background_color: "#000",
+       background_color: "#fff",
+       text_color: "#000000",
+       button_text_color: "#fff",
+       font_family: "IndustryInc-Base, sans-serif",
+       headers_font_family: "IndustryInc-Base, sans-serif",
+       button_background_color: "#c30631",
+       close_button_color: "#ccc",
+       error_background_color: "#fcd6d7",
+       error_text_color: "#C72E2F",
+       success_background_color: "#d3efcd",
+       success_text_color: "#1B9500"
+      }
+    });
+  </script>
+  
+  <script type="lazyload2">
+    var _learnq = _learnq || [];
+
+    function addedToCart(addedItem = null) {
+      fetch(`${window.location.origin}/cart.js`)
+        .then(res => res.clone().json().then(data => {
+          let cart = {
+            total_price: data.total_price / 100,
+            $value: data.total_price / 100,
+            total_discount: data.total_discount,
+            original_total_price: data.original_total_price / 100,
+            items: data.items
+          };
+
+          if (addedItem !== null) {
+            cart = Object.assign(cart, addedItem);
+          }
+
+          console.log(cart);
+
+          _learnq.push(['track', 'Added to Cart', cart]);
+        }));
+    }
+
+    // Override fetch to listen for /cart/add.js
+    (function (ns, fetch) {
+      ns.fetch = function () {
+        const response = fetch.apply(this, arguments);
+        response.then(res => {
+          if (`${window.location.origin}/cart/add.js`.includes(res.url)) {
+            const added_item = {
+              Name: {{ product.title | json }},
+              ProductID: {{ product.id | json }},
+              Categories: {{ product.collections | map: 'title' | json }},
+              ImageURL: "https:{{ product.featured_image.src | img_url: 'grande' }}",
+              URL: "{{ shop.secure_url }}{{ product.url }}",
+              Brand: {{ product.vendor | json }},
+              Price: {{ product.price | money | json }},
+              CompareAtPrice: {{ product.compare_at_price_max | money | json }}
+            };
+            addedToCart(added_item);
+          }
+        });
+        return response;
+      };
+    }(window, window.fetch));
+
+    (function () {
+      const open = XMLHttpRequest.prototype.open;
+      const send = XMLHttpRequest.prototype.send;
+
+      XMLHttpRequest.prototype.open = function (method, url) {
+        this._url = url; // save the request URL
+        return open.apply(this, arguments);
+      };
+
+      XMLHttpRequest.prototype.send = function () {
+        this.addEventListener('load', function () {
+          if (this._url === "/cart/add.js") {
+            try {
+              const req_res = JSON.parse(this.responseText);
+              const added_item = {
+                Name: req_res.product_title,
+                ProductID: req_res.product_id,
+                ImageURL: req_res.image,
+                URL: req_res.url,
+                Brand: req_res.vendor,
+                Price: req_res.price / 100
+              };
+              addedToCart(added_item);
+            } catch (e) {
+              console.error("Error parsing /cart/add.js response:", e);
+            }
+          }
+        });
+        return send.apply(this, arguments);
+      };
+    })();
+  </script>
+{% endif %}
+
+{%- if request.page_type == 'product' -%}
+  <script type="lazyload2">
+    var _learnq = _learnq || [];
+
+    var item = {
+      Name: {{ product.title|json }},
+      ProductID: {{ product.id|json }},
+      Categories: {{ product.collections|map:'title'|json }},
+      ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+      URL: "{{ shop.secure_url }}{{ product.url }}",
+      Brand: {{ product.vendor|json }},
+      Price: {{ product.price|money|json }},
+      CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+    };
+
+    _learnq.push(['track', 'Viewed Product', item]);
+    _learnq.push(['trackViewedItem', {
+      Title: item.Name,
+      ItemId: item.ProductID,
+      Categories: item.Categories,
+      ImageUrl: item.ImageURL,
+      Url: item.URL,
+      Metadata: {
+        Brand: item.Brand,
+        Price: item.Price,
+        CompareAtPrice: item.CompareAtPrice
+      }
+    }]);
+
+    let addToCartBtns = document.querySelectorAll('form .js-product-form-submit-btn');
+
+    addToCartBtns.forEach(button => {
+      button.addEventListener('click', (e) => {
+        _learnq.push(['track', 'Added to Cart', item]);
+      });
+    });
+    
+  </script>
+{%- endif -%}

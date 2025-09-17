@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "464319e1-4bc6-46f9-b77b-687d98610afa": {
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "c50c1341-4662-4443-a0cc-e6e8d6669753",
+        "manifest_ai_chatbot_reviews_summarizer_agjLQ4",
+        "product_rating_UM6G4C",
+        "040d4bd6-1f44-4bce-a7d3-f3c65f7d9df8",
+        "59465e5c-59ae-4d70-80fd-682269ad00b2",
+        "046f1adb-c98d-4469-99e9-fef8847a2025",
+        "9b0bf0fb-b27a-4b6e-97f6-2c95d988f6ac",
+        "464319e1-4bc6-46f9-b77b-687d98610afa",
+        "e36b054d-fc26-4fc2-8ee7-411fc178e319",
+        "1cc20dbe-3ae3-4c10-905c-3bc3562b7d40"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendation"
+  ]
+}

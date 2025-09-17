@@ -1,0 +1,32 @@
+<script src="https://iikgfbgn.metalbird.com.au/metalbird-global.js" defer></script>
+{% if request.page_type contains 'product' and customer.b2b? %}
+  <script type="lazyload2">
+    var _learnq = _learnq || [];
+  
+    var item = {
+      Name: {{ product.title|json }},
+      ProductID: {{ product.id|json }},
+      Categories: {{ product.collections|map:'title'|json }},
+      ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+      URL: "{{ shop.secure_url }}{{ product.url }}",
+      Brand: {{ product.vendor|json }},
+      Price: {{ product.price|money|json }},
+      CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+    };
+  
+    _learnq.push(['track', 'Viewed Product', item]);
+    _learnq.push(['trackViewedItem', {
+      Title: {{ product.title|json }},
+      ItemId: {{ product.id|json }},
+      Categories: {{ product.collections|map:'title'|json }},
+      ImageUrl: "https:{{ product.featured_image.src|img_url:'grande' }}",
+      Url: "{{ shop.secure_url }}{{ product.url }}",
+      Metadata: {
+        Brand: {{ product.vendor|json }},
+        Price: {{ product.price|money|json }},
+        CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+      }
+    }]);
+    
+  </script>
+{% endif %}

@@ -1,0 +1,125 @@
+.lp-img-carousel {
+  padding: 40px 0;
+}
+.lp-img-carousel:before {
+  content: "";
+  display: block;
+  --dims: 50vw;
+  --max-dims: 600px;
+  width: var(--dims);
+  height: var(--dims);
+  max-width: var(--max-dims);
+  max-height: var(--max-dims);
+  background: url(/cdn/shop/files/lotr_circle_txt.png?v=1727079902) center / cover no-repeat;
+  position: absolute;
+  bottom: -25vw;
+  left: -30%;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 800ms linear
+}
+.lp-img-carousel:not(.anim):before {
+  opacity: 0;
+}
+.lp-img-carousel .heading {
+  font-family: 'Ringbearer', sans-serif !important;
+  text-transform: none;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.lp-img-carousel .rte-body {
+  font-family: Minion Pro, sans-serif;
+  font-size: clamp(1.4rem, 2vw, 2.4rem);
+  line-height: 1.6;
+}
+.lp-img-carousel .img-carousel-wrapper {
+  margin: 30px -10px 0;
+}
+.lp-img-carousel .swiper:not(.swiper-initialized) .swiper-wrapper {
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+.lp-img-carousel .swiper:not(.swiper-initialized) .swiper-slide {
+  flex: 0 0 calc(100% / 2.3 - 10px);
+}
+.lp-img-carousel .swiper .swiper-slide {
+  user-select: none;
+}
+.lp-img-carousel .img-carousel-wrapper .media {
+  border-radius: 50%;
+  overflow: hidden;
+}
+.lp-img-carousel .swiper-arrows .swiper-arrow {
+  color: #a9925c;
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.lp-img-carousel .swiper-arrows .swiper-arrow:after {
+  font-size: 12px;
+}
+.lp-img-carousel .swiper .swiper-slide > a {
+  width: 100%;
+  height: 100%;
+  clip: unset;
+  font-size: 0;
+  margin: 0;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .lp-img-carousel .swiper:not(.swiper-initialized) .swiper-wrapper {
+    column-gap: 15px;
+  }
+  .lp-img-carousel .swiper:not(.swiper-initialized) .swiper-slide {
+    flex-basis: calc(100% / 3.5 - 15px);
+  }
+  .lp-img-carousel .swiper-arrows .swiper-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  .lp-img-carousel .swiper-arrows .swiper-arrow:after {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .lp-img-carousel:before {
+    --dims: 32vw;
+    bottom: -12vw;
+    left: -12%;
+  }
+  .lp-img-carousel {
+    padding: 55px 0;
+  }
+  .lp-img-carousel .img-carousel-wrapper {
+    margin-top: 50px;
+  }
+  .lp-img-carousel .swiper:not(.swiper-initialized) .swiper-wrapper {
+    column-gap: 25px;
+  }
+  .lp-img-carousel .swiper:not(.swiper-initialized) .swiper-slide {
+    flex-basis: calc(100% / 3.5 - 25px);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .lp-img-carousel .img-carousel-wrapper {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .lp-img-carousel .swiper:not(.swiper-initialized) .swiper-wrapper {
+    column-gap: 35px;
+  }
+  .lp-img-carousel .swiper:not(.swiper-initialized) .swiper-slide {
+    flex-basis: calc(100% / 4.3 - 35px);
+  }
+}

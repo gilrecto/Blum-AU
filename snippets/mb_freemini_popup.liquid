@@ -1,0 +1,23 @@
+<!-- Free Mini Loader -->
+<div id="freeMiniLoader" class="ts:fixed ts:inset-0 ts:z-[10001] ts:hidden ts:items-center ts:justify-center">
+	<div class="ts:absolute ts:inset-0 ts:bg-[rgba(0,0,0,0.4)] ts:flex ts:items-center ts:justify-center">
+		<div class="ts:bg-white ts:rounded-lg ts:p-5 ts:text-center ts:shadow-xl">
+			<div class="ts:w-8 ts:h-8 ts:border-3 ts:border-gray-200 ts:border-t-gray-800 ts:rounded-full ts:animate-spin ts:mx-auto ts:mb-3"></div>
+			<p class="ts:text-sm ts:text-gray-600 ts:m-0">Updating cart...</p>
+		</div>
+	</div>
+</div>
+
+<!-- Free Mini Success Popup -->
+<div id="freeMiniPopup" class="ts:fixed ts:inset-0 ts:z-[10000] ts:hidden ts:items-center ts:justify-center">
+	<div class="ts:absolute ts:inset-0 ts:bg-[rgba(0,0,0,0.4)] ts:bg-opacity-50 ts:flex ts:items-center ts:justify-center" id="freeMiniPopupOverlay">
+		<div class="ts:bg-white ts:rounded-lg ts:relative ts:shadow-2xl ts:mx-2">
+			<div class="ts:text-center ts:flex ts:justify-between ts:items-center ts:p-5 ts:border-b ts:border-gray-200 ts:md:gap-8 ts:gap-4">
+				<p class="ts:!m-0 ts:text-[clamp(1rem,1.6vw,1.8rem)] ts:leading-[1.4] ts:font-semibold">
+					🎉 YAY! FREE MINI UNLOCKED – CHOOSE YOUR GIFT AT CART!
+				</p>
+				<button id="freeMiniPopupClose" class="btn btn-small btn-icon" aria-label="Close" style="--form-field-sm: 2rem;">{% render 'icon-close' %}</button>
+			</div>
+		</div>
+	</div>
+</div>

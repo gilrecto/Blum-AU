@@ -1,0 +1,88 @@
+.text-align {
+  text-align: var(--text-align);
+}
+.custom-section {
+	@apply ts:xl:py-[var(--padding-xl)] ts:lg:py-[var(--padding-lg)] ts:md:py-[var(--padding-md)] ts:py-[var(--padding-sm)] ts:px-0 ts:overflow-hidden;
+}
+.custom-font-size {
+  font-size: var(--text_size);
+}
+.rte ol, .rte p, .rte ul {
+  @apply ts:md:mb-9 ts:mb-7;
+}
+.btn-text.btn-small {
+  @apply ts:min-[1025px]:w-auto ts:min-[1025px]:px-5 ts:min-[1025px]:min-h-14 ts:!text-xs ts:uppercase ts:font-bold;
+}
+.is-header-hide:has(.cart__drawer.active) {
+  @apply ts:transform-none
+}
+.logo-position--middle-left .header__nav {
+	@apply ts:ml-[48px];
+}
+.header__logo-img {
+  @apply ts:xl:max-w-[var(--logo-width-desktop)] ts:max-xl:max-w-[var(--logo-width-mobile)];
+}
+.section-top-zero,
+.section-bottom-zero {
+	@apply ts:max-[769px]:!py-16;
+}
+ .mega-menu-wrapper.menu-dropdown {
+  @apply ts:max-xl:py-2 ts:max-xl:px-6;
+}
+.mega-menu-wrapper .mega-menu--column > .mega-menu__submenu {
+  @apply ts:xl:flex-[0_0_clamp(25rem,-23rem+40vw,45rem)] ts:xl:min-w-max ts:max-xl:w-full ts:max-xl:max-w-full ts:max-xl:mr-0;
+}
+.mega-menu-wrapper .mega-menu--column > .mega-menu__submenu,
+.mega-menu-wrapper .mega-menu--column .menu__item > details[data-level="2"] {
+  @apply ts:!block;
+}
+.mega-menu-wrapper .mega-menu--column .menu__item .menu__link {
+  @apply ts:hover:text-red;
+}
+.mega-menu-wrapper .mega-menu--column .menu__item > .menu__grandchild {
+	@apply ts:hidden;
+}
+.mega-menu-wrapper .mega-menu--column .menu__item .menu-dropdown__grandchild .menu__item__grandchild {
+	@apply ts:px-5;
+}
+.mega-menu--column .mega-menu-promotions {
+  @apply ts:!w-full ts:!max-w-full ts:justify-end ts:max-xl:hidden;
+}
+.header--sticky-always .header-logo--transparent .logo__main-logo {
+  @apply ts:opacity-100;
+}
+.header--sticky-always .header-logo--transparent .logo--transparent {
+  @apply ts:opacity-0;
+}
+
+@media (min-width: 1200px) {
+  .header__icons--right .header__icon--account {
+    @apply ts:block;
+  }
+	.menu--horizontal .header__menu {
+    @apply ts:flex;
+  }
+}
+
+@media (max-width: 1199px) {
+	.header__icons--right .header__icon--account {
+    @apply ts:hidden;
+  }
+	.menu--horizontal .header__menu {
+    @apply ts:hidden;
+  }
+	sht-menu-drwer-opner,
+	.header:not(.menu--drawer) .header__logo button {
+    @apply ts:!block;
+  }
+  .logo-mobile--center {
+    grid-template-areas: "logo logo-mobile icon-right";
+    grid-template-columns: 1fr auto 1fr;
+  }
+	.header__menu-mobile {
+		@apply ts:block;
+	}
+	.logo-mobile--center .header__logo .header-logo {
+    @apply ts:hidden;
+  }
+}

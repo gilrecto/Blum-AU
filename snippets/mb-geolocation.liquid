@@ -1,0 +1,35 @@
+{%- if settings.geo_location -%}
+	<div id="mb-geo-popup" class="popup_transfer_wrap color-{{ settings.geo_location_color_scheme }} ts:fixed ts:top-0 ts:left-0 ts:right-0 ts:bottom-0 ts:z-10 ts:justify-center ts:items-center ts:!bg-[rgba(var(--color-normal-text-rgb),0.5)] ts:hidden ts:h-[100vh] ts:overflow-hidden" role="complementary">
+		<div class="popup_transfer ts:text-center ts:relative ts:bg-blend-overlay ts:bg-[rgba(var(--color-page-bg-rgb),0.15)] ts:bg-[image:url('https://metalbird.com/cdn/shop/files/geo_pop_bg.jpg?v=1727322123width=420')] ts:bg-center ts:bg-cover ts:bg-no-repeat ts:z-10 ts:md:py-16 ts:md:px-12 ts:pt-12 ts:pb-16 ts:px-[1.8rem] ts:w-full ts:md:max-w-[42rem] ts:max-w-[30rem] ts:md:rounded-[2vw] ts:rounded-4xl ts:mx-2">
+			<span class="click_to_close ts:absolute ts:-top-[1.2rem] ts:-right-[1.2rem] ts:leading-0 ts:md:p-4 ts:p-[0.8rem] ts:bg-[rgba(var(--color-page-bg-rgb))] ts:text-[rgba(var(--color-normal-text-rgb))] ts:border-2 ts:rounded-full ts:cursor-pointer" aria-label="Close popup">
+				{% render 'icon-close', class: 'ts:md:w-8 ts:w-6 ts:md:h-8 ts:h-6' %}
+			</span>
+			<h2 class="title ts:!font-body ts:!text-[clamp(1.8rem,2.2vw,2.55rem)] ts:uppercase ts:leading-[1.3] ts:font-semibold ts:text-[rgba(var(--color-normal-text-rgb))] ts:mb-6">
+				{{ settings.popup_title }} <span class="d-block text_to_change">XYZ</span>
+			</h2>
+			<div class="ts:flex ts:items-center ts:justify-center ts:flex-wrap ts:gap-y-4">
+				<a class="link_to_update ts:md:basis-[25rem] ts:md:text-base ts:md:rounded-[1rem] ts:font-body ts:text-sm ts:font-semibold ts:leading-none ts:p-4 ts:uppercase ts:no-underline ts:flex-[0_0_22rem] ts:bg-[rgba(var(--color-normal-text-rgb))] ts:!text-[rgba(var(--color-page-bg-rgb))] ts:border ts:border-[rgba(var(--color-normal-text-rgb))] ts:rounded-[0.8rem] ts:transition-all ts:delay-200 ts:ease-in-out ts:hover:bg-[rgba(var(--color-page-bg-rgb))] ts:hover:!text-[rgba(var(--color-normal-text-rgb))]" href="{{ routes.root_url }}">
+					VISIT OUR <span class="region">X</span> STORE
+				</a>
+				<a class="click_to_close ts:md:basis-[25rem] ts:md:text-base ts:md:rounded-[1rem] ts:font-body ts:text-sm ts:font-semibold ts:leading-none ts:p-4 ts:uppercase ts:no-underline ts:flex-[0_0_22rem] ts:bg-[rgba(var(--color-page-bg-rgb))] ts:text-[rgba(var(--color-normal-text-rgb))] ts:border ts:border-[rgba(var(--color-normal-text-rgb))] ts:rounded-[0.8rem] ts:transition-all ts:delay-200 ts:ease-in-out ts:hover:bg-red ts:hover:border-red" href="#">
+					STAY ON THE USA
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<script type="lazyload2" data-src="{{ 'mb_geolocation.js' | asset_url }}"></script>
+	<script type="lazyload2">
+		let hasScrolled = false;
+	
+		function handleScroll() {
+			if (!hasScrolled) {
+				hasScrolled = true;
+				const geoPopupHandler = new GeoPopupHandler();
+				window.removeEventListener('scroll', handleScroll);
+			}
+		}
+	
+		window.addEventListener('scroll', handleScroll);
+	</script>
+{%- endif -%}

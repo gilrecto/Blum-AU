@@ -1,0 +1,231 @@
+.from-my-backyard-to-yours .s-header__desc {
+	@apply ts:max-w-[75rem] ts:text-[clamp(1.4rem,2vw,2.2rem)] ts:leading-[1.6];
+}
+[data-ui-component="Section Main Blog"] .card:not(:hover) sht-image-atf {
+  @apply ts:grayscale-100;
+}
+
+/* Article Page CSS */
+article ol {
+  list-style: auto;
+	@apply ts:list-decimal
+}
+article ul {
+  @apply ts:list-disc;
+}
+article .rte li p {
+	@apply ts:inline;
+}
+article .rte ol,
+article .rte p,
+article .rte ul {
+  @apply ts:md:mb-5;
+}
+.main-article .article__header h1 {
+	@apply ts:font-body ts:font-semibold ts:uppercase ts:text-[clamp(2.2rem,3.5vw,3.8rem)] ts:leading-[1.5];
+}
+.main-article h2 {
+	@apply ts:font-body ts:font-semibold ts:text-[clamp(2rem,2.5vw,2.4rem)] ts:mt-[clamp(3.5rem,5vw,6rem)];
+}
+.main-article .article__content {
+	@apply ts:max-md:text-base;
+}
+.main-article .blog-post--wrapper .img-text {
+	@apply ts:mb-20 ts:after:content-[""] ts:after:block ts:after:clear-both;
+}
+.main-article .blog-post--wrapper .img-text img {
+	@apply ts:border-0 ts:lg:mb-6;
+}
+.main-article .blog-post--wrapper .img-text.img-right img {
+	@apply ts:lg:float-right ts:w-full ts:lg:max-w-[35rem] ts:lg:ml-10 ts:object-cover ts:max-lg:aspect-[16/9];
+}
+.main-article .blog-post--wrapper .img-text.img-left img {
+	@apply ts:lg:float-left ts:w-full ts:lg:max-w-[35rem] ts:lg:mr-10 ts:object-cover ts:max-lg:aspect-[16/9];
+}
+.main-article .blog-post--wrapper .img-text.img-right img[alt="American Robin Metalbird"] {
+	@apply ts:object-[center_30%];
+}
+/* End Article Page CSS */
+
+/* Product Page CSS */
+.template-product .product-details .product__title h1 {
+	@apply ts:font-body ts:font-semibold ts:uppercase ts:text-[clamp(2.4rem,3.5vw,4.5rem)];
+}
+.template-product .product-details .product__title .price span.price-item {
+	@apply ts:text-[clamp(1.8rem,2.2vw,2.4rem)] ts:font-body ts:font-semibold;
+}
+.template-product .product-details .product__title .price .price__sale .price-item--regular {
+	@apply ts:align-top ts:text-[80%] ts:text-red;
+}
+.template-product .product__info .accordion-content.open {
+	@apply ts:md:mt-8 ts:mt-4;
+}
+.template-product .product-details sht-sticky-prd-info.product__info {
+	@apply ts:mt-10
+}
+.template-product .product-details sht-sticky-prd-info .field_quantity {
+	@apply ts:rounded-none;
+	@media (width < 768px) {
+		--form-field-lg: 3.5rem;
+	}
+}
+.template-product .product-details sht-sticky-prd-info .field_quantity svg {
+	@apply ts:max-md:w-5 ts:max-md:h-5;
+}
+.template-product .product__info .accordion__header button > span {
+	@apply ts:font-body ts:font-semibold ts:uppercase;
+}
+.template-product .logo-list-section .section {
+	@apply ts:lg:py-4 ts:py-12;
+}
+.template-product .logo-list-section .ctnr {
+	@apply ts:lg:flex ts:lg:items-center
+}
+.template-product .logo-list-section .s-header {
+	@apply ts:lg:pb-0 ts:lg:flex-[0_0_12rem] ts:max-lg:pb-8 ts:max-lg:text-center;
+}
+.template-product .logo-list-section  .s-header__content {
+	@media (width < 992px) {
+  	--w-md: 12 !important;
+	}
+}
+.template-product .logo-list-section .s-header h2 {
+	@apply ts:lg:text-[clamp(1.6rem,2.2vw,3rem)]
+}
+.template-product .logo-list-section .s-content {
+	@apply ts:lg:flex-1;
+}
+.template-product .logo-list-section .s-content .rw {
+	@apply ts:justify-center ts:max-[769px]:gap-y-4;
+}
+.template-product .logo-list-section .s-content .rw > * {
+	@media (width < 769px) {
+		--w-xs: 3 !important;
+		--w-sm: 3 !important;
+	}
+}
+.template-product .logo-list-section .s-content .rw > div > div {
+	@media (width < 769px) {
+  	--size: 6.5rem !important;
+	}
+}
+.template-product .collapsible-content-section .s-content .rw > div {
+  --w-md: 12 !important;
+  --w-xl: 12 !important;
+	--form-field-sm: 2rem;
+}
+.template-product .collapsible-content-section .js-accordion-trigger > span {
+	@apply ts:font-body ts:font-semibold ts:uppercase ts:text-[clamp(1.6rem,2.2vw,2.4rem)];
+}
+.template-product .collapsible-content-section .accordion-content {
+	@apply ts:pr-0 ts:w-full ts:max-w-[95%] ts:mx-auto;
+}
+.template-product .collapsible-content-section .accordion-content .row {
+	@apply ts:flex ts:flex-wrap ts:gap-12;
+}
+.template-product .collapsible-content-section .accordion-content.open .row,
+.template-product .collapsible-content-section .accordion-content.open h2 {
+	@apply ts:md:mt-12 ts:mt-8;
+}
+.template-product .collapsible-content-section .accordion-content .row .text-colmn {
+	@apply ts:flex-1 ts:max-lg:flex-[1_1_100%] ts:text-[clamp(1.5rem,1.8vw,1.8rem)] ts:leading-[1.5];
+}
+.template-product .collapsible-content-section .accordion-content .row .video-colmn {
+	@apply ts:lg:flex-[0_0_48rem] ts:flex-[1_1_100%];
+}
+.template-product .collapsible-content-section .accordion-content .row .video-colmn video {
+	@apply ts:object-cover ts:h-auto
+}
+.template-product .collapsible-content-section .accordion-content h2 {
+	@apply ts:font-body ts:font-semibold ts:uppercase ts:text-[clamp(1.6rem,2.2vw,2.4rem)] ts:mt-0;
+}
+.template-product .collapsible-content-section .accordion-content p {
+	@apply ts:text-[clamp(1.5rem,1.8vw,1.8rem)] ts:leading-[1.5]
+}
+/* End Product Page CSS */
+
+/* About Page CSS */
+.template__mb_about .section-bottom-zero[data-ui-component="Main Page Section"] {
+	@apply ts:!pt-10
+}
+.template__mb_about .section-top-zero, .template__mb_about .section-bottom-zero {
+	@apply ts:max-[769px]:!py-0;
+}
+.template__mb_about .s-header__title:not(.default-page-heading) {
+	@apply ts:font-body ts:font-semibold ts:uppercase ts:text-[clamp(1.8rem,2.5vw,3rem)] ts:leading-[1.5] ts:pb-[clamp(2rem,4vw,5rem)] ts:max-[769px]:max-w-4/5;
+}
+.template__mb_about .s-header__desc {
+	@apply ts:max-w-full ts:mt-0 ts:text-[clamp(1.6rem,1.8vw,2.5rem)] ts:leading-[1.75];
+}
+.template__mb_about .s-header__desc p:not(:last-of-type) {
+	@apply ts:mb-[clamp(1.8rem,2.5vw,3.5rem)];
+}
+.template__mb_about .s-header__desc ul {
+	@apply ts:list-disc ts:pl-[clamp(3rem,3vw,4rem)] ts:mb-[clamp(1.8rem,2.5vw,3.5rem)];
+}
+.template__mb_about .made-for-birds .s-header__title {
+	@apply ts:hidden;
+}
+.template__mb_about .made-for-birds .section-content__media .f-default {
+	@apply ts:min-[769px]:hidden
+}
+.template__mb_about .made-for-birds .section-content__media .o-hidden:not(.f-default, .js-wrap-image-lazy) {
+	@apply ts:max-[769px]:!hidden;
+}
+.template__mb_about .made-for-birds .section-content__media > div {
+  --gtc-equal: 1 !important;
+  --gtr-equal: 1 !important;
+	@apply ts:relative;
+}
+.template__mb_about .made-for-birds .section-content__media [style*="--gr-xs"] {
+  --gc-xs: 1 !important;
+}
+.template__mb_about .made-for-birds .section-content__media {
+	@apply ts:pb-0 ts:max-w-[140rem] ts:mx-auto;
+}
+.template__mb_about .made-for-birds .section-content__media img {
+	@apply ts:object-contain;
+}
+/* End About Page CSS */
+
+sht-dialog-quickshop .product__quickview sht-qty-inp {
+  --form-field-lg: 3.8rem;
+	@apply ts:rounded-none;
+}
+sht-dialog-quickshop .product__quickview .js-product-form-submit-btn {
+	--form-field-lg: 4.4rem;
+}
+
+/* Deafult Page CSS */
+.template__default--page .s-header__content {
+	@apply ts:text-left;
+}
+.template__default--page .s-content {
+  --w-md: 8 !important;
+}
+.template__default--page .s-header__content .s-header__title {
+	@apply ts:text-[clamp(2.5rem,2.5vw,3.5rem)];
+}
+.template__default--page .s-content h3 {
+	@apply ts:text-[2rem];
+}
+.template__default--page .s-content hr {
+	@apply ts:opacity-20;
+}
+.template__default--page .s-content ul {
+	@apply ts:list-disc;
+}
+.template__default--page .s-content ul li ul {
+	@apply ts:list-[revert];
+}
+.template__default--page .s-content ul li::marker {
+	@apply ts:text-gray-500;
+}
+.template__default--page .s-content ul li p,
+.template__default--page .s-content ol li p {
+	@apply ts:inline;
+}
+.template__default--page .s-content ol {
+	@apply ts:list-decimal;
+}
+/* End Deafult Page CSS */

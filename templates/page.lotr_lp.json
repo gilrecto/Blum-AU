@@ -1,0 +1,320 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.lotr",
+  "wrapper": "div.lotr-lp",
+  "sections": {
+    "banner": {
+      "type": "lotr_lp_banner",
+      "blocks": {
+        "image_mKgY6r": {
+          "type": "image",
+          "settings": {
+            "title_img": "shopify://shop_images/lotr_lp_title.png"
+          }
+        },
+        "title_GE6X3c": {
+          "type": "title",
+          "settings": {
+            "title": "<span class=\"d-block text-start\">BRING A TOUCH OF</span>MIDDLE-EARTH<tm>TM</tm> <span class=\"d-block text-end\">INTO YOUR YARD</span>"
+          }
+        },
+        "button_mYNPxY": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the collection",
+            "link": "shopify://collections/lord-of-the-rings",
+            "show_review": true
+          }
+        },
+        "text_EdPghM": {
+          "type": "text",
+          "settings": {
+            "caption": "© NLP ™ Middle-earth Ent. Lic. to New Line. (s24)"
+          }
+        }
+      },
+      "block_order": [
+        "image_mKgY6r",
+        "title_GE6X3c",
+        "button_mYNPxY",
+        "text_EdPghM"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/lotr_new_banner_2025.jpg",
+        "mb_image": "shopify://shop_images/lotr_new_banner_2025_mob.jpg",
+        "animate_it": true
+      }
+    },
+    "mb_affirmation_kCYJji": {
+      "type": "mb_affirmation",
+      "blocks": {
+        "marq_item_kiJmCf": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Where craftsmanship meets creativity, and humble beginnings lead to epic tales",
+            "show_ico": true,
+            "svg_ico": "<svg class=\"dot\" viewBox=\"0 0 86 94\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill=\"currentColor\" opacity=\"1.00\" d=\" M 36.85 2.88 C 37.30 0.42 39.95 0.80 41.82 1.05 C 43.20 1.67 43.63 3.26 44.35 4.46 C 52.07 19.61 63.46 33.03 77.74 42.35 C 80.15 43.94 82.97 45.07 84.98 47.16 C 85.18 49.31 85.01 51.48 84.82 53.63 C 74.41 58.27 64.13 63.83 56.09 72.07 C 50.16 78.04 45.65 85.39 43.02 93.38 C 41.26 93.38 39.51 93.41 37.76 93.47 C 35.42 87.47 33.79 81.16 30.46 75.60 C 24.39 64.16 13.07 55.64 0.35 53.17 C 0.26 50.97 0.22 48.77 0.09 46.56 C 15.56 35.25 29.69 20.98 36.85 2.88 Z\" />\n</svg>"
+          }
+        },
+        "marq_item_YkYTqH": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Where craftsmanship meets creativity, and humble beginnings lead to epic tales",
+            "show_ico": true,
+            "svg_ico": "<svg class=\"dot\" viewBox=\"0 0 86 94\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill=\"currentColor\" opacity=\"1.00\" d=\" M 36.85 2.88 C 37.30 0.42 39.95 0.80 41.82 1.05 C 43.20 1.67 43.63 3.26 44.35 4.46 C 52.07 19.61 63.46 33.03 77.74 42.35 C 80.15 43.94 82.97 45.07 84.98 47.16 C 85.18 49.31 85.01 51.48 84.82 53.63 C 74.41 58.27 64.13 63.83 56.09 72.07 C 50.16 78.04 45.65 85.39 43.02 93.38 C 41.26 93.38 39.51 93.41 37.76 93.47 C 35.42 87.47 33.79 81.16 30.46 75.60 C 24.39 64.16 13.07 55.64 0.35 53.17 C 0.26 50.97 0.22 48.77 0.09 46.56 C 15.56 35.25 29.69 20.98 36.85 2.88 Z\" />\n</svg>"
+          }
+        }
+      },
+      "block_order": [
+        "marq_item_kiJmCf",
+        "marq_item_YkYTqH"
+      ],
+      "settings": {
+        "bg_color": "#a9925c",
+        "txt_color": "#ffffff",
+        "enable_marq": true,
+        "dir": "to-left",
+        "text_alignment": "center",
+        "pad_desk": 10,
+        "pad_lap": 10,
+        "pad_tab": 10,
+        "pad_mob": 10
+      }
+    },
+    "featured_collections_8HRHqX": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_L9yEMY": {
+          "type": "collection",
+          "settings": {
+            "collection": "lord-of-the-rings",
+            "heading": "Lord Of The Rings™"
+          }
+        }
+      },
+      "block_order": [
+        "collection_L9yEMY"
+      ],
+      "name": "t:sections.featured_collection.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "subheading": "",
+        "heading": "The Middle-Earth Collection",
+        "description": "",
+        "desktop_layout": "grid",
+        "style_card": "card",
+        "items_per_row_on_desktop": "4",
+        "items_per_row_on_mobile": "2",
+        "content_alignment": "ta-center",
+        "items_to_show": 4,
+        "enable_carousel": false,
+        "show_navigation": false,
+        "remove_padding_top": false,
+        "remove_padding_bottom": true,
+        "show_view_all_button": false,
+        "button_text": "See all products",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--top-right",
+        "badge_shape": "badge--star"
+      }
+    },
+    "mb_installation_videos": {
+      "type": "mb_installation-videos",
+      "blocks": {
+        "step_block_9eQRhG": {
+          "type": "step_block",
+          "settings": {
+            "title": "Step 1: Reveal your precious",
+            "video_link": "",
+            "video": "",
+            "poster": "shopify://shop_images/LOTR_GIF_Fell_Beast_-_Open.gif"
+          }
+        },
+        "step_block_iz4K9j": {
+          "type": "step_block",
+          "settings": {
+            "title": "Step 2: Secure with a tap",
+            "video_link": "",
+            "video": "",
+            "poster": "shopify://shop_images/LOTR_GIF_Fell_Beast_-_Install.gif"
+          }
+        },
+        "step_block_G9NbQC": {
+          "type": "step_block",
+          "settings": {
+            "title": "Step 3: Admire your piece of Middle-earth",
+            "video_link": "",
+            "video": "",
+            "poster": "shopify://shop_images/LOTR_GIF_Fell_Beast_-_Admire.gif"
+          }
+        }
+      },
+      "block_order": [
+        "step_block_9eQRhG",
+        "step_block_iz4K9j",
+        "step_block_G9NbQC"
+      ],
+      "settings": {
+        "bg_color": "#0f0f0f",
+        "header_text": "Easy To Install",
+        "header_sub_text": "",
+        "t_alignment": "center",
+        "link_url": "shopify://collections/lord-of-the-rings™",
+        "link_text": "shop now",
+        "fullwidth": true,
+        "side_pad": 80,
+        "pad_desk": 40,
+        "pad_lap": 40,
+        "pad_tab": 30,
+        "pad_mob": 30
+      }
+    },
+    "lotr_lp_richtext": {
+      "type": "lotr_lp_richtext",
+      "settings": {
+        "bg_img": "shopify://shop_images/section2_bg.jpg",
+        "title": "Metalbird x Wētā Workshop",
+        "body": "<p>For seven and a half years, Wētā Workshop poured its heart and soul into crafting over 48,000 props, weapons, costumes, creatures, prosthetics, and environments for The Lord of the Rings film trilogy, helping to transport audiences to the enchanting world of Middle-earth. Since then, their journey hasn't stopped. They’ve remained dedicated to exploring the realms of creativity, making, learning, solving, and inspiring across various artistic mediums. </p><p>And that journey continues with fellow New Zealand art enthusiasts, Metalbird, who bring their signature steel bird silhouettes to life in gardens across the world. Together, these two creative forces celebrate the spirit of innovation and artistry that defines New Zealand.</p><p>Join us in celebrating the fusion of worlds, where craftsmanship meets creativity, and humble beginnings lead to epic tales. </p>",
+        "alignment": "center"
+      }
+    },
+    "lotr_lp_imagetext": {
+      "type": "lotr_lp_imagetext",
+      "blocks": {
+        "heading_MYhXP3": {
+          "type": "heading",
+          "settings": {
+            "title": "Made to Last",
+            "color": "#a9925c"
+          }
+        },
+        "body_8NpFK8": {
+          "type": "body",
+          "settings": {
+            "body_text": "<p>Crafted from Corten Steel, The Lord of the Rings collection embodies the timelessness of Middle-earth. Like the epic tales themselves, Corten Steel develops a protective patina when exposed to the elements, preserving its strength and beauty for decades. </p><p>Bring a touch of this enduring craftsmanship into your life with our unique collaboration, where humble beginnings lead to legendary creation</p>"
+          }
+        },
+        "button_HTgmwB": {
+          "type": "button",
+          "settings": {
+            "label": "shop now",
+            "link": "shopify://collections/lord-of-the-rings"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MYhXP3",
+        "body_8NpFK8",
+        "button_HTgmwB"
+      ],
+      "settings": {
+        "bg_color": "#000000",
+        "color": "#ffffff",
+        "alignment": "center",
+        "image": "shopify://shop_images/corten_video_poster.jpg",
+        "video": "shopify://files/videos/LOTR _Cor-tina Process_Timelapse.mp4",
+        "img_col": "img_right"
+      }
+    },
+    "lotr_lp_img_carousel": {
+      "type": "lotr_lp_img_carousel",
+      "blocks": {
+        "image_x3Pxeg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ugc_Louise_Jensen.jpg",
+            "link": "shopify://pages/customer-reviews",
+            "new_tab": false
+          }
+        },
+        "image_jijgEX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/img_slide3.jpg",
+            "link": "shopify://pages/customer-reviews",
+            "new_tab": false
+          }
+        },
+        "image_qEYDUX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/tui_sunset.jpg",
+            "link": "shopify://pages/customer-reviews",
+            "new_tab": false
+          }
+        },
+        "image_7xEfhL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ugc_Jayne_Abbot.jpg",
+            "link": "shopify://pages/customer-reviews",
+            "new_tab": false
+          }
+        },
+        "image_aHqeKb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/img_slide1.jpg",
+            "link": "shopify://pages/customer-reviews",
+            "new_tab": false
+          }
+        },
+        "image_X78LCc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ugc_Greean_Matakana.jpg",
+            "link": "shopify://pages/customer-reviews",
+            "new_tab": false
+          }
+        },
+        "image_bbQmmk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/img_slide2.jpg",
+            "link": "shopify://pages/customer-reviews",
+            "new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "image_x3Pxeg",
+        "image_jijgEX",
+        "image_qEYDUX",
+        "image_7xEfhL",
+        "image_aHqeKb",
+        "image_X78LCc",
+        "image_bbQmmk"
+      ],
+      "custom_css": [
+        ".rte.rte-body {width: 100%; max-width: 1110px; margin: 0 auto;}"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "color": "#000000",
+        "title": "The Fellowship",
+        "head_color": "#a9925c",
+        "body": "<p>Bringing Middle-earth to life wouldn't be possible without passionate fans like you, proudly showcasing these legendary creatures in your gardens and around the world</p>",
+        "alignment": "center",
+        "show_anim": true
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "mb_affirmation_kCYJji",
+    "featured_collections_8HRHqX",
+    "mb_installation_videos",
+    "lotr_lp_richtext",
+    "lotr_lp_imagetext",
+    "lotr_lp_img_carousel"
+  ]
+}

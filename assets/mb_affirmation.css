@@ -1,0 +1,40 @@
+.affirmation {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+}
+.affirmation .container-fluid {
+  overflow: hidden;
+}
+.affirmation .affirmation-text {
+  text-transform: uppercase;
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 600;
+}
+.affirmation .affirmation-text.with-ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.affirmation .icon-wrapper .affirmation-icon {
+  width: 25px;
+  height: auto;
+  margin-right: 12px;
+}
+
+@media only screen and (max-width: 991px) {
+  .affirmation .affirmation-text {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .affirmation .affirmation-text {
+    font-size: 18px;
+  }
+  .affirmation .icon-wrapper .affirmation-icon {
+    width: 20px;
+    margin-right: 10px;
+  }
+}

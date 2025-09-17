@@ -1,0 +1,292 @@
+@font-face {
+  font-family: "Ringbearer";
+  src: url('/cdn/shop/files/RingbearerMedium.woff2?v=1727220912') format('woff2'),
+    url("/cdn/shop/files/RingbearerMedium.woff?v=1727220912") format("woff");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Minion Pro";
+  src: url('/cdn/shop/files/MinionPro-Regular.woff2?v=1727395389') format('woff2'),
+    url("/cdn/shop/files/MinionPro-Regular.woff?v=1727395388") format("woff");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+}
+.template__lotr_lp a:hover {
+  color: var(--ts-color-red);
+}
+.template__lotr_lp a.js-social-btn:hover {
+  background-color: var(--ts-color-red);
+  border-color: var(--ts-color-red);
+  color: rgb(var(--color-normal-text-rgb));
+}
+.mega-menu--column .mega-menu-promotions {
+  display: flex !important;
+}
+.affirmation-header .icon-wrapper .affirmation-icon {
+  filter: invert(1);
+}
+.affirmation-header .marquee-item:nth-child(2) .icon-wrapper .affirmation-icon {
+  filter: none;
+}
+.affirmation-header .affirmation-text {
+  font-weight: 600;
+}
+.affirmation-header .marquee-item .icon-wrapper .affirmation-icon {
+  width: 26px;
+}
+.affirmation-header.move-it .marquee-item:nth-child(3) .icon-wrapper .affirmation-icon {
+  width: 18px;
+}
+.lotr--wrapper-body {
+  overflow: hidden;
+}
+body .btn-primary.cart-drawer--checkout-btn:hover,
+body .btn-primary.cart-drawer--checkout-btn:focus,
+body .btn-primary.cart-drawer--checkout-btn:active {
+  background-color: #000000;
+  border-color: #000000;
+}
+body .btn-secondary:hover,
+body .btn-secondary:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+body .lotr--wrapper-body section .btn {
+  background-color: #a9925c !important;
+  color: #ffffff !important;
+  font-family: Ringbearer, sans-serif;
+  font-size: clamp(0.875rem, 0.7147rem + 0.4461vw, 1.25rem) !important;
+  font-weight: 400;
+  text-transform: lowercase;
+  padding: 12px 30px 8px !important;
+  border: 1px solid #a9925c !important;
+  border-radius: 8px;
+}
+.lotr--wrapper-body section .btn:hover {
+  color: #a9925c !important;
+  background-color: #ffffff !important;
+}
+.lotr--wrapper-body .affirmation {
+  padding: 14px 0 10px !important;
+}
+.lotr--wrapper-body .affirmation .marquee-inner {
+  --gap: 24px;
+  cursor: pointer;
+}
+.lotr--wrapper-body .affirmation .marquee-inner {
+  animation-duration: 22s !important;
+}
+.lotr--wrapper-body .affirmation .marquee-inner:hover {
+  animation-play-state: paused;
+}
+.lotr--wrapper-body .affirmation .affirmation-text {
+  text-transform: none;
+  font-size: clamp(1.65rem, 2.5vw, 2.7rem);
+  line-height: 1.15;
+  font-weight: 400;
+  font-family: 'Ringbearer', sans-serif;
+}
+.lotr--wrapper-body .affirmation .affirmation-text.with-ico {
+  gap: var(--gap);
+}
+.lotr--wrapper-body .affirmation .affirmation-text .icon-wrapper {
+  line-height: 0;
+}
+.lotr-lp .affirmation .affirmation-text .icon-wrapper svg.dot {
+  width: 1.35vw;
+  height: 1.35vw;
+  min-width: 12px;
+  min-height: 12px;
+}
+.lotr--wrapper-body .featured-collections .s-header__title {
+  color: #a9925c;
+  font-family: 'Ringbearer', sans-serif !important;
+  text-transform: none;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 1.2;
+}
+.lotr--wrapper-body .featured-collections .product-card .card__content {
+  text-align: center;
+}
+.lotr--wrapper-body .featured-collections .product-card .card__content .rating-wrapper {
+  justify-content: center;
+}
+.lotr--wrapper-body .featured-collections .product-card .card__heading {
+  color: var(--color-normal-text);
+  font-family: 'Ringbearer', sans-serif !important;
+  text-transform: lowercase;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  line-height: 1.2;
+  margin-bottom: 1rem !important;
+}
+.template__lotr_lp .lotr--wrapper-body .featured-collections .product-card .card__media {
+  margin-bottom: 5.8vw;
+  overflow: unset;
+}
+.template__lotr_lp .lotr--wrapper-body .featured-collections .product-card .card__media:after {
+  content: "";
+  display: block;
+  width: 48vw;
+  height: 21.95vw;
+  background: url(/cdn/shop/files/lotr_txt.png?v=1727079901) center / cover no-repeat;
+  position: absolute;
+  bottom: -4vw;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.template__lotr_lp .lotr--wrapper-body .featured-collections .product-card .js-wrap-image-lazy:before,
+.template__lotr .lotr--wrapper-body .featured-collections .product-card .js-wrap-image-lazy:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/cdn/shop/files/border.png?v=1727825687) center / cover no-repeat;
+  z-index: 1;
+}
+.lotr--wrapper-body .featured-collections .product-card .btn {
+  font-size: clamp(1.2rem,1.6vw,1.4rem)!important;
+  letter-spacing: 0.1em;
+  background-color: #a9925c !important;
+  color: #ffffff !important;
+  font-family: Ringbearer, sans-serif;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+.lotr--wrapper-body .featured-collections .product-card .price {
+  font-family: Minion Pro, sans-serif;
+  font-size: clamp(1.6rem, 2vw, 2.5rem);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.lotr--wrapper-body .featured-collections .product-card .price span.price-item {
+  margin: 1rem 0 0 !important;
+}
+.lotr--wrapper-body .featured-collections .product-card .price .special-price,
+.lotr--wrapper-body .featured-collections .product-card .price .price-regular,
+.lotr--wrapper-body .featured-collections .product-card .rating-count,
+.lotr--wrapper-body .featured-collections .product-card .rating-star {
+  color: var(--color-normal-text);
+  --color-rating-star: var(--color-normal-text) !important;
+}
+.lotr--wrapper-body .installation-videos .title-area h2 {
+  font-family: 'Ringbearer', sans-serif !important;
+  text-transform: none;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #a9925c;
+}
+.lotr--wrapper-body .installation-videos h3.title {
+  font-family: Minion Pro, sans-serif !important;
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+  line-height: 1;
+  color: rgb(255 255 255 / 80%);
+  text-transform: none;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.lotr--wrapper-body .installation-videos .col:not(.col-12) {
+  margin-bottom: 30px;
+}
+.lotr--wrapper-body .installation-videos .img-wrapper {
+  max-width: 65vw;
+  margin: 0 auto;
+  position: relative;
+  padding: 0.28vw;
+  aspect-ratio: 1;
+}
+.lotr--wrapper-body .installation-videos .img-wrapper:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/cdn/shop/files/border.png?v=1727825687) center / cover no-repeat;
+}
+.lotr--wrapper-body .featured-collections .product-card .card__heading span.tm {
+  font-family: 'Minion Pro';
+  line-height: 1;
+}
+.footer-newsletter--embed-type .needsclick[data-testid="form-component"] > button {
+  background-color: var(--ts-color-red) !important;
+}
+sht-cart-drwr .cart-drawer__product-info--title .product-title:hover {
+  text-decoration: none;
+  color: inherit;
+}
+sht-cart-drwr .cart-order-notes {
+  display: flex;
+}
+
+@media only screen and (min-width: 768px) {
+  body .lotr--wrapper-body section .btn {
+    padding: 15px 40px 10px !important;
+    border-radius: 12px;
+  }
+  .lotr--wrapper-body .affirmation .marquee-inner {
+    --gap: 3.2vw;
+  }
+  .lotr--wrapper-body .installation-videos .title-area h2 {
+    margin-bottom: 30px;
+  }
+  .lotr--wrapper-body .installation-videos .col:not(.col-12) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+  .lotr--wrapper-body .installation-videos .img-wrapper {
+    max-width: 660px;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .lotr--wrapper-body .affirmation .marquee-inner {
+    animation-duration: 35s !important;
+  }
+  .template__lotr_lp .lotr--wrapper-body .featured-collections .product-card .card__media:after {
+    width: 18.45vw;
+    height: 8.4vw;
+  }
+  .template__lotr_lp .lotr--wrapper-body .featured-collections .product-card .card__media {
+    margin-bottom: 4.688vw;
+  }
+  .lotr--wrapper-body .installation-videos .title-area h2 {
+    margin-bottom: 40px;
+  }
+}
+
+
+@media only screen and (max-width: 1199px) {
+  .menu--horizontal .header__menu {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+}
+
+@media only screen and (max-width: 767px) {
+  .template__lotr_lp .is-header-transparent {
+    margin-bottom: 0;
+  }
+  .template__lotr_lp .header--transparent:not(.header-menu--open) {
+    background: var(--gradient-background);
+  }
+  .shopify-section.installation-videos:nth-child(5) {
+    display: none;
+  }
+  .template__lotr_lp .installation-videos .col.col-md-4.col-12 {
+    margin-bottom: 4rem;
+  }
+}

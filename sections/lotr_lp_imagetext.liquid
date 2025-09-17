@@ -1,0 +1,236 @@
+{{ 'lotr_lp_imagetext.css' | asset_url | stylesheet_tag: preload: true }}
+{% assign text_align = 'text-' | append: section.settings.alignment %}
+{%- if section.settings.alignment == 'left' -%}
+  {% assign text_align = 'text-start' %}
+{% elsif section.settings.alignment == 'right' %}
+  {% assign text_align = 'text-end' %}
+{%- endif -%}
+
+{%- liquid
+   assign video_source = section.settings.video.sources[1].url
+   
+   assign media_type = 'img'
+   if section.settings.video != blank
+     assign media_type = 'video'
+   endif
+-%}
+
+<div class="lp-image-text" style="background-color: {{ section.settings.bg_color }};color: {{ section.settings.color }};">
+  <div class="container-fluid">
+    <div class="row align-items-center{% if section.settings.img_col == 'img_right' %} flex-md-row-reverse{% endif %}">
+      <div class="col col-md-5 col-12 media-colmn">
+        {%- if media_type == 'img' -%}
+          {%- if section.settings.image != blank -%}
+            {% render 'mb_image', image: section.settings.image, section: section, class: 'ft-img' %}
+          {%- else -%}
+            <div class="media placeholder" style="aspect-ratio: 1/1;">
+              {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+        {%- else -%}
+           <div class="video-wrapper">
+              {%- if section.settings.image != blank -%}
+                {% render 'mb_image', image: section.settings.image, section: section, class: 'poster-img' %}
+              {%- endif -%}
+              <video type="video/mp4" src data-src="{{ video_source }}" muted loop playsinline width="100%" class="video-player">
+                Your browser does not support the video tag.
+              </video>
+              <div class="icon-wrapper">
+                {% render 'icon-play-circle' %}
+              </div>
+            </div>
+        {%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <div class="col col-md-7 col-12 {{ text_align }} rte-colmn">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'heading' -%}
+                {%- if block.settings.title != blank -%}
+                  <h2 class="heading" style="color: {{ block.settings.color }};">
+                    {{ block.settings.title }}
+                  </h2>
+                {%- endif -%}
+              {%- when 'body' -%}
+                {%- if block.settings.body_text != blank -%}
+                  <div class="rte rte-body">
+                    {{ block.settings.body_text }}
+                  </div>
+                {%- endif -%}
+              {% when 'button' %}
+                {%- if block.settings.label != blank -%}
+                  <div class="btn-wrapper">
+                    {%- if block.settings.label != blank -%}
+                      <a href="{{ block.settings.link | default: "#" }}" class="btn lotr-btn">
+                        {{ block.settings.label | escape }}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script type="lazyload2">
+  let media_wrapper = document.querySelector('.video-wrapper'),
+      video_player = document.querySelector('.video-player')
+      poster = media_wrapper.querySelector('.img-wrapper'),
+      ico = media_wrapper.querySelector('.icon-wrapper');
+
+  const playerPlay = () => {
+    video_player.play();
+    media_wrapper.classList.add('video--playing');
+  }
+  
+  const playerPause = () => {
+    video_player.pause();
+    media_wrapper.classList.remove('video--playing');
+  }
+
+  poster.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    video_player.paused ? playerPlay() : playerPause();
+  });
+
+  video_player.addEventListener('click', function(e) {
+    !this.paused ? playerPause() : playerPlay();
+  });
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const data_src = video_player.dataset.src;
+      const src = video_player.getAttribute('src');
+  
+      if(entry.isIntersecting) {
+        if(src === '' ) {
+          video_player.setAttribute('src', data_src);
+        }
+  
+        playerPlay();
+      } else {
+        playerPause()
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(media_wrapper);
+
+  circleAnimate('.media-colmn', '::after', 0, 100000);
+  scrollToAnimate('.lp-image-text', 'anim', 0.5);
+</script>
+
+{% schema %}
+  {
+   "name": "[LOTR LP] Image With Text",
+    "class": "lotr-lp--image-text",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "text_alignment",
+        "id": "alignment",
+        "label": "Text alignment",
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Media Content",
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video",
+        "info": "Shopify hosted video."
+      },
+      {
+        "type": "select",
+        "id": "img_col",
+        "label": "Media Column",
+        "options": [
+          {
+            "value": "img_left",
+            "label": "Media Left"
+          },
+          {
+            "value": "img_right",
+            "label": "Media Right"
+          }
+        ],
+        "default": "img_left"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "title",
+            "label": "Title",
+            "default": "Some Cool Title"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Text Color",
+            "default": "#000000"
+          }
+        ]
+      },
+      {
+        "type": "body",
+        "name": "Body Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "body_text",
+            "label": "Body Text",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Button Label",
+            "default": "Button"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Button Link"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

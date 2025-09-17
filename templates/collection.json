@@ -1,0 +1,89 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "mb_media_banner_XyYpd6": {
+      "type": "mb_media_banner",
+      "blocks": {
+        "heading_gpdweh": {
+          "type": "heading",
+          "settings": {
+            "type": "title",
+            "heading_text": "Open. Hammer. <em>Create .<\/em>",
+            "font_family": "ts:!font-heading",
+            "heading_size": "ts:!text-2xl",
+            "text_transform": "ts:normal-case"
+          }
+        },
+        "richtext_KQ6tBU": {
+          "type": "richtext",
+          "settings": {
+            "richtext_content": "<p>Be The Artist in your own backyard<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gpdweh",
+        "richtext_KQ6tBU"
+      ],
+      "custom_css": [
+        ".contents-wrapper h2 {--ts-text-2xl: clamp(1.75rem, 4.5vw, 8rem); margin-bottom: 0 !important;}",
+        ".contents-wrapper h2 em {font-family: \"Julietta Messie\", cursive; font-size: 135%; line-height: 0; vertical-align: middle;}",
+        ".contents-wrapper .rte {font-size: clamp(0.8rem, 2.2vw, 3.65rem); line-height: 1.2; text-transform: uppercase; letter-spacing: 0.16em;}",
+        "@media only screen and (max-width: 575px) {.contents-wrapper .rte {margin-top: 0.5rem !important; }}"
+      ],
+      "name": "Media Banner",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "banner_type": "image",
+        "banner_height": 35,
+        "add_overlay": false,
+        "overlay_opacity": 0.5,
+        "banner_image": "shopify:\/\/shop_images\/alwayson_collection_banner_2025.jpg",
+        "banner_img_mb": "shopify:\/\/shop_images\/alwayson_collection_banner_2025_mob.jpg",
+        "content_alignment_h": "ts:md:items-start",
+        "content_alignment_v": "ts:md:justify-center",
+        "text_alignment": "left",
+        "content_alignment_h_mobile": "ts:items-start",
+        "content_alignment_v_mobile": "ts:justify-center",
+        "text_alignment_mobile": "left",
+        "top_spacing": 0,
+        "bottom_spacing": 0,
+        "top_spacing_mobile": 0,
+        "bottom_spacing_mobile": 0
+      }
+    },
+    "main": {
+      "type": "main-collection-products",
+      "custom_css": [
+        ".filter-form__rerult-count__sorting {justify-content: flex-end;}",
+        ".filter-form-sorting {--form-field-lg: 3.8rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "item_per_page": "12",
+        "products_load_method": "infinite_scroll",
+        "style_card": "card",
+        "items_per_row_on_desktop": "4",
+        "items_per_row_on_mobile": "2",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "enable_filtering": false,
+        "expand_all_filter": false,
+        "enable_sort": true,
+        "desktop_filter_and_sort_layout": "horizontal"
+      }
+    }
+  },
+  "order": [
+    "mb_media_banner_XyYpd6",
+    "main"
+  ]
+}

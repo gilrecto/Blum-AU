@@ -1,0 +1,84 @@
+{%- if settings.fmw_enable and settings.fmw_products != blank -%}
+  {%- liquid
+		assign products = settings.fmw_products
+    assign qualifier = settings.fmw_qualifier
+    assign min_spend = settings.fmw_min_spend
+    assign min_qty   = settings.fmw_min_qty
+  -%}
+
+  {%- capture data_qualifier -%}
+    {%- if qualifier == 'fmw_min_spend' -%}
+      data-qualifier="min_spend" data-min-spend="{{ min_spend }}"
+    {%- else -%}
+      data-qualifier="min_qty" data-min-qty="{{ min_qty }}"
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <free-mini-selector
+    {{ data_qualifier }}
+		mode="show"
+    widget-title="{{ settings.fmw_title | escape | default: 'CHOOSE A FREE MINI' }}"
+    data-auto-close="false"
+  >
+    <div class="free-minis-widget ts:text-center">
+			{%- if settings.fmw_title != blank -%}
+				<div class="title">{{ settings.fmw_title | default: 'CHOOSE A FREE MINI' }}</div>
+			{%- endif -%}
+
+			<div class="mini-items">
+				{%- for product in products -%}
+					{%- liquid
+						assign sold_out = true
+						assign variant_count = product.variants | size
+						assign downcased_option = product.options_with_values[0].name | downcase
+						assign option_color_swatch = settings.option_color_swatch | downcase
+						
+						if product.available
+							assign sold_out = false
+						endif
+					-%}
+					
+					<div class="item" product-id="{{ product.variants[0].id }}" item-name="{{ product.title | escape }}">
+						{%- liquid
+							assign image_raw = product.images[0].src
+							assign image_alt = image_raw.alt | default: image_raw.image | split: '/' | last
+							assign img_class = 'js-image-lazy media of-cover w-100 h-100'
+
+							assign image = image_raw | image_url: width: image_raw.width | image_tag: widths: '80, 100', sizes: '(min-width: 459px) calc(100vw/2), 100vw', alt: image_alt, class: img_class, loading: loading, fetchpriority: fetchpriority, decoding: decoding
+						-%}
+
+						{%- render 'image', image_item: image, image_wrap_classes: 'free-mini-img h-100' -%}
+						<div class="item-action">
+							{%- unless sold_out -%}
+								{%- if variant_count > 0 and product.variants.first.title != 'Default Title' -%}
+									{% if product.options_with_values.size == 1 and option_color_swatch contains downcased_option and settings.use_color_swatch %}
+										<button change-cart-mini class="btn add-to-cart-btn" title="Change mini in cart" type="button" product-id="{{ product.variants[0].id }}" disabled>
+											<span>Change</span>
+										</button>
+									{% endif %}
+								{%- else -%}
+									{%- assign current_variant_grid = product.selected_or_first_available_variant -%}
+									{% assign first_inventory_grid = current_variant_grid.inventory_quantity %}
+									
+									{%- if first_inventory_grid > 0 -%}
+										<button change-cart-mini class="btn add-to-cart-btn" title="Change mini in cart" type="button" product-id="{{ product.variants[0].id }}" disabled>
+											<span>Change</span>
+										</button>
+									{%- else -%}
+										<button change-cart-mini class="btn add-to-cart-btn" title="Change mini in cart" type="button" product-id="{{ product.variants[0].id }}" disabled>
+											<span>Change</span>
+										</button>
+									{%- endif -%} 
+								{%- endif -%}
+							{%- else -%}
+								<button class="btn add-to-cart-btn" type="button" disabled="disabled">
+									{{ 'products.product.sold_out' | t }}
+								</button>
+							{%- endunless -%}
+						</div>
+					</div>
+				{%- endfor -%}
+			</div>
+    </div>
+  </free-mini-selector>
+{%- endif -%}

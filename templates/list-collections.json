@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "18743502-a081-498d-b97d-037606517ab3": {
+      "type": "breadcrumb",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "heading": "Shop by Collections",
+        "item_per_page": "24",
+        "column_mobile": "1",
+        "content_alignment": "ta-left"
+      }
+    },
+    "c1a0ddf8-4e24-4ab9-89ad-a4a31733f17a": {
+      "type": "image-banner",
+      "blocks": {
+        "template--15487742181597__c1a0ddf8-4e24-4ab9-89ad-a4a31733f17a-16667713318d284c8e-0": {
+          "type": "content",
+          "settings": {
+            "content_position": "center-xs middle-xs ta-center",
+            "subheading": "",
+            "heading": "Our Winter Catalogue",
+            "description": "<p>As the weather changes, you become aware of your worn-out sweater from last season. Here are some of our favorite environmentally friendly winter staples.<\/p>",
+            "primary_button_label": "Check Our Lookbook",
+            "secondary_button_label": "",
+            "secondary_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15487742181597__c1a0ddf8-4e24-4ab9-89ad-a4a31733f17a-16667713318d284c8e-0"
+      ],
+      "settings": {
+        "enable_large_heading": false,
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--top-right",
+        "badge_shape": "badge--star"
+      }
+    }
+  },
+  "order": [
+    "18743502-a081-498d-b97d-037606517ab3",
+    "main",
+    "c1a0ddf8-4e24-4ab9-89ad-a4a31733f17a"
+  ]
+}

@@ -1,0 +1,71 @@
+.partners-map {
+  padding: clamp(40px, 5vw, 120px) 0;
+  --container: 100%;
+}
+.partners-map .ctnr {
+  max-width: var(--container);
+}
+.partners-map .heading {
+  font-family: var(--font-body-family) !important;
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 48px);
+  text-transform: none;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+.partners-map .title-area .rte {
+  font-size: clamp(14px, 3vw, 20px);
+  line-height: 1.3;
+  margin-top: clamp(15px, 3vw, 20px);
+}
+.partners-map .title-area {
+  margin-bottom: clamp(25px, 3vw, 60px);
+}
+store-locator #map {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+}
+store-locator .info-box h3 {
+  font-family: var(--font-body-family) !important;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+store-locator .info-box p {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 10px !important;
+}
+store-locator .info-box a {
+  color: var(--ts-color-red);
+  font-weight: 500;
+  font-size: 12px;
+}
+store-locator .info-box a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 768px) {
+  store-locator #storeList,
+  store-locator .store-list-container {
+    display: none;
+  }
+  store-locator #map {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .partners-map {
+    --container: 930px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .partners-map {
+    --container: 1340px;
+  }
+}

@@ -1,0 +1,37 @@
+.template-cart .js-section-header:not(.is-header-hide) ~ main .main-cart .js-cart-form-content-cart-total {
+	@apply ts:top-[calc(var(--header-height)+2rem)];
+}
+.template-cart .main-cart .js-cart-form-content-cart-total {
+	@apply ts:transition-all ts:duration-300;
+}
+.template-cart .main-cart .ctnr {
+	@apply ts:2xl:max-w-10/12;
+}
+.template-cart .main-cart .js-cart-form-wrapper {
+	@apply ts:lg:pr-[5vw];
+}
+.template-cart .main-cart .cart-item-name {
+	@apply ts:text-[clamp(1.4rem,1.4vw,1.8rem)] ts:font-semibold ts:uppercase;
+}
+.template-cart .main-cart .cart-item__price-wrapper {
+	@apply ts:text-[clamp(1.3rem,1.3vw,1.6rem)]
+}
+.template-cart .main-cart .cart-item__quantity .field_quantity {
+	--form-field-sm: 3.5rem;
+	--font-body-size: 1.4rem;
+}
+.template-cart .main-cart sht-cart-rmv-btn {
+  --form-field-sm: 3.5rem;
+}
+.template-cart .main-cart .js-cart-form-footer {
+	@apply ts:max-lg:sticky ts:max-lg:bottom-0 ts:max-lg:bg-[var(--color-page-bg)] ts:max-lg:pt-6;
+}
+.template-cart .main-cart .cart__checkout .message-box {
+	@apply ts:p-5 ts:bg-red ts:text-white ts:text-[clamp(12px,1.2vw,16px)] ts:leading-[1.6] ts:font-semibold;
+}
+
+@media only screen and (max-width: 991px) {
+	.template-cart .main-cart [style*="--w-md"] {
+		--w-md: 12 !important;
+	}
+}

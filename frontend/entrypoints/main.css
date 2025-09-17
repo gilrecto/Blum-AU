@@ -1,0 +1,40 @@
+@import '../web/styles/global_styles.css';
+@import '../web/styles/swiper_slider.css';
+@import '../web/styles/footer.css';
+@import '../web/styles/cart-drawer.css';
+@import '../web/styles/main-cart.css';
+@import '../web/styles/sections_custom.css';
+
+@import "tailwindcss" prefix(ts);
+
+@theme {
+  --font-industry: 'IndustryInc-Base', sans-serif;
+  --font-avenir: 'Avenir Next', sans-serif;
+  --font-buckwheat: 'Buckwheat', sans-serif;
+  --font-body: var(--font-body-family);
+  --font-heading: var(--font-heading-family);
+
+	--color-white: #ffffff;
+  --off-white: #ede6e0;
+  --color-black: #000000;
+  --color-transparent: transparent;
+  --color-red: #c30631;
+  --color-putty: #c8c1a7;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 32px;
+  --text-xl: clamp(2.5rem, 2vw, 3.5rem);
+  --text-2xl: clamp(2rem, 3vw, 4rem);
+  --text-3xl: clamp(4.5rem, 6.5vw, 9rem);
+  --text-big: clamp(5.5rem, 9vw, 16rem);
+
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+	--breakpoint-2xl: 1441px;
+}
+
+@custom-variant is-active (&.is-active);

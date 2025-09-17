@@ -1,0 +1,326 @@
+{
+  "sections": {
+    "14a1c252-b0be-40ee-a782-84432a66eb19": {
+      "type": "hero-image-with-text",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "content_align": "ta-left",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "subheading": "Your Future",
+        "heading": "The future of athleisure",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<\/p>",
+        "image_ratio": "auto",
+        "button_main_text": "Shop this collection",
+        "button_sub_text": "View details",
+        "button_sub_link": "",
+        "enable_collections": false,
+        "heading_collections": "Browse categories",
+        "collection_list": [],
+        "enable_view_all": true,
+        "button_text": "See all collections",
+        "show_navigation": true,
+        "badge_text": "Get ready",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--diamond"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_page_title": true,
+        "remove_padding_top": true,
+        "remove_padding_bottom": false
+      }
+    },
+    "d518f1c2-2817-4c64-a83b-38ee31ca2b1f": {
+      "type": "video-banner",
+      "blocks": {
+        "template--16586360389853__d518f1c2-2817-4c64-a83b-38ee31ca2b1f-16665803820753702b-0": {
+          "type": "content",
+          "settings": {
+            "content_position": "center-xs middle-xs ta-center",
+            "subheading": "",
+            "heading": "Summer Lookbook",
+            "description": "<p>Everything you need to know and shop this summer, from current trends, styling tips, outfit ideas, and more. Designed with the highest precision and in pursuit of a simplified, modern wardrobe for our new collection<\/p>",
+            "primary_button_label": "",
+            "primary_button_link": "",
+            "secondary_button_label": "Discover Now"
+          }
+        }
+      },
+      "block_order": [
+        "template--16586360389853__d518f1c2-2817-4c64-a83b-38ee31ca2b1f-16665803820753702b-0"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "enable_large_heading": false,
+        "image_overlay_opacity": 30,
+        "section_mask_overlay_color": "#000000",
+        "section_content_overlay_color": "#ffffff",
+        "height_desktop": "70",
+        "height_mobile": "70",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--top-right",
+        "badge_shape": "badge--diamond"
+      }
+    },
+    "755857ac-2ec5-42df-bf1e-aba14f8a58cd": {
+      "type": "text",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "ta-center m-auto",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "subheading": "",
+        "heading": "Summer Essentials Worth Your Investment",
+        "heading_size": "hdg-0",
+        "description": "<p>As the sun shines bright and the temperatures rise, it's tempting to ditch those heavy winter layers and explore the summer fashion scene. Instead of giving in to the allure of cheap sweaters and scarves, we've got you covered with a list of ethical and eco-friendly summer essentials! These companies prioritize kindness towards all living beings, making it easy for you to shop guilt-free and stay cool in style.<\/p>",
+        "button_main_text": "Check Collection",
+        "button_sub_text": "",
+        "button_sub_link": "",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--diamond"
+      }
+    },
+    "68feeca1-0114-458d-a8ff-26fa409670ff": {
+      "type": "content-collage",
+      "blocks": {
+        "d26060dc-6e28-490d-b48c-f4b9b163d8f6": {
+          "type": "image",
+          "settings": {
+            "image_overlay_opacity": 30,
+            "image_mask_overlay_color": "#000000",
+            "image_content_overlay_color": "#ffffff",
+            "heading": "Jazara Linen Shirt",
+            "button_text": "Check now"
+          }
+        },
+        "template--16586360389853__68feeca1-0114-458d-a8ff-26fa409670ff-16665805637e0db704-2": {
+          "type": "image",
+          "settings": {
+            "image_overlay_opacity": 30,
+            "image_mask_overlay_color": "#000000",
+            "image_content_overlay_color": "#ffffff",
+            "heading": "Notch Lapel Long Puff Sleeve Pea Coat",
+            "button_text": "Check now"
+          }
+        }
+      },
+      "block_order": [
+        "d26060dc-6e28-490d-b48c-f4b9b163d8f6",
+        "template--16586360389853__68feeca1-0114-458d-a8ff-26fa409670ff-16665805637e0db704-2"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "",
+        "description": "",
+        "content_alignment": "ta-center",
+        "items_ordering": "big-last",
+        "enable_stacked_layout": false,
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "image_ratio": "1\/1",
+        "show_items_button": false,
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--star"
+      }
+    },
+    "0a7b519a-dbd7-49ae-9ee1-494a9ac3d146": {
+      "type": "featured-product-carousel",
+      "settings": {
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "Summer Coat Catalogue",
+        "description": "A summer coat is worn by everybody and is considered to be the most comfortable and easy to wear clothing item especially when you need to kept warm",
+        "items_per_row_on_desktop": "4",
+        "content_align": "ta-left",
+        "show_navigation": true,
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "product_list": [],
+        "image_ratio": "2\/3",
+        "image_overlay_opacity": 30,
+        "section_mask_overlay_color": "#000000",
+        "section_content_overlay_color": "#ffffff",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--diamond"
+      }
+    },
+    "a3a91fb2-774a-4029-9830-6eeaa33ab3cf": {
+      "type": "product-hotspots",
+      "blocks": {
+        "template--16586360389853__a3a91fb2-774a-4029-9830-6eeaa33ab3cf-16665805334196276b-0": {
+          "type": "hotspot",
+          "settings": {
+            "top_offset": 76,
+            "left_offset": 69
+          }
+        },
+        "b96360f6-aec0-4b44-b525-2e1d1d9564a3": {
+          "type": "hotspot",
+          "settings": {
+            "top_offset": 63,
+            "left_offset": 25
+          }
+        }
+      },
+      "block_order": [
+        "template--16586360389853__a3a91fb2-774a-4029-9830-6eeaa33ab3cf-16665805334196276b-0",
+        "b96360f6-aec0-4b44-b525-2e1d1d9564a3"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "Back In Vogue",
+        "description": "As the weather changes, you become aware that your worn-out shirt from last season is stretched beyond repair and your old gloves have holes in them. Here are some of our favorite environmentally friendly summer staples.",
+        "show_navigation": true,
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "badge_text": "",
+        "badge_color": "color-accent-2",
+        "badge_position": "p-badge--top-right",
+        "badge_shape": "badge--diamond"
+      }
+    },
+    "5890b509-30a9-46d7-bcd6-51532e238506": {
+      "type": "content-collage",
+      "blocks": {
+        "template--16586360389853__5890b509-30a9-46d7-bcd6-51532e238506-1666688024cfeac7d9-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image_overlay_opacity": 30,
+            "image_mask_overlay_color": "#000000",
+            "image_content_overlay_color": "#ffffff",
+            "heading": "Heading",
+            "button_text": "Check now",
+            "button_link": ""
+          }
+        },
+        "0a63f381-9b87-422c-aee2-1ec225df924a": {
+          "type": "image",
+          "settings": {
+            "image_overlay_opacity": 30,
+            "image_mask_overlay_color": "#000000",
+            "image_content_overlay_color": "#ffffff",
+            "heading": "Slit Side Oversized Long Sleeve Collar Blouse",
+            "button_text": "Check now"
+          }
+        },
+        "7b168572-6a09-415f-b681-1a597cdb8929": {
+          "type": "image",
+          "settings": {
+            "image_overlay_opacity": 30,
+            "image_mask_overlay_color": "#000000",
+            "image_content_overlay_color": "#ffffff",
+            "heading": "Neckline Puff Sleeve Smocked Back Top",
+            "button_text": "Check now"
+          }
+        }
+      },
+      "block_order": [
+        "template--16586360389853__5890b509-30a9-46d7-bcd6-51532e238506-1666688024cfeac7d9-2",
+        "0a63f381-9b87-422c-aee2-1ec225df924a",
+        "7b168572-6a09-415f-b681-1a597cdb8929"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "",
+        "description": "",
+        "content_alignment": "ta-center",
+        "items_ordering": "big-first",
+        "enable_stacked_layout": false,
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "image_ratio": "1\/1",
+        "show_items_button": false,
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--star"
+      }
+    },
+    "a2452071-8eb6-4021-b2ea-0ff74ffc64c5": {
+      "type": "featured-product-carousel",
+      "settings": {
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "Sustainable Life With Linen",
+        "description": "Linen presents the chance to make items that are of a high standard, breathable, and aesthetically pleasing, all while putting the environment and biodiversity first.",
+        "items_per_row_on_desktop": "4",
+        "content_align": "ta-left",
+        "show_navigation": true,
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "product_list": [],
+        "image_ratio": "2\/3",
+        "image_overlay_opacity": 0,
+        "section_mask_overlay_color": "#000000",
+        "section_content_overlay_color": "#090c26",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--star"
+      }
+    },
+    "7048ad22-57df-4404-945c-865ef8082188": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16586360389853__7048ad22-57df-4404-945c-865ef8082188-16666892417de30dbd-0": {
+          "type": "content",
+          "settings": {
+            "content_position": "center-xs middle-xs ta-center",
+            "subheading": "",
+            "heading": "Get Ready For A Fashion Revolution",
+            "description": "<p>There is no arguing that the fashion industry has greatly contributed to climate change and the loss of biodiversity, thus the sector's sustainability initiatives are essential to the health of our world.<\/p>",
+            "primary_button_label": "",
+            "primary_button_link": "",
+            "secondary_button_label": "View our products"
+          }
+        }
+      },
+      "block_order": [
+        "template--16586360389853__7048ad22-57df-4404-945c-865ef8082188-16666892417de30dbd-0"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "enable_large_heading": false,
+        "section_overlay_opacity": 30,
+        "section_mask_overlay_color": "#000000",
+        "section_content_overlay_color": "#ffffff",
+        "height_desktop": "70",
+        "height_mobile": "70",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--top-right",
+        "badge_shape": "badge--star"
+      }
+    }
+  },
+  "order": [
+    "14a1c252-b0be-40ee-a782-84432a66eb19",
+    "main",
+    "d518f1c2-2817-4c64-a83b-38ee31ca2b1f",
+    "755857ac-2ec5-42df-bf1e-aba14f8a58cd",
+    "68feeca1-0114-458d-a8ff-26fa409670ff",
+    "0a7b519a-dbd7-49ae-9ee1-494a9ac3d146",
+    "a3a91fb2-774a-4029-9830-6eeaa33ab3cf",
+    "5890b509-30a9-46d7-bcd6-51532e238506",
+    "a2452071-8eb6-4021-b2ea-0ff74ffc64c5",
+    "7048ad22-57df-4404-945c-865ef8082188"
+  ]
+}

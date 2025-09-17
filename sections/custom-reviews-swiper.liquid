@@ -1,0 +1,502 @@
+{%- liquid
+  assign section_id = section.id | md5 | truncate: 12, ""
+  assign loading = "lazy"
+  assign decoding ="async"
+  assign fetchpriority = "auto"
+  if section.index == 1
+    assign loading = "eager"
+    assign fetchpriority = "high"
+    assign image_classes = 'w-100 h-100'
+  endif
+-%}
+
+{%- capture star -%}
+  <svg viewBox="0 0 500 500" class="color_class ts:w-10 ts:h-10" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" opacity="1.00" d=" M 235.20 32.19 C 237.81 27.53 242.43 23.61 247.97 23.39 C 253.11 23.30 258.00 25.82 261.67 29.30 C 266.87 34.10 270.56 40.31 273.15 46.85 C 281.23 67.07 290.64 86.71 299.35 106.65 C 308.13 126.62 315.69 147.10 323.52 167.45 C 324.20 169.00 324.71 170.78 326.08 171.90 C 327.86 172.75 329.87 172.84 331.80 173.13 C 344.24 174.59 356.51 177.39 369.03 178.19 C 377.36 178.66 385.69 179.17 394.03 179.33 C 410.72 179.96 427.32 181.91 443.97 183.18 C 448.00 183.34 452.12 182.68 456.07 183.79 C 466.74 186.69 477.86 187.94 488.27 191.82 C 495.80 194.73 501.49 204.03 497.84 211.85 C 494.78 217.25 489.69 221.10 484.98 224.98 C 466.46 238.92 445.72 249.46 425.31 260.30 C 409.60 268.34 394.41 277.33 379.07 286.04 C 377.74 286.85 375.71 288.05 376.76 289.91 C 382.09 303.57 384.76 318.05 386.65 332.54 C 389.96 357.83 392.99 383.15 395.73 408.51 C 397.21 420.61 398.08 432.80 397.41 444.99 C 396.91 452.71 399.54 460.28 398.69 467.98 C 398.02 474.09 392.25 479.25 386.01 478.58 C 376.91 477.63 368.62 473.03 361.46 467.54 C 352.35 460.73 345.25 451.72 336.72 444.26 C 315.83 425.88 295.82 406.52 276.23 386.77 C 275.02 385.43 273.19 384.42 271.46 385.50 C 256.98 391.53 244.66 401.60 230.60 408.46 C 211.51 417.71 193.95 429.69 176.22 441.25 C 162.73 449.90 149.01 458.21 134.98 465.98 C 127.55 470.02 120.13 474.21 112.11 476.99 C 107.57 478.49 101.88 478.31 98.41 474.60 C 94.87 471.05 94.31 465.76 94.55 461.00 C 94.86 455.78 93.43 450.55 94.57 445.38 C 99.23 423.42 108.14 402.62 112.75 380.65 C 117.45 360.79 125.72 341.98 130.06 322.02 C 130.43 319.20 133.07 315.16 129.77 313.23 C 123.58 309.24 118.31 304.05 113.25 298.75 C 97.32 282.16 78.68 268.58 61.07 253.89 C 44.97 239.70 27.98 226.34 13.83 210.11 C 10.84 206.94 9.58 202.59 6.58 199.43 C 4.34 197.05 2.45 194.26 1.81 191.00 C 0.34 185.64 2.70 179.33 7.75 176.76 C 13.30 173.22 19.93 172.77 26.29 172.19 C 33.98 169.97 41.91 168.54 49.93 168.38 C 68.95 167.97 87.98 167.94 107.00 167.87 C 123.67 168.29 140.33 169.04 156.98 169.86 C 162.60 170.04 168.07 171.49 173.67 171.94 C 177.74 160.76 184.00 150.60 188.81 139.75 C 192.71 131.12 196.39 122.38 199.64 113.48 C 206.96 93.34 215.19 73.54 224.07 54.04 C 227.42 46.58 231.19 39.32 235.20 32.19 Z" />
+  </svg>
+{%- endcapture -%}
+
+<div class="custom-reviews-swiper section color-{{ section.settings.color_scheme }} {{ section.settings.remove_padding_top | replace: 'true', 'section-top-zero' | replace: section.settings.remove_padding_top, '' }} {{ section.settings.remove_padding_bottom | replace: 'true', 'section-bottom-zero' | replace: section.settings.remove_padding_bottom, '' }} {% render 'animation-loader', section: section %}" data-ui-component="Custom Reviews Swiper Section" role="region" aria-labelledby="sectionHeading-{{ section_id }}">
+  <div class="ctnr">
+    <!-- Skeleton Loader -->
+    <div class="reviews-skeleton ts:grid ts:lg:grid-cols-2 ts:grid-cols-1 ts:lg:gap-x-[3vw] ts:max-lg:gap-y-10 ts:max-lg:flex-wrap" id="skeleton-{{ section_id }}">
+      <!-- Text Content Skeleton (Left Side) -->
+      <div class="text-skeleton-column ts:lg:flex-[1_1_50%] ts:flex-[0_0_100%]">
+        <div class="ts:animate-pulse">
+          <!-- Header skeleton -->
+          <div class="ts:mb-8">
+            <div class="ts:h-8 ts:bg-gray-200 ts:rounded ts:w-3/4 ts:mb-4"></div>
+            <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-full ts:mb-2"></div>
+            <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-5/6"></div>
+          </div>
+          
+          <!-- Review content skeleton -->
+          <div class="ts:space-y-6">
+            <!-- Star rating skeleton -->
+            <div class="ts:flex ts:gap-1">
+              {% for star in (1..5) %}
+                <div class="ts:w-5 ts:h-5 ts:bg-gray-200 ts:rounded-sm"></div>
+              {% endfor %}
+            </div>
+            
+            <!-- Review text skeleton -->
+            <div class="ts:space-y-3">
+              <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-full"></div>
+              <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-11/12"></div>
+              <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-10/12"></div>
+              <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-9/12"></div>
+              <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-8/12"></div>
+            </div>
+            
+            <!-- Author skeleton -->
+            <div class="ts:h-4 ts:bg-gray-200 ts:rounded ts:w-1/3"></div>
+          </div>
+          
+          <!-- Navigation dots skeleton (desktop only) -->
+          <div class="ts:hidden ts:lg:flex ts:justify-center ts:gap-2 ts:mt-8">
+            {% for dot in (1..5) %}
+              <div class="ts:w-2 ts:h-2 ts:bg-gray-200 ts:rounded-full"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Image Content Skeleton (Right Side) -->
+      <div class="image-skeleton-column ts:lg:flex-[1_1_50%] ts:flex-[0_0_100%]">
+        <div class="ts:animate-pulse">
+          <!-- Large image skeleton -->
+          <div class="ts:w-full ts:aspect-[4/3] ts:bg-gray-200 ts:rounded-lg ts:mb-4"></div>
+          
+          <!-- Navigation dots skeleton (mobile only) -->
+          <div class="ts:flex ts:lg:hidden ts:justify-center ts:gap-2">
+            {% for dot in (1..5) %}
+              <div class="ts:w-2 ts:h-2 ts:bg-gray-200 ts:rounded-full"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-content ts:grid ts:lg:grid-cols-2 ts:grid-cols-1 ts:lg:gap-x-[3vw] ts:max-lg:gap-y-10">
+      <div class="text--slider-colmn">
+        <swiper-slider class="text-content__reviews-{{ section_id }} ts:opacity-0 ts:transition-opacity ts:duration-500 ts:h-full ts:lg:pt-20 ts:lg:pr-16 ts:!pb-0" data-section-id="{{ section_id }}" data-skeleton-id="skeleton-{{ section_id }}">
+          {% render 'section-header',
+            subheading: section.settings.subheading,
+            heading: section.settings.heading,
+            description: section.settings.description,
+            content_align: section.settings.content_align,
+            section: section
+          %}
+
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                {% if block.type == 'review' %}
+                  <div class="swiper-slide">
+                    <div class="review-card {{ section.settings.content_align }}" {{ block.shopify_attributes }}>
+                      <div class="review-txt-wrapper ts:space-y-7 ts:bg-[rgba(var(--color-page-bg-rgb))]">
+                        <!-- Star Rating -->
+                        <div class="review-stars-wrapper ts:flex ts:gap-2">
+                          {%- for i in (1..5) -%}
+                            {% if i <= block.settings.rating %}
+                              {{ star | replace: 'color_class', 'ts:text-putty' }}
+                            {% else %}
+                              {{ star | replace: 'color_class', 'ts:text-gray-300' }}
+                            {% endif %}
+                          {%- endfor -%}
+                        </div>
+                        
+                        <div class="rte ts:w-full ts:max-w-[68rem] ts:text-[clamp(1.5rem,2.5vw,2.4rem)] ts:leading-[1.6]">
+                          {%- if block.settings.review_text != blank -%}
+                            {{ block.settings.review_text }}
+                          {%- endif -%}
+
+                          <!-- Author -->
+                          <div class="review-author ts:mt-6">
+                            - {{ block.settings.author_name }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            
+            <div class="controls hide-empty ts:lg:block ts:hidden ts:lg:mt-[5vw]">
+              <!-- Navigation -->
+              {%- if section.settings.show_navigation -%}
+                <div class="swiper-nav--wrapper ts:flex ts:items-center ts:justify-center ts:gap-10 ts:mb-12">
+                  <div class="swiper-button-prev ts:!relative ts:!text-[rgba(var(--color-normal-text))] ts:!w-[2.5rem] ts:!h-[2.5rem] ts:after:!text-[2.5rem] ts:!top-0 ts:!left-0 ts:!right-0 ts:!mt-0"></div>
+                  <div class="swiper-button-next ts:!relative ts:!text-[rgba(var(--color-normal-text))] ts:!w-[2.5rem] ts:!h-[2.5rem] ts:after:!text-[2.5rem] ts:!top-0 ts:!left-0 ts:!right-0 ts:!mt-0"></div>
+                </div>
+              {%- endif -%}
+
+              <!-- Pagination -->
+              {%- if section.settings.show_pagination -%}
+                <div class="swiper-pagination ts:!relative ts:!bottom-0"></div>
+              {%- endif -%}
+            </div>
+          </div>
+        </swiper-slider>
+      </div>
+
+      <div class="img-slider-colmn">
+        <swiper-slider class="image-content__reviews-{{ section_id }} ts:h-full ts:!py-0 ts:opacity-0 ts:transition-opacity ts:duration-500" data-section-id="{{ section_id }}" data-skeleton-id="skeleton-{{ section_id }}">
+          <div class="swiper ts:lg:h-full">
+            <div class="swiper-wrapper">
+
+              {% for block in section.blocks %}
+                {% if block.type == 'review' %}
+                  <div class="swiper-slide">
+                    <div class="review-card ts:h-full" {{ block.shopify_attributes }}>
+                      {% if block.settings.review_image != blank %}
+                        <div class="review-img-wrapper ts:w-full ts:h-full">
+                          {%- liquid
+                            assign image_raw = block.settings.review_image
+                            assign image_alt = image_raw.alt | default: image_raw.image | split: '/' | last
+                            assign img_class = 'js-image-lazy media of-cover w-100 h-100 js-animate anm anm-fadeInUp'
+                            assign delay = forloop.index | times: 0.3
+                            assign media_wrap_style = '--duration: .6s; --delay: ' | append: delay | append: 's;'
+
+                            assign image = image_raw | image_url: width: image_raw.width | image_tag: widths: '320, 450, 550, 750, 950, 1024, 1200', sizes: '(min-width: 459px) calc(100vw/2), 100vw', alt: image_alt, class: img_class, loading: loading, fetchpriority: fetchpriority, decoding: decoding
+                          -%}
+
+                          {%- render 'image', image_item: image, image_wrap_classes: 'h-100 ts:*:h-full', media_wrap_style: media_wrap_style -%}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            
+            <div class="controls hide-empty ts:lg:hidden ts:block ts:relative ts:mt-12">
+              <!-- Pagination -->
+              {%- if section.settings.show_pagination -%}
+                <div class="swiper-pagination ts:!relative ts:!bottom-0"></div>
+              {%- endif -%}
+              
+              <!-- Navigation -->
+              {%- if section.settings.show_navigation -%}
+                <div class="swiper-button-prev ts:!text-[rgba(var(--color-normal-text))] ts:!w-[2.5rem] ts:!h-[2.5rem] ts:after:!text-[2.5rem] ts:!mt-0 ts:!top-0"></div>
+                <div class="swiper-button-next ts:!text-[rgba(var(--color-normal-text))] ts:!w-[2.5rem] ts:!h-[2.5rem] ts:after:!text-[2.5rem] ts:!mt-0 ts:!top-0"></div>
+              {%- endif -%}
+            </div>
+          </div>
+        </swiper-slider>
+      </div>
+    </div>
+
+    {%- if section.settings.show_view_all_button -%}
+      {%- assign default_text_btn = "general.search.view_all" | t -%}
+      <div class="s-footer {{ section.settings.content_align }} {{ section.settings.show_view_all_button | default: 'd-none' | replace: 'true', '' }}">
+        <a href="{{- section.settings.button_link | default: "#" -}}" class="btn {{ section.settings.btn_type }} btn-large ts:max-sm:w-full">
+          {{- section.settings.button_text | default: default_text_btn -}}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const textSlider = document.querySelector('.text-content__reviews-{{ section_id }}');
+    const imageSlider = document.querySelector('.image-content__reviews-{{ section_id }}');
+    
+    if (textSlider && imageSlider) {
+      // Flags to prevent infinite loop
+      let isTextSliderChanging = false;
+      let isImageSliderChanging = false;
+      
+      // Configuration for text slider (master)
+      const textConfig = {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        freeMode: false,
+        loop: {{ section.settings.enable_loop }},
+        {% if section.settings.enable_autoplay %}
+          autoplay: {
+            delay: {{ section.settings.autoplay_delay | default: 5000 }},
+            disableOnInteraction: false,
+          },
+        {% endif %}
+        {% if section.settings.show_pagination %}
+          pagination: {
+            el: '.text-content__reviews-{{ section_id }} .swiper-pagination',
+            clickable: true,
+          },
+        {% endif %}
+        {% if section.settings.show_navigation %}
+          navigation: {
+            nextEl: '.text-content__reviews-{{ section_id }} .swiper-button-next',
+            prevEl: '.text-content__reviews-{{ section_id }} .swiper-button-prev',
+          },
+        {% endif %}
+      };
+      
+      // Configuration for image slider (slave but with controls on mobile)
+      const imageConfig = {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: {{ section.settings.enable_loop }},
+        effect: 'fade',
+        grabCursor: false,
+        fadeEffect: {
+          crossFade: true
+        },
+        allowTouchMove: true,
+        {% if section.settings.show_pagination %}
+          pagination: {
+            el: '.image-content__reviews-{{ section_id }} .swiper-pagination',
+            clickable: true,
+          },
+        {% endif %}
+        {% if section.settings.show_navigation %}
+          navigation: {
+            nextEl: '.image-content__reviews-{{ section_id }} .swiper-button-next',
+            prevEl: '.image-content__reviews-{{ section_id }} .swiper-button-prev',
+          },
+        {% endif %}
+        breakpoints: {
+          992: {
+            allowTouchMove: false,
+          }
+        }
+      };
+      
+      // Set configs
+      textSlider.config = textConfig;
+      imageSlider.config = imageConfig;
+      
+      // Wait for both sliders to initialize, then sync them
+      setTimeout(() => {
+        const textSwiperInstance = textSlider.swiperInstance;
+        const imageSwiperInstance = imageSlider.swiperInstance;
+        
+        if (textSwiperInstance && imageSwiperInstance) {
+          // Sync image slider when text slider changes
+          textSwiperInstance.on('slideChange', function() {
+            if (!isImageSliderChanging) {
+              isTextSliderChanging = true;
+              imageSwiperInstance.slideTo(this.realIndex);
+              setTimeout(() => { isTextSliderChanging = false; }, 50);
+            }
+          });
+          
+          // Sync text slider when image slider changes (for mobile controls)
+          imageSwiperInstance.on('slideChange', function() {
+            if (!isTextSliderChanging) {
+              isImageSliderChanging = true;
+              textSwiperInstance.slideTo(this.realIndex);
+              setTimeout(() => { isImageSliderChanging = false; }, 50);
+            }
+          });
+          
+          // Sync autoplay between both sliders
+          textSwiperInstance.on('autoplayStart', function() {
+            if (imageSwiperInstance.autoplay) {
+              imageSwiperInstance.autoplay.start();
+            }
+          });
+          
+          textSwiperInstance.on('autoplayStop', function() {
+            if (imageSwiperInstance.autoplay) {
+              imageSwiperInstance.autoplay.stop();
+            }
+          });
+        }
+      }, 100);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Reviews Swiper",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:general.settings.color_scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SEE WHAT THE CHURPIN' IS ABOUT"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "content_align",
+      "label": "t:general.settings.content_alignment.label",
+      "default": "ta-left",
+      "options": [
+        {
+          "value": "ta-left",
+          "label": "t:general.settings.option_left.label"
+        },
+        {
+          "value": "ta-center",
+          "label": "t:general.settings.option_center.label"
+        },
+        {
+          "value": "diagonal d-grid-md",
+          "label": "t:general.settings.content_alignment.options.option_diagonal.label"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all_button",
+      "label": "Show View All Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View All Reviews",
+      "visible_if": "{{ section.settings.show_view_all_button == true }}"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "visible_if": "{{ section.settings.show_view_all_button == true }}"
+    },
+    {
+      "type": "select",
+      "id": "btn_type",
+      "label": "Button type",
+      "default": "btn-primary",
+      "options": [
+        {
+          "value": "btn-primary",
+          "label": "Primary Button"
+        },
+        {
+          "value": "btn-secondary",
+          "label": "Secondary Button"
+        },
+        {
+          "value": "btn-link",
+          "label": "Link"
+        }
+      ],
+      "visible_if": "{{ section.settings.show_view_all_button == true }}"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_loop",
+      "label": "Enable loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay (ms)",
+      "min": 1000,
+      "max": 9000,
+      "step": 200,
+      "default": 5000
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_padding_top",
+      "label": "t:general.settings.remove_padding_top.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_padding_bottom",
+      "label": "t:general.settings.remove_padding_bottom.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "review_image",
+          "label": "Review Image",
+          "info": "Optional image to display with the review"
+        },
+        {
+          "type": "richtext",
+          "id": "review_text",
+          "label": "Review Text",
+          "default": "<p>This product exceeded my expectations! Highly recommend.</p>"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Reviews Swiper",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

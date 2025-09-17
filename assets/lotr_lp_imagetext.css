@@ -1,0 +1,128 @@
+.lp-image-text {
+  padding: 40px 0 60px;
+}
+.lp-image-text:not(.anim) .media-colmn,
+.lp-image-text:not(.anim) .heading,
+.lp-image-text:not(.anim) .rte-body,
+.lp-image-text:not(.anim) .btn-wrapper {
+  opacity: 0;
+}
+.lp-image-text .media-colmn,
+.lp-image-text .heading,
+.lp-image-text .rte-body,
+.lp-image-text.btn-wrapper {
+  transition: opacity 1.2s linear;
+}
+.lp-image-text .heading {
+  font-family: 'Ringbearer', sans-serif !important;
+  text-transform: none;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.lp-image-text .rte-body {
+  font-family: Minion Pro, sans-serif;
+  font-size: clamp(1.4rem, 2vw, 2.4rem);
+  line-height: 1.6;
+  margin: 0 auto;
+  transition-delay: 200ms;
+}
+.lp-image-text .btn-wrapper {
+  margin-top: 30px;
+  transition-delay: 280ms;
+}
+.lp-image-text .row {
+  row-gap: 65px;
+  flex-direction: column-reverse;
+}
+.lp-image-text .row > .media-colmn:after {
+  content: "";
+  display: block;
+  --dims: 95vw;
+  width: var(--dims);
+  height: var(--dims);
+  background: url(/cdn/shop/files/lotr_circle_txt.png?v=1727079902) center / cover no-repeat;
+  position: absolute;
+  top: -10%;
+  left: 2.3%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.lp-image-text .media {
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+}
+.lp-image-text .video-wrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+.lp-image-text .video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lp-image-text .video-wrapper .icon-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  --dims: 32px;
+  pointer-events: none;
+  z-index: 1;
+}
+.lp-image-text .video-wrapper .icon-wrapper svg {
+  width: var(--dims);
+  height: var(--dims);
+}
+.lp-image-text .video-wrapper.video--playing .img-wrapper,
+.lp-image-text .video-wrapper.video--playing .icon-wrapper {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .lp-image-text {
+    padding: 50px 0;
+  }
+  .lp-image-text .rte-body {
+    max-width: 55vw;
+  }
+  .lp-image-text .row > .media-colmn:after {
+    top: -9.5%;
+    left: -7.5%;
+    --dims: 46.5vw;
+  }
+  .lp-image-text .video-wrapper .icon-wrapper {
+    --dims: 48px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .lp-image-text .container-fluid {
+    padding: 0 5.208vw;
+  }
+  .lp-image-text .row > .media-colmn:after {
+    --dims: 42.5vw;
+  }
+  .lp-image-text .rte-body {
+    max-width: 40vw;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .lp-image-text {
+    padding: 80px 0 100px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .lp-image-text .row >.media-colmn {
+    padding: 0 10vw;
+  }
+}

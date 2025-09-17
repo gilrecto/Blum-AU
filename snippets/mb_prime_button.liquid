@@ -1,0 +1,36 @@
+{% if product.metafields.data.buy_with_prime.value == true %}
+  <!-- Beginning of Buy With Prime Widget -->
+  <script async fetchpriority="high" src="https://code.buywithprime.amazon.com/bwp.v1.js"></script>
+  {% if product.sku %}
+    <div
+      id="amzn-buy-now"
+      data-site-id="44kx2gx5je"
+      data-widget-id="w-DnaQIysZKk60SuWByBWiw9"
+      data-sku="{{product.sku}}"
+    ></div>
+  {% else %}
+    <div
+      id="amzn-buy-now"
+      data-site-id="44kx2gx5je"
+      data-widget-id="w-DnaQIysZKk60SuWByBWiw9"
+      data-sku="{{product.selected_or_first_available_variant.sku}}"
+    ></div>
+  {% endif %}
+  <!-- End of Buy With Prime Widget -->
+
+  {% if product.sku %}
+    <div
+      id="amzn-roa-rating"
+      data-site-id="44kx2gx5je"
+      data-roa-instance-id="gre328lcp5wg0"
+      data-sku="{{product.sku}}"
+    ></div>
+  {% else %}
+    <div
+      id="amzn-roa-rating"
+      data-site-id="44kx2gx5je"
+      data-roa-instance-id="gre328lcp5wg0"
+      data-sku="{{product.selected_or_first_available_variant.sku}}"
+    ></div>
+  {% endif %}
+{% endif %}

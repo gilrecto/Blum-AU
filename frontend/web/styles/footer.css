@@ -1,0 +1,27 @@
+.footer-newsletter--embed-type .klaviyo-form {
+	@apply ts:!p-0;
+}
+.footer-newsletter--embed-type .needsclick[data-testid="form-row"] {
+	@apply ts:!block;
+}
+.footer-newsletter--embed-type .needsclick[data-testid="form-component"] {
+	@apply ts:w-full ts:!p-0 ts:not-last:mb-4;
+}
+.footer-newsletter--embed-type .needsclick[data-testid="form-component"] > button {
+	@apply ts:!text-base ts:uppercase ts:!font-semibold ts:!bg-[var(--primary_button_background_gradient)] ts:hover:!bg-red ts:transition-all ts:ease-linear ts:duration-300;
+}
+.multi-site__selector details[open] {
+	@apply ts:relative;
+}
+.multi-site__selector .region-selector__summary {
+	@apply ts:p-4 ts:border ts:border-[rgba(var(--color-normal-text-rgb),1)] ts:uppercase ts:gap-5 ts:items-center ts:text-sm ts:font-medium ts:select-none;
+}
+.multi-site__selector details[open] svg {
+	@apply ts:rotate-180;
+}
+.multi-site__selector .region-selector__list {
+	@apply ts:-top-4 ts:-translate-y-full ts:py-3 ts:px-0 ts:overflow-hidden ts:bg-[rgba(var(--color-page-bg-rgb))] ts:shadow-[0px_0px_2px_0px_rgb(var(--color-normal-text-rgb),0.5)] ts:rounded-[0.4rem] ts:font-medium ts:text-xs ts:uppercase ts:leading-none ts:select-none;
+}
+.multi-site__selector .region-selector__list li a {
+	@apply ts:py-3 ts:px-6 ts:hover:bg-[rgba(var(--color-normal-text-rgb),0.1)] ts:hover:text-red;
+}

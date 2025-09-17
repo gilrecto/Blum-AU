@@ -1,0 +1,100 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "mb_main_assets",
+      "blocks": {
+        "2eb0c16f-4730-47ee-8445-724140c1c620": {
+          "type": "gal_img",
+          "settings": {
+            "img_1": "shopify://shop_images/emurr11_-_USA_-_Hummingbird_2.jpg",
+            "cap_1": "",
+            "d_ID_1": "19lx_KSP0ZYixU4pGNZ8uk07TmwJBpQ8O",
+            "img_2": "shopify://shop_images/better_tc_h78_nuthatch_usa_2.jpg",
+            "cap_2": "",
+            "d_ID_2": "1veProsiwmpyTpTiydNz1nKW_oA58-Y0t",
+            "img_3": "shopify://shop_images/BIMBLE_ig.jpg",
+            "cap_3": "",
+            "d_ID_3": "1LUkj83-SZErh-vdIUxYDpmaNKV2wMiEy",
+            "img_4": "shopify://shop_images/Carol_Speck.jpg",
+            "cap_4": "",
+            "d_ID_4": "1krMBt4LwkFyeg-J9wHriUOeDzgJnNCPB",
+            "img_5": "shopify://shop_images/daniel.e.weeks_ig.jpg",
+            "cap_5": "",
+            "d_ID_5": "1x8OScELT6bKNTHVMA5C0PpbCx35p1eVX",
+            "img_6": "shopify://shop_images/E3oLL_zXMAUX_xW.jpg",
+            "cap_6": "",
+            "d_ID_6": "1eTQlJKGT5lf43d3rppfOSCgMqvIxRR3H",
+            "img_7": "shopify://shop_images/eliseofinetti_ig_euetc_2.jpg",
+            "cap_7": "",
+            "d_ID_7": "1hANI8ldYZ4lKt8KzwEhSZrQVzhq4NtVY",
+            "img_8": "shopify://shop_images/fionadonelly.jpg",
+            "cap_8": "",
+            "d_ID_8": "1b6bjQhG8gje1P_R64qRhyJ1wAMvFFTKI",
+            "img_9": "shopify://shop_images/IMG_4036.jpg",
+            "cap_9": "",
+            "d_ID_9": "1bvrdCt6qq2LrKB1bN2z2-h4fZP7S2V3u",
+            "img_10": "shopify://shop_images/JEO126_USA_IG_2.jpg",
+            "cap_10": "",
+            "d_ID_10": "16yoKSerh_7aaQvuDEz3TljvnJrGDM9B3"
+          }
+        },
+        "c29517d9-1103-4917-8643-1c2a587a048e": {
+          "type": "gal_img",
+          "settings": {
+            "img_1": "shopify://shop_images/jeo126_USA_IG.jpg",
+            "cap_1": "",
+            "d_ID_1": "1VAdRR-eMkdma8cyMITck3KFwH0t2nE1F",
+            "img_2": "shopify://shop_images/lawnchairphoto_IG.jpg",
+            "cap_2": "",
+            "d_ID_2": "1hKDl69q5YbJPygHUldk-eVCMkgpOSlDz",
+            "img_3": "shopify://shop_images/oriole.jpg",
+            "cap_3": "",
+            "d_ID_3": "1S770yz-YiAscuA-j73xFQeWtoILHFG6x",
+            "img_4": "shopify://shop_images/pelican-sun_2.jpg",
+            "cap_4": "",
+            "d_ID_4": "1qCqKwCst-_7Ybk7Th0dFEwawHogUGlvY",
+            "img_5": "shopify://shop_images/rick_resnick_IG.jpg",
+            "cap_5": "",
+            "d_ID_5": "1FecC9iOG43-iANq4tDM2wDT6WlRW66wg",
+            "img_6": "shopify://shop_images/smadpar_ca_ig_2.jpg",
+            "cap_6": "",
+            "d_ID_6": "1BBkQEQxTVXaL11HjioEe4PKCYtgxFu3o",
+            "img_7": "shopify://shop_images/Stephen_G.jpg",
+            "cap_7": "",
+            "d_ID_7": "1GoxqUWznugZ72GrApo4dvo9lda1jNb3F",
+            "img_8": "shopify://shop_images/thecrowsnestcabin_IG.jpg",
+            "cap_8": "",
+            "d_ID_8": "17OoJRRzozWblEhNp7CqUyWI5P78WwGsL",
+            "img_9": "shopify://shop_images/windswept_in_wellies_ig_uk.jpg",
+            "cap_9": "",
+            "d_ID_9": "1MNCf3gTn9uIClzzgIDYgyu4dTZJLb2oP",
+            "img_10": "shopify://shop_images/YOKO4799.jpg",
+            "cap_10": "",
+            "d_ID_10": "1WD2a1_m5MMWu8bHVCZwRgAelGsY4geIw"
+          }
+        }
+      },
+      "block_order": [
+        "2eb0c16f-4730-47ee-8445-724140c1c620",
+        "c29517d9-1103-4917-8643-1c2a587a048e"
+      ],
+      "settings": {
+        "title": "",
+        "t_alignment": "center",
+        "t_color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

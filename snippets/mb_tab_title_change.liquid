@@ -1,0 +1,22 @@
+{% if settings.enable_dynamic_tab %}
+  {% liquid
+    assign icon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 110 110%22><text y=%221em%22 font-size=%2288%22>🐦</text></svg>'
+    if settings.tab_icon != blank
+      assign icon = settings.tab_icon | img_url: '32x32'
+    endif
+  %}
+
+  <tab-notifier
+    data-title="{{ settings.tab_title }}"
+    data-icon="{{ icon }}"
+    data-pages="
+      {% if settings.home %}home,{% endif %}
+      {% if settings.collection %}catalog,{% endif %}
+      {% if settings.product %}product,{% endif %}
+      {% if settings.cart %}cart,{% endif %}
+      {% if settings.pages %}pages{% endif %}
+    ">
+  </tab-notifier>
+
+  <script type="lazyload2" data-src="{{ 'mb_tab_notifier.js' | asset_url }}"></script>
+{% endif %}

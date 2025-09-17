@@ -1,0 +1,120 @@
+.bulk-order-table {
+  padding: 3vw 0 5vw;
+}
+.bulk-order-table h2.title {
+  font-size: clamp(28px, 2.8vw, 40px);
+}
+.bulk-order-table .table-wrapper {
+  position: relative;
+  overflow-x: scroll;
+}
+.bulk-order-table table td,
+.bulk-order-table table th {
+  border: 1px solid #efefef;
+  padding: 10px 15px;
+}
+.bulk-order-table table th {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px;
+}
+.bulk-order-table .img-wrapper {
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+}
+.bulk-order-table .quantity-selector {
+  display: flex;
+  gap: 5px;
+  border: 1px solid #cccccc;
+  width: 100%;
+  max-width: 120px;
+}
+.bulk-order-table .quantity-selector input[type="number"] {
+  width: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+}
+.bulk-order-table .quantity-selector button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bulk-order-table .quantity-selector button svg {
+  pointer-events: none;
+}
+.bulk-order-table table tbody td {
+  font-size: 16px;
+  line-height: 1;
+}
+.bulk-order-table table tbody td a.product-link {
+  font-weight: 500;
+}
+.variant-details {
+  display: none;
+}
+.variant-details.open {
+  display: block;
+}
+.bulk-order-table .btn-wrapper {
+  padding: 10px 0;
+  position: sticky;
+  bottom: 0;
+  background-color: #ffffff;
+  text-align: center;
+  margin-top: 2.5vw;
+}
+.bulk-order-table .btn-wrapper .btn {
+  font-size: clamp(13px, 1.5vw, 16px);
+  text-transform: uppercase;
+  padding-inline: clamp(25px, 2.4vw, 35px);
+}
+
+@media only screen and (min-width: 992px) {
+  .bulk-order-table .ctnr {
+    max-width: 1030px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .bulk-order-table .ctnr {
+    max-width: 1340px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .bulk-order-table {
+    padding: 40px 0 20px;
+  }
+  .bulk-order-table .table-wrapper {
+    position: relative;
+    overflow-x: auto;
+  }
+  .bulk-order-table .table-wrapper table {
+    width: 100%;
+    min-width: max-content;
+  }
+  .bulk-order-table table tbody td,
+  .bulk-order-table table th {
+    font-size: 14px;
+  }
+  .bulk-order-table table .img-colmn {
+    width: 70px !important;
+  }
+  .bulk-order-table table .qty-colmn {
+    width: auto !important;
+  }
+  .bulk-order-table .quantity-selector button {
+    display: none;
+  }
+  .bulk-order-table .quantity-selector input[type=number] {
+    margin: 0 auto;
+  }
+}

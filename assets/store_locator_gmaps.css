@@ -1,0 +1,56 @@
+store-locator .map-controls input#storeSearch {
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1;
+  padding: 12px !important;
+}
+store-locator #storeList .store-item h4 {
+  font-size: 15px;
+  line-height: 1.2;
+  font-family: var(--font-body-family) !important;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+store-locator #storeList .store-item p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+store-locator .gm-style .gm-style-iw-c {
+  border-radius: 0;
+  padding: 15px 12px !important;
+  max-width: 350px !important;
+}
+store-locator .gm-style-iw-chr {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+store-locator button.gm-ui-hover-effect {
+  width: auto !important;
+  height: auto !important;
+  padding: 8px !important;
+}
+store-locator .gm-ui-hover-effect:hover > span {
+  background-color: var(--ts-color-red);
+}
+store-locator .gm-ui-hover-effect > span {
+  width: 18px !important;
+  height: 18px !important;
+  margin: 0 !important;
+}
+store-locator .gm-style .gm-style-iw-d {
+  overflow: auto !important;
+}
+store-locator gmp-advanced-marker > svg {
+  width: 30px;
+  height: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  store-locator #storeList {
+    display: none;
+  }
+  store-locator #map {
+    aspect-ratio: 16/9;
+  }
+}

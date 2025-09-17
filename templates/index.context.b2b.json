@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "index.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "featured_collections_FzyzL": {
+      "type": "featured-collections",
+      "disabled": false,
+      "custom_css": [
+        ".featured-collections {padding-bottom: calc(var(--spacing) * 4);}",
+        ".s-header {padding-bottom: calc(var(--spacing) * 2);}",
+        ".s-header__title {font-size: clamp(25px, 2.6vw, 38px);}"
+      ],
+      "settings": {
+        "header-8159eedb5d98957c797aead8e96d3fb0": null,
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "TOP SELLING BIRDS",
+        "description": "",
+        "header-8ced3d5c328f8f0f77c05448243c2fd2": null,
+        "desktop_layout": "grid",
+        "style_card": "card",
+        "items_per_row_on_desktop": "4",
+        "items_per_row_on_mobile": "2",
+        "content_alignment": "ta-left",
+        "items_to_show": 4,
+        "enable_carousel": true,
+        "show_navigation": true,
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "header-1e3984082139d63cafd7318b79d48554": null,
+        "show_view_all_button": false,
+        "button_text": "See all products",
+        "header-e9cc74caa3302cc08a4ac8c4f8cf76f4": null,
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--top-right",
+        "badge_shape": "badge--star"
+      },
+      "blocks": {
+        "collection_EPjXN": {
+          "type": "collection",
+          "disabled": false,
+          "settings": {
+            "collection": "wholesale",
+            "heading": "{{ block.settings.collection.title }}"
+          }
+        }
+      },
+      "block_order": [
+        "collection_EPjXN"
+      ],
+      "name": "t:sections.featured_collection.name"
+    },
+    "mb_media_banner_XNMH3U": {
+      "custom_css": [
+        ".contents-wrapper {max-width: 90vw;}",
+        ".banner-contents .rte {font-size: clamp(1.6rem, 1.9vw, 3.6rem); line-height: 1.4; margin-top: 0;}",
+        ".s-header__buttons {margin-top: calc(var(--spacing) * 2.5); padding: 0;}",
+        "@media only screen and (min-width: 1200px) {.s-header__buttons > a.btn {padding: 0 2.55em; }}",
+        "@media only screen and (min-width: 768px) {.contents-wrapper {max-width: 50vw; }}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "banner_type": "image",
+        "banner_height": 80,
+        "add_overlay": true,
+        "overlay_opacity": 0.2,
+        "banner_image": "shopify://shop_images/hp_banner_kookaburras_2024.jpg",
+        "banner_img_mb": "shopify://shop_images/hp_banner_kookaburras_mob_2024.jpg",
+        "text_alignment": "left",
+        "bottom_spacing_mobile": 2.5
+      },
+      "blocks": {
+        "richtext_Q8YTne": {
+          "settings": {
+            "richtext_content": "<p>We Focus On Delivering Premium Quality, Beautifully Crafted Products That Produce Leading Financial Returns, Supported With Exceptional Service And Best Of All.. Proudly Made Right Here In Australia!</p>"
+          }
+        },
+        "buttons_8WYkAP": {
+          "settings": {
+            "button_url": "shopify://collections/wholesale",
+            "button_text": "VIEW THE BIRDS",
+            "btn_style": "btn-primary"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_Q8YTne",
+        "buttons_8WYkAP",
+        "image_RA7R6i"
+      ]
+    }
+  },
+  "order": [
+    "mb_media_banner_XNMH3U",
+    "featured_collections_FzyzL"
+  ]
+}

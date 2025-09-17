@@ -1,0 +1,284 @@
+{{ 'mb_affirmation.css' | asset_url | stylesheet_tag: preload: true }}
+{% assign setting = section.settings %}
+{% liquid
+  assign desktop_pad = setting.pad_desk
+  assign laptop_pad = setting.pad_lap
+  assign tablet_pad = setting.pad_tab
+  assign mobile_pad = setting.pad_mob
+%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .affirmation {
+    padding: {{ desktop_pad }}px 0;
+    background-color: {{ setting.bg_color }};
+    color: {{ setting.txt_color }};
+  }
+  {%- if section.settings.enable_marq -%}
+    .affirmation .marquee-inner {
+      --gap: 1rem;
+      display: flex;
+      gap: var(--gap);
+      user-select: none;
+    }
+    .affirmation .marquee-inner > span {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-around;
+      min-width: 100%;
+      gap: var(--gap);
+    }
+    .affirmation .marquee-inner.to-left {
+      animation: scroll 20s linear infinite;
+    }
+    .affirmation .marquee-inner.to-right {
+      animation: scroll 20s linear infinite reverse;
+    }
+    .affirmation .marquee-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-100% - var(--gap)));
+      }
+    }
+  {%- endif -%}
+
+  @media only screen and (max-width: 1199px) {
+    #shopify-section-{{ section.id }} .affirmation {
+      padding: {{ laptop_pad }}px 0;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    #shopify-section-{{ section.id }} .affirmation {
+      padding: {{ tablet_pad }}px 0;
+    }
+    .affirmation .marquee-inner {
+      width: 180vw;
+      animation-duration: 10s !important;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .affirmation {
+      padding: {{ mobile_pad }}px 0;
+    }
+  }
+{%- endstyle -%}
+
+
+<div class="affirmation">
+  <div class="container-fluid">
+    {% if section.settings.enable_marq %}
+      <div class="marquee-inner {{ setting.dir }}">
+        {%- for cont_loop in (1..2) -%}
+          <span>
+            {%- for block in section.blocks -%}
+              <div class="marquee-item">
+                <p class="affirmation-text text-{{ setting.text_alignment }}{% if block.settings.show_ico %} with-ico{% endif %}">
+                  {% if block.settings.show_ico %}
+                    <span class="icon-wrapper">
+                      {% if block.settings.svg_ico != blank and block.settings.icon == blank %}
+                        {{ block.settings.svg_ico }}
+                      {% elsif block.settings.svg_ico == blank and block.settings.icon != blank %}
+                        {% render 'mb_render_image', image: block.settings.icon, class: "affirmation-icon" %}
+                      {% endif %}
+                    </span>
+                  {% endif %}
+                  <span>{{ block.settings.text | escape }}</span>
+                </p>
+              </div>
+            {%- endfor -%}
+          </span>
+        {%- endfor -%}
+      </div>
+    {% else %}
+      <div class="row">
+        {%- for block in section.blocks -%}
+          <div class="col">
+            <p class="affirmation-text text-{{ setting.text_alignment }}{% if block.settings.show_ico %} with-ico{% endif %}">
+              {% if block.settings.show_ico %}
+                <span class="icon-wrapper">
+                  {% if block.settings.svg_ico != blank and block.settings.icon == blank %}
+                    {{ block.settings.svg_ico }}
+                  {% elsif block.settings.svg_ico == blank and block.settings.icon != blank %}
+                    {% render 'mb_render_image', image: block.settings.icon, class: "affirmation-icon" %}
+                  {% endif %}
+                </span>
+              {% endif %}
+              <span>{{ block.settings.text | escape }}</span>
+            </p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "MB Affirmation",
+    "class": "mb-affirmation",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "txt_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_marq",
+        "label": "Enable Marquee",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "dir",
+        "label": "Direction",
+        "options": [
+          {
+            "value": "to-left",
+            "label": "Right to Left"
+          },
+          {
+            "value": "to-right",
+            "label": "Left to Right"
+          }
+        ],
+        "default": "to-left"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "options": [
+          {
+            "value": "start",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "end",
+            "label": "Right"
+          }
+        ],
+        "default": "center",
+        "label": "Alignment"
+      },
+      {
+        "type": "header",
+        "content": "Section spacing",
+        "info": "Top and bottom padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_desk",
+        "label": "Dektop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 100,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_lap",
+        "label": "Laptop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 80,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_tab",
+        "label": "Tablet",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 60,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_mob",
+        "label": "Mobile",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 40,
+		"info": "Padding"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "marq_item",
+        "name": "Affirmation Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "default": "Affrimation",
+            "label": "Affrimation Label"
+          },
+          {
+            "type":"header",
+            "content":"Icon Settings"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_ico",
+            "label": "Show Icon",
+            "default": false
+          },
+          {
+            "type": "liquid",
+            "id": "svg_ico",
+            "label": "Paste SVG icon code here",
+            "default": "SVG code"
+          },
+          {
+            "type": "paragraph",
+            "content": "----- OR -----"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Add Icon Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name":"MB Affirmation",
+        "category":"MB Custom Section",
+        "blocks": [
+          { "type": "marq_item" },
+          { "type": "marq_item" },
+          { "type": "marq_item" }
+        ]
+      }
+    ]
+  }
+{% endschema %}

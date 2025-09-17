@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_page_title": true,
+        "remove_padding_top": true,
+        "remove_padding_bottom": false
+      }
+    },
+    "text_4CAG3R": {
+      "type": "text",
+      "custom_css": [
+        "[data-ui-component=\"Text Section\"] {padding-bottom: 0 !important;}",
+        ".s-header__desc {margin-top: calc(var(--spacing) * 1.5);}",
+        "@media only screen and (min-width: 769px) {.s-header__content {padding-inline: 6vw; padding-bottom: 4rem; }}"
+      ],
+      "name": "t:sections.text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "ta-left",
+        "remove_padding_top": false,
+        "remove_padding_bottom": true,
+        "subheading": "",
+        "heading": "OVER 1, 000 FIVE STAR REVIEWS.",
+        "heading_size": "h2",
+        "description": "<h4>WHAT'S THE WORD ON THE BIRD?</h4><p>Whether you bought it for yourself, received it as a gift, or it fell straight from the sky and into your yard, we want to know what you think of your Metalbird!</p><p>We can't wait to hear your thoughts..</p>",
+        "button_main_text": "",
+        "button_main_link": "",
+        "button_sub_text": "",
+        "button_sub_link": "",
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--star",
+        "enable_section_id": false,
+        "custom_section_id": ""
+      }
+    },
+    "17556190176e10b688": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_agg_section_Njp8A4": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "hide_thumbnails": false,
+            "product_handle": "",
+            "aggregated": true,
+            "data-limit": 20,
+            "maxwidth": 1920,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_Njp8A4"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "content_alignment": "ta-left",
+        "enable_content_fullwidth": false,
+        "remove_padding_top": true,
+        "remove_padding_bottom": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_4CAG3R",
+    "17556190176e10b688"
+  ]
+}

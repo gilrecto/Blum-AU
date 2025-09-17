@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "custom_css": [
+        ".s-header h1,.card__content h3 {font-family: var(--font-body-family); text-transform: uppercase; font-weight: 600;}",
+        ".gap-unequal {row-gap: calc(var(--spacing) * 6);}",
+        ".clm {flex: 1 0 auto; padding: 0 calc(var(--gutter) \/ 1.6);}",
+        ".s-header__desc p {font-size: clamp(1.6rem, 2vw, 1.85rem);}",
+        "sht-image-atf.media-wrapper {transition: all 0.5s linear;}",
+        "@media only screen and (min-width: 769px) {.s-header {padding: 0 0 calc(var(--spacing) * 2); } sht-image-atf.media-wrapper {--ratio: 1 !important; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "custom_title": "",
+        "custom_description": "<p>Stories, Insights, and Chirps Worth Sharing - Metalbird Blogs<\/p>",
+        "items_per_page": "12",
+        "products_load_method": "infinite_scroll",
+        "items_per_row_on_desktop": "4",
+        "content_alignment": "ta-left",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "show_rss": false,
+        "show_tags_filter": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

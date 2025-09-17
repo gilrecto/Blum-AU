@@ -1,0 +1,219 @@
+{{ 'lotr_corten.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% assign setting = section.settings %}
+{% liquid
+  assign desktop_pad = setting.pad_desk
+  assign laptop_pad = setting.pad_lap
+  assign tablet_pad = setting.pad_tab
+  assign mobile_pad = setting.pad_mob
+%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    padding: {{ desktop_pad }}px 0;
+    background-color: {{ setting.bg }};
+  }
+  
+  @media only screen and (max-width: 1199px) {
+    #shopify-section-{{ section.id }} {
+      padding: {{ laptop_pad }}px 0;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    #shopify-section-{{ section.id }} {
+      padding: {{ tablet_pad }}px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} {
+      padding: {{ mobile_pad }}px 0;
+    }
+  }
+{%- endstyle -%}
+
+<div class="lotr-corten">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12 text-{{ setting.t_alignment }}">
+        <div class="section-title-area">
+          {%- if setting.title != blank -%}
+            <h2>{{ setting.title }}</h2>
+          {%- endif -%}
+        </div>
+        {%- if section.blocks.size > 0 -%}
+          <div class="corteen-wrapper">
+            {%- for block in section.blocks -%}
+              <div class="corteen">
+                {% render 'mb_image', image: block.settings.image, section: section class: 'patina-img' %}
+                <p>{{ block.settings.label }}</p>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        
+        {%- if setting.subtext != blank -%}
+          <div class="rte-body rte">
+            {{ setting.subtext }}
+          </div>
+        {%- endif -%}
+        
+        {%- if setting.show_btn -%}
+					{% liquid
+						assign product_form_id = 'productForm-' | append: section.id
+					%}
+          <div class="btn-wrapper">
+            {%- form 'product', product, id: product_form_id, class: 'form form__fields', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+							<div class="form__field">
+								<input type="hidden" class="form__control" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+								<input class="js-quantity-input qty-element input-number " type="hidden" name="quantity" aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}" id="productQuantityInput-{{ section.id }}" min="1" value="1" form="{{ product_form_id }}" disabled>
+							</div>
+							<div class="gap-16 d-flex w-100">
+								<button type="submit" name="add" class="js-product-form-submit-btn product-btn-atc btn btn-primary btn-large w-100"
+									{% if product.selected_or_first_available_variant.available == false %}
+										disabled
+										{% assign add_to_cart_btn_lbl = 'products.product.sold_out' | t %}
+									{% else %}
+										{% assign add_to_cart_btn_lbl = 'products.product.add_to_cart' | t %}
+									{% endif %}>
+									<span class="p-relative d-flex middle-xs center-xs ta-center">
+										<span class="js-product-form-spinner product-form-spinner p-absolute icon">{% render 'icon-spinner' %}</span>
+										<span class="js-product-form-submit-btn-text wb-break-word">{{ add_to_cart_btn_lbl }}</span>
+									</span>
+								</button>
+							</div>
+						{%- endform -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+  
+{% schema %}
+  {
+    "name": "[LOTR] Corten Section",
+    "class": "lotr-corten",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg",
+        "label": "Background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section title",
+        "default": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "subtext",
+        "label": "Subtext",
+        "default": "<p>Lorem ipsum dolor set amit</p>"
+      },
+      {
+        "type": "select",
+        "id": "t_alignment",
+        "label": "Content alignment",
+		"default": "center",
+        "options": [
+          {
+            "value": "start",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "end",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_btn",
+        "label": "Show quick add to cart",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "btn_label",
+        "label": "Button label",
+        "default": "Add to Cart"
+      },
+      {
+        "type": "header",
+        "content": "Section spacing",
+        "info": "Top and bottom padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_desk",
+        "label": "Dektop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 100,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_lap",
+        "label": "Laptop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 80,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_tab",
+        "label": "Tablet",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 60,
+		"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_mob",
+        "label": "Mobile",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 40,
+		"info": "Padding"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "img_text",
+        "name": "Corten block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Corten image"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Corten text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

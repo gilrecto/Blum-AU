@@ -1,0 +1,12 @@
+{%- if block.settings.button_label != blank -%}
+  <div class="block-button" >
+    <a
+      href="{{- block.settings.button_link | default: '#' -}}"
+      {{ block.settings.button_link | default: 'tabindex="-1"' | replace: block.settings.button_link , '' }}
+      class="{{ class}} btn btn-large w-100 btn-{{- block.settings.button_style }} hide-empty {{ block.settings.button_link | default: 'disable' | replace: block.settings.button_link , '' }}"
+      {{ block.shopify_attributes }}
+    >
+      {{- block.settings.button_label | escape -}}
+    </a>
+  </div>
+{%- endif -%}

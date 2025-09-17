@@ -1,0 +1,76 @@
+
+{% liquid
+  assign enable_transparent_header = false
+
+  if request.page_type == 'index' and section.settings.enable_transparent and section.settings.logo_transparent != blank
+    assign enable_transparent_header = true
+  endif
+
+  if template.suffix == 'lotr_lp' and section.settings.enable_transparent and section.settings.logo_transparent != blank
+    assign enable_transparent_header = true
+  endif
+%}
+
+{%- if enable_transparent_header -%}
+  {%- assign image_size_2x = section.settings.logo_width | times: 2 | at_most: 5760 -%}
+  {%- assign header_transparent_logo_css = ' header-logo--transparent' -%}
+
+  {%- capture logo_transparent -%}
+    {%- assign transparent_width = section.settings.logo_width -%}
+    {%- assign transparent_height = section.settings.logo.height | default: section.settings.logo_transparent.height -%}
+    {%- if section.settings.logo != blank -%}
+      {%- assign aspect_ratio = section.settings.logo.width | divided_by: section.settings.logo.height | times: 1.0 -%}
+      {%- assign transparent_height = transparent_width | divided_by: aspect_ratio | round -%}
+    {%- endif -%}
+    {%- liquid
+      assign transparent_logo = section.settings.logo_transparent
+      assign transparent_logo_mobile = transparent_logo | image_url: width: section.settings.logo_width_mobile
+
+      if section.settings.mobile_logo_transparent != blank
+        assign transparent_logo_mobile = section.settings.mobile_logo_transparent | image_url: width: section.settings.logo_width_mobile
+      endif
+    -%}
+
+    <picture>
+      <source srcset="{{ transparent_logo_mobile }}" media="(max-width: 1199px)"/>
+      <img srcset="{{ transparent_logo | image_url: width: section.settings.logo_width }}, {{ transparent_logo | image_url: width: image_size_2x }} 2x" src="{{ section.settings.logo | image_url: width: 400 }}"  class="header__logo-img logo logo--transparent {% if section.settings.logo == blank %}logo--transparent-always{% endif %}" width="{{ transparent_width }}" height="{{ transparent_height }}" alt="{{ transparent_logo.alt | default: shop.name | escape }}" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
+  {%- endcapture -%}
+{%- endif -%}
+
+{%  liquid
+  assign has_any_logo = false
+  assign has_transparent_logo = false
+  if request.page_type == 'index' and section.settings.enable_transparent and section.settings.logo_transparent != blank
+    assign has_transparent_logo = true
+  endif
+  if section.settings.logo != blank or has_transparent_logo
+    assign has_any_logo = true
+  endif
+%}
+
+<div class="header-logo {{ header_transparent_logo_css }}" style="{{ styles }}">
+  {%- if request.page_type == 'index' -%}
+    <h1 class="header__heading m-zero wb-break-word visually-hidden">{{ section.settings.logo.alt | default: shop.name | escape }}</h1>
+  {%- endif -%}
+    <a href="{{ routes.root_url }}" aria-label="{{ section.settings.logo.alt | default: shop.name | escape }}" class="header__logo-link m-zero js-header-logo-link d-block h4 p-relative wb-break-word">
+      {%- if section.settings.logo != blank -%}
+        {%- liquid
+          assign logo_img = section.settings.logo
+          assign mobile_img = logo_img | image_url: width: section.settings.logo_width_mobile
+
+          if section.settings.mobile_logo != blank
+            assign mobile_img = section.settings.mobile_logo | image_url: width: section.settings.logo_width_mobile
+          endif
+        -%}
+
+        <picture>
+          <source srcset="{{ mobile_img }}" media="(max-width: 1199px)"/>
+          <img srcset="{{ logo_img | image_url: width: section.settings.logo_width }}, {{ logo_img | image_url: width: image_size_2x }} 2x" src="{{ logo_img | image_url: width: 400 }}" class="header__logo-img logo__main-logo logo" width="{{ logo_img.width }}" height="{{ logo_img.height }}" alt="{{ logo_img.alt | default: shop.name | escape }}" loading="eager" fetchpriority="high" decoding="async">
+        </picture>
+      {%- elsif has_any_logo == false -%}
+        <span class="header__heading m-zero wb-break-word">{{ shop.name }}</span>
+      {%- endif -%}
+      {{ logo_transparent }}
+    </a>
+</div>

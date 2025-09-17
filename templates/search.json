@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "disabled": true,
+      "settings": {
+        "color_scheme": ""
+      }
+    },
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "color_scheme": "",
+        "item_per_page": "12",
+        "products_load_method": "infinite_scroll",
+        "style_card": "card",
+        "items_per_row_on_desktop": "4",
+        "items_per_row_on_mobile": "2",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false,
+        "enable_filtering": false,
+        "expand_all_filter": false,
+        "enable_sort": true,
+        "desktop_filter_and_sort_layout": "horizontal"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

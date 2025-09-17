@@ -1,0 +1,42 @@
+.installation-videos .col:not(.col-12) {
+  margin-bottom: 40px;
+}
+.installation-videos .title-area {
+  margin-bottom: 20px;
+}
+.installation-videos .title-area h2 {
+  font-size: clamp(1.6875rem, 1.3936rem + 0.8178vw, 2.375rem);
+  line-height: .9;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.installation-videos .subtext {
+  font-size: clamp(0.75rem, 0.563rem + 0.5204vw, 1.1875rem);
+  font-weight: 500;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+.installation-videos h3.title {  
+  font-weight: 400;
+  font-size: clamp(1.25rem, 1.1698rem + 0.223vw, 1.4375rem);
+  line-height: .9;
+  margin-bottom: 10px;
+}
+.installation-videos h3.title small > span {
+  font-size: clamp(0.9375rem, 0.8573rem + 0.223vw, 1.125rem);
+}
+.installation-videos .btn-wrapper {
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .installation-videos .title-area {
+    margin-bottom: 35px;
+  }
+  .installation-videos .subtext {
+    margin-top: 30px;
+  }
+  .installation-videos .col:not(.col-12) {
+    margin-bottom: 0;
+  }
+}
