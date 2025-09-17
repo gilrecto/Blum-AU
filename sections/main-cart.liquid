@@ -255,7 +255,7 @@
               </div>
               <div class="w-100">
                 <div class="cart__checkout mb-12">
-                  {%- if customer.b2b? and cart.item_count >= 12 -%}
+                  {%- capture checkout_button -%}
                     <noscript>
                       <button type="submit" class="mb-8 w-100 btn btn-secondary btn-large" form="cartForm">
                         {{ 'sections.cart.update' | t }}
@@ -272,14 +272,23 @@
                     >
                       {{ 'sections.cart.checkout' | t }}
                     </button>
+
                     {%- if additional_checkout_buttons and settings.cart_enable_dynamic_checkout_button -%}
                       <div class="mt-8 w-100">
                         {{ content_for_additional_checkout_buttons }}
                       </div>
                     {%- endif -%}
+                  {%- endcapture -%}
+
+                  {%- unless customer.b2b? -%}
+                    {{ checkout_button }}
                   {%- else -%}
-                    <div class="message-box">Orders should be a minimum of 12 billable items to proceed to checkout</div>
-                  {%- endif -%}
+                    {%- if cart.item_count >= 12 -%}
+                      {{ checkout_button }}
+                    {%- else -%}
+                      <div class="message-box">Orders should be a minimum of 12 billable items to proceed to checkout</div>
+                    {%- endif -%}
+                  {%- endunless -%}
                 </div>
                 <p class="ta-center m-zero">
                   <a href="{{ routes.all_products_collection_url }}" class="btn btn-link ts:!text-sm">
