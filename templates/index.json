@@ -38,7 +38,9 @@
         },
         "image_RA7R6i": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/birdlife_au.svg"
+          }
         }
       },
       "block_order": [

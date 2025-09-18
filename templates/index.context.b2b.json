@@ -22,12 +22,12 @@
         ".s-header__title {font-size: clamp(25px, 2.6vw, 38px);}"
       ],
       "settings": {
-        "header-8159eedb5d98957c797aead8e96d3fb0": null,
+        "header-7dfe3180789c6b45379d03e49370a97e": null,
         "color_scheme": "",
         "subheading": "",
         "heading": "TOP SELLING BIRDS",
         "description": "",
-        "header-8ced3d5c328f8f0f77c05448243c2fd2": null,
+        "header-afaff3a14834c53df08df4c97ecea8cc": null,
         "desktop_layout": "grid",
         "style_card": "card",
         "items_per_row_on_desktop": "4",
@@ -38,10 +38,10 @@
         "show_navigation": true,
         "remove_padding_top": false,
         "remove_padding_bottom": false,
-        "header-1e3984082139d63cafd7318b79d48554": null,
+        "header-bcf02a92e03c2598bc51acd985e3c778": null,
         "show_view_all_button": false,
         "button_text": "See all products",
-        "header-e9cc74caa3302cc08a4ac8c4f8cf76f4": null,
+        "header-13b65682e9c495575b9c943482eeea17": null,
         "badge_text": "",
         "badge_color": "color-accent-1",
         "badge_position": "p-badge--top-right",
@@ -97,8 +97,7 @@
       },
       "block_order": [
         "richtext_Q8YTne",
-        "buttons_8WYkAP",
-        "image_RA7R6i"
+        "buttons_8WYkAP"
       ]
     }
   },

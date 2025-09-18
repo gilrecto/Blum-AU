@@ -19,6 +19,10 @@
       "blocks": {}
     },
     "header": {
+      "custom_css": [
+        ".header {padding-top: 1rem; padding-bottom: 1rem;}",
+        ".menu__link {--font-menu-item-weight: 600;}"
+      ],
       "settings": {
         "color_scheme": "scheme-2",
         "logo_position": "middle-center",

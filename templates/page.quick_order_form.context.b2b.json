@@ -17,6 +17,11 @@
       "disabled": false,
       "settings": {},
       "blocks": {}
+    },
+    "page": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }

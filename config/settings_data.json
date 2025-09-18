@@ -245,19 +245,19 @@
         "disabled": true,
         "settings": {}
       },
-      "10864971697205422121": {
-        "type": "shopify://apps/gorgias-live-chat-helpdesk/blocks/gorgias/a66db725-7b96-4e3f-916e-6c8e6f87aaaa",
-        "disabled": true,
-        "settings": {}
-      },
       "13477285647392927056": {
         "type": "shopify://apps/kefi-bundle-builder/blocks/kefi/a54b549a-0a53-4f58-b095-45369cafa8e7",
-        "disabled": true,
+        "disabled": false,
+        "settings": {}
+      },
+      "10864971697205422121": {
+        "type": "shopify://apps/gorgias-live-chat-helpdesk/blocks/gorgias/a66db725-7b96-4e3f-916e-6c8e6f87aaaa",
+        "disabled": false,
         "settings": {}
       },
       "15731092540705609947": {
         "type": "shopify://apps/manifest-ai-chatbot/blocks/embed/cef2d5e1-cdf8-491e-bb69-d24f19b6ea44",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
