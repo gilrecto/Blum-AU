@@ -12,5 +12,11 @@
   "context": {
     "b2b": true
   },
-  "sections": {}
+  "sections": {
+    "main": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {}
+    }
+  }
 }
