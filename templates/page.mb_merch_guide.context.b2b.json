@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.mb_merch_guide.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "mb_image_banner_dyGkD": {
+      "type": "mb_image_banner",
+      "disabled": false,
+      "settings": {
+        "wrapper": "ctnr",
+        "image": "shopify://shop_images/MB_Banner_Goods.png",
+        "position": "top"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "mb_video_info_n4ztg": {
+      "type": "mb_video_info",
+      "disabled": false,
+      "settings": {
+        "title": "Top display tips from the creator of Metalbird, Phil Walters...",
+        "video": "shopify://files/videos/Metalbird Merch Guide.mp4",
+        "poster": "shopify://shop_images/poster.jpg"
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "mb_image_banner_dyGkD",
+    "mb_video_info_n4ztg"
+  ]
+}

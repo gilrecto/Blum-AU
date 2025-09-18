@@ -1,0 +1,106 @@
+{%- style -%}
+  .mb-video-info .video-info {
+    padding: 40px 0;
+  }
+  .mb-video-info .title-area h2 {
+    font-family: var(--fonts_name) !important;
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 600;
+    margin: 0 0 18px;
+  }
+  .mb-video-info .video-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+    background-color: #000000;
+  }
+  .mb-video-info .video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .mb-video-info .video-info {
+      padding: 8vw 0;
+    }
+    .mb-video-info .title-area h2 {
+      font-size: 2vw;
+      margin-bottom: 3vw;
+    }
+    .mb-video-info .video-wrapper {
+      padding-bottom: 56.25%;
+    }
+  }
+
+	@media only screen and (min-width: 992px) {
+		.video-info .ctnr {
+			max-width: 98rem;
+		}
+	}
+
+	@media only screen and (min-width: 1200px) {
+		.video-info .ctnr {
+			max-width: 131rem;
+		}
+	}
+{%- endstyle -%}
+
+<div class="video-info">
+  <div class="ctnr">
+    <div class="rw">
+      <div class="clm" style="--w-xs: 12;">
+        {%- if section.settings.title != blank -%}
+          <div class="title-area">
+            <h2 class="title">{{ section.settings.title }}</h2>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.video != blank -%}
+          {%- if section.settings.poster != blank -%}
+            {% assign poster = section.settings.poster | image_url: width: section.settings.poster.width %}
+          {%- endif -%}
+          {% assign video_source = section.settings.video.sources[1].url %}
+          <div class="video-wrapper">
+            <video type="video/mp4" src data-src="{{ video_source }}" controls poster="{{ poster }}"  playsinline="" width="100%" class="video-player">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <script type="lazyload2" data-src="{{ 'mb_video_player.js' | asset_url }}"></script>
+          <script type="lazyload2">
+              videoPlayer('#shopify-section-{{ section.id }} .video-info .video-player')
+          </script>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "[MB] Video Info",
+    "tag": "section",
+    "class": "mb-video-info",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "Watch This Video for More Info",
+        "label": "Title"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "A Shopify-hosted video"
+      },
+      {
+        "type": "image_picker",
+        "id": "poster",
+        "label": "Video Poster"
+      }
+    ]
+  }
+{% endschema %}

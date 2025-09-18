@@ -1,0 +1,101 @@
+{%- style -%}
+  .image-banner .ctnr-banner {
+    padding: 0;
+  }
+  .image-banner .image-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    padding-bottom: 40%;
+  }
+  .image-banner .image-wrapper .banner-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.position }};
+  }
+
+	@media only screen and (min-width: 992px) {
+		.image-banner .ctnr {
+			max-width: 98rem;
+		}
+	}
+
+	@media only screen and (min-width: 1200px) {
+		.image-banner .ctnr {
+			max-width: 131rem;
+		}
+	}
+
+  @media only screen and (max-width: 575px) {
+    .image-banner .ctnr {
+      padding: 0;
+    }
+  }
+{%- endstyle -%}
+
+<div class="image-banner">
+  <div class="{{ section.settings.wrapper }}">
+    <div class="image-wrapper">
+      {% if section.settings.image != blank %}
+        {% render 'mb_render_image', image: section.settings.image, class: 'banner-image' %}
+      {% else %}
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'banner-image' }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "[MB] Image Banner",
+    "tag": "section",
+    "class": "mb-image-banner",
+    "settings": [
+      {
+        "type": "select",
+        "id": "wrapper",
+        "label": "Size",
+        "options": [
+          {
+            "value": "ctnr",
+            "label": "Box"
+          },
+          {
+            "value": "ctnr-banner",
+            "label": "Fluid"
+          }
+        ],
+        "default": "ctnr-banner"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "select",
+        "id": "position",
+        "label": "Image Alignment",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Midddle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      }
+    ]
+  }
+{% endschema %}

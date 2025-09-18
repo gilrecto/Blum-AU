@@ -6,7 +6,7 @@
 }
 .bulk-order-table .table-wrapper {
   position: relative;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 .bulk-order-table table td,
 .bulk-order-table table th {
@@ -77,9 +77,9 @@
   padding-inline: clamp(25px, 2.4vw, 35px);
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1025px) {
   .bulk-order-table .ctnr {
-    max-width: 1030px;
+    max-width: 100rem;
   }
 }
 
@@ -89,7 +89,7 @@
   }
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1024px) {
   .bulk-order-table {
     padding: 40px 0 20px;
   }
@@ -107,6 +107,9 @@
   }
   .bulk-order-table table .img-colmn {
     width: 70px !important;
+    position: sticky;
+    left: 0;
+    background-color: #ffffff;
   }
   .bulk-order-table table .qty-colmn {
     width: auto !important;

@@ -1,0 +1,156 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.mb_product_knowledge.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "mb_image_banner_xAUJQ": {
+      "type": "mb_image_banner",
+      "disabled": false,
+      "settings": {
+        "wrapper": "ctnr",
+        "image": "shopify://shop_images/PK_Woodpecker.png",
+        "position": "bottom"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "mb_video_info_7dkRi": {
+      "type": "mb_video_info",
+      "disabled": false,
+      "settings": {
+        "title": "Product know-how from Phil Walters, creator of Metalbird...",
+        "video": "shopify://files/videos/Metalbird Product Knowledge.mp4",
+        "poster": "shopify://shop_images/poster.webp"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "mb_image_text_KiwxJ": {
+      "type": "mb_image_text",
+      "disabled": false,
+      "settings": {
+        "header-f2048f14d63749e6fc2f05c00118da04": null,
+        "title": "DOES A METALBIRD HURT THE TREES?",
+        "body": "<p>While anything that breaks the bark of a tree provides an opportunity for infection, in 10 years of running this project around the world we have yet to hear of a single tree that has died as a result of one of our birds being nailed into it. Our original birds are a decade old and the trees are showing no long-term damage whatsoever.</p>",
+        "header-129b60b9296b53f8dad1716e4f357fba": null,
+        "wrapper": "ctnr",
+        "gap": 40,
+        "img_size": "medium",
+        "desktop_padding_top": 15,
+        "desktop_padding_bottom": 80,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 40
+      },
+      "blocks": {
+        "image_WpaJM": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/corteen_steel.png"
+          }
+        },
+        "text_QJbWd": {
+          "type": "text",
+          "disabled": false,
+          "settings": {
+            "title": "HOW DOES CORTEN® STEEL WEATHER?",
+            "body": "<p>Metalbirds are made from 1/7 inch Premium Corten® Steel which is a weathering steel. It’s designed to develop a patina that seals the steel providing it with long term protection against the elements.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_WpaJM",
+        "text_QJbWd"
+      ]
+    },
+    "image_with_text_columns_8nPNx": {
+      "type": "image-with-text-columns",
+      "disabled": false,
+      "custom_css": [
+        ".s-header {padding: 0 0 calc(var(--spacing) * 1);}",
+        ".s-header__content {--w-md: 12 !important;}",
+        ".s-header__title {font-size: clamp(2.8rem, 3vw, 4rem);}",
+        ".s-header__desc {max-width: 100%; margin-top: calc(var(--spacing) * 1.15); font-size: clamp(1.4rem, 1.5vw, 2rem); font-weight: 500;}",
+        "sht-carousel-itm {display: flex; flex-direction: column-reverse; gap: 1.5rem;}",
+        "@media (min-width: 992px) {.ctnr {max-width: 98rem; }}",
+        "@media (min-width: 1200px) {.ctnr {max-width: 131rem; }}"
+      ],
+      "settings": {
+        "header-654071eedcd1ea9c172d9e1e18f46fd0": null,
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "Are they easy to install?",
+        "description": "<p>Metalbird comes ready to install – all you need is a hammer! Here are the 3 simple steps...<br/></p>",
+        "header-13df91abedc794c863a9cb65b71255d6": null,
+        "items_per_row_on_desktop": "3",
+        "content_alignment": "ta-left",
+        "enable_carousel": false,
+        "show_navigation": false,
+        "remove_padding_top": true,
+        "remove_padding_bottom": false,
+        "header-6c678c53427f875fe56399fb39594e68": null,
+        "image_ratio": "1/1",
+        "overlay_content_mobile": false,
+        "header-08ae158719e3ac3ca9243258668f2604": null,
+        "text": "",
+        "link": "",
+        "header-26f69140d785fe05302f98a47ebeb31e": null,
+        "badge_text": "",
+        "badge_color": "color-accent-1",
+        "badge_position": "p-badge--bottom-right",
+        "badge_shape": "badge--star"
+      },
+      "blocks": {
+        "text_dwnTi": {
+          "type": "text",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/DSC00952.jpg",
+            "heading": "STEP 1 : UNBOX",
+            "description": ""
+          }
+        },
+        "text_AbD66": {
+          "type": "text",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/DSC00847.jpg",
+            "heading": "STEP TWO : GET SET",
+            "description": ""
+          }
+        },
+        "text_UA6G6": {
+          "type": "text",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/DSC00841-1.jpg",
+            "heading": "STEP THREE : HAMMER",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_dwnTi",
+        "text_AbD66",
+        "text_UA6G6"
+      ],
+      "name": "t:sections.image_with_text_columns.name"
+    }
+  },
+  "order": [
+    "mb_image_banner_xAUJQ",
+    "mb_video_info_7dkRi",
+    "image_with_text_columns_8nPNx",
+    "mb_image_text_KiwxJ"
+  ]
+}

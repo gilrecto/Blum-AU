@@ -1,0 +1,307 @@
+{% assign setting = section.settings %}
+{%- liquid
+   assign img_colmn_style = "--w-xs: 12;--w-md: 6;"
+   assign txt_colmn_style = "--w-xs: 12;--w-md: 6;"
+
+   if setting.img_size == "small"
+     assign img_colmn_style = "--w-xs: 12;--w-md: 4;"
+     assign txt_colmn_style = "--w-xs: 12;--w-md: 8;"
+   elsif setting.img_size == "large"
+    assign img_colmn_style = "--w-xs: 12;--w-md: 8;"
+    assign txt_colmn_style = "--w-xs: 12;--w-md: 4;"
+   endif
+-%}
+
+{%- style -%}
+  .image-text--section {
+    padding: {{ setting.mobile_padding_top }}px 0 {{ setting.mobile_padding_bottom}}px;
+  }
+  .image-text--section .rw.title-area {
+    margin-bottom: 40px;
+  }
+  .image-text--section .section-head {
+    margin-bottom: 15px;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .image-text--section .body-wrapper {
+    font-size: 16px;
+  }
+  .image-text--section .img-wrapper .block-img {
+    width: 100%;
+    height: auto;
+  }
+  .image-text--section .block-title {
+    font-family: var(--fonts_name) !important;
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 600;
+    text-transform: none;
+    margin-bottom: 15px;
+  }
+  .image-text--section .rw.img-text-row {
+    --gap: 30px;
+    row-gap: var(--gap);
+    justify-content: space-between;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .image-text--section {
+      padding: {{ setting.desktop_padding_top | times: 0.65 }}px 0 {{ setting.desktop_padding_bottom | times: 0.65 }}px;
+    }
+    .image-text--section .section-head {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+    .image-text--section .block-title {
+      font-size: 22px;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    .image-text--section {
+      padding: {{ setting.desktop_padding_top | times: 0.75 }}px 0 {{ setting.desktop_padding_bottom | times: 0.75 }}px;
+    }
+		.image-text--section .ctnr {
+			max-width: 98rem;
+		}
+    .image-text--section .rw.title-area {
+      margin-bottom: 3.5vw;
+    }
+    .image-text--section .section-head {
+      margin-bottom: 25px;
+      font-size: 30px;
+    }
+    .image-text--section .body-wrapper {
+      font-size: 18px;
+    }
+    .image-text--section .block-title {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .image-text--section {
+      padding: {{ setting.desktop_padding_top }}px 0 {{ setting.desktop_padding_bottom }}px;
+    }
+		.image-text--section .ctnr {
+			max-width: 131rem;
+		}
+    .image-text--section .section-head {
+      margin-bottom: 30px;
+      font-size: 45px;
+    }
+    .image-text--section .block-title {
+      margin-bottom: 25px;
+      font-size: 35px;
+    }
+  }
+  
+{%- endstyle -%}
+  
+<div class="image-text--section">
+  <div class="{{ setting.wrapper }}">
+    {%- if setting.title != blank or setting.body != blank -%}
+      <div class="rw title-area">
+        <div class="clm" style="--w-xs: 12;">
+          {%- if setting.title != blank -%}
+            <h2 class="section-head">{{ setting.title }}</h2>
+          {%- endif -%}
+          {%- if setting.body != blank -%}
+             <div class="body-wrapper">
+               {{ setting.body }}
+             </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      
+      {%- if section.blocks.size == 1 -%}
+        {% assign img_colmn_style = "--w-xs: 12;" %}
+        {% assign txt_colmn_style = "--w-xs: 12;" %}
+      {%- endif -%}
+      
+      <div class="rw img-text-row" style="--gutter: {{ setting.gap }}px;">
+        {%- for block in section.blocks -%}
+          {% assign b_setting = block.settings %}
+          
+          {%- case block.type -%}
+            {% when 'image' %}
+              <div class="clm img-colmn img-wrapper" style="{{ img_colmn_style }}">
+                {%- if b_setting.image != blank -%}
+                  {% render 'mb_render_image', image: b_setting.image, class: "block-img" %}
+                {%- else -%}
+                  {{ 'blog-apparel-3' | placeholder_svg_tag: "block-img" }}
+                {%- endif -%}
+              </div>
+            {% when 'text' %}
+              <div class="clm text-colmn" style="{{ txt_colmn_style }}">
+                {%- if b_setting.title != blank -%}
+                  <h3 class="block-title">{{ b_setting.title }}</h3>
+                {%- endif -%}
+                
+                {%- if b_setting.body != blank -%}
+                  <div class="block-body-text body-wrapper">{{ b_setting.body }}</div>
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "[MB] Image Text",
+    "tag": "section",
+    "class": "mb-image-text",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Contents"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Section heading",
+        "default": "Lorem ipsum dolor sit amet"
+      },
+      {
+        "type": "richtext",
+        "id": "body",
+        "label": "Body Text",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac quam vitae velit consectetur facilisis eget sed dolor. Praesent non libero dolor. Duis consequat dolor et purus ultrices, id scelerisque libero tempor. Etiam vitae tempor odio. Nunc a massa gravida, fringilla mi at.</p>"
+      },
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "select",
+        "id": "wrapper",
+        "label": "Section Container",
+        "options": [
+          {
+            "value": "ctnr",
+            "label": "Box"
+          },
+          {
+            "value": "ctnr-banner",
+            "label": "Fluid"
+          }
+        ],
+        "default": "ctnr"
+      },
+      {
+        "type": "range",
+        "id": "gap",
+        "label": "Gap",
+        "min": 5,
+        "max": 80,
+        "step": 1,
+        "default": 30,
+        "info": "Image and text column spacing"
+      },
+      {
+        "type": "select",
+        "id": "img_size",
+        "label": "Image Size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      },
+      {
+        "type": "range",
+        "id": "desktop_padding_top",
+        "label": "Padding Top",
+        "min": 10,
+        "max": 200,
+        "step": 5,
+        "default": 50,
+        "unit": "px",
+        "info": "Desktop"
+      },
+      {
+        "type": "range",
+        "id": "desktop_padding_bottom",
+        "label": "Padding Bottom",
+        "min": 10,
+        "max": 200,
+        "step": 5,
+        "default": 50,
+        "unit": "px",
+        "info": "Desktop"
+      },
+      {
+        "type": "range",
+        "id": "mobile_padding_top",
+        "label": "Padding Top",
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "default": 20,
+        "unit": "px",
+        "info": "Mobile"
+      },
+      {
+        "type": "range",
+        "id": "mobile_padding_bottom",
+        "label": "Padding Bottom",
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "default": 20,
+        "unit": "px",
+        "info": "Mobile"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "title",
+            "label": "Title",
+            "default": "Phasellus pharetra ante eget auctor"
+          },
+          {
+            "type": "richtext",
+            "id": "body",
+            "label": "Body Text",
+            "default": "<p>Sed pretium rhoncus enim. Praesent non ipsum et lorem lobortis scelerisque vel sed neque. In orci erat, venenatis a elit nec, ornare dapibus ipsum. Vestibulum ac ex condimentum, pulvinar tortor sed, condimentum magna. Phasellus nulla leo, efficitur id consectetur in, pretium at nisi.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
