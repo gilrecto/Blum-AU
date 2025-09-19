@@ -265,7 +265,11 @@
               render 'header-cart-status', cart: cart
             endcapture
           -%}
-          <a role="button" href="{{ routes.cart_url }}" onclick="event.preventDefault();try { window.shtCartDrawer.openDrawer(this); } catch(err) { window.location.assign('{{ routes.cart_url }}');}" aria-haspopup="true" aria-expanded="false" aria-controls="shtCartDrawer" class="js-header-cart-status-btn btn btn-plain btn-large btn-icon p-relative" id="headerCartStatus">{{ header_cart_status }}</a>
+          {% unless customer.b2b? %}
+            <a role="button" href="{{ routes.cart_url }}" onclick="event.preventDefault();try { window.shtCartDrawer.openDrawer(this); } catch(err) { window.location.assign('{{ routes.cart_url }}');}"aria-haspopup="true" aria-expanded="false" aria-controls="shtCartDrawer" class="js-header-cart-status-btn btn btn-plain btn-large btn-icon p-relative" id="headerCartStatus">{{ header_cart_status }}</a>
+          {% else %}
+            <a href="{{ routes.cart_url }}" onclick="window.location.href='{{ routes.cart_url }}'" class="js-header-cart-status-btn btn btn-plain btn-large btn-icon p-relative" id="headerCartStatus">{{ header_cart_status }}</a>
+          {% endunless %} 
         </div>
       </div>
     </header>
