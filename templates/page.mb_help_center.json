@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -22,7 +31,7 @@
         "subheading": "",
         "heading": "",
         "description": "",
-        "liquid_code": "<script src=\"https:\/\/help-center.gorgias.help\/api\/help-centers\/loader.js?v=2\" data-gorgias-loader-help-center=\"\" data-gorgias-help-center-uid=\"km62w0dx\" defer><\/script>",
+        "liquid_code": "<script defer src=\"https://help-center.gorgias.help/api/help-centers/loader.js?v=2\" data-gorgias-loader-help-center data-gorgias-help-center-uid=\"unopk5ox\"></script>",
         "remove_padding_top": true,
         "remove_padding_bottom": true,
         "badge_text": "",

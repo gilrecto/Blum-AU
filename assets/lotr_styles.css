@@ -25,6 +25,10 @@
 .mega-menu--column .mega-menu-promotions {
   display: flex !important;
 }
+.header .main__menu .menu__link:hover {
+  color: var(--ts-color-red);
+  text-decoration: none;
+}
 .affirmation-header .icon-wrapper .affirmation-icon {
   filter: invert(1);
 }
@@ -266,6 +270,11 @@ sht-cart-drwr .cart-order-notes {
   }
 }
 
+@media only screen and (min-width: 1200px) {
+  .header__icons--right .header__icon--account {
+    display: block !important;
+  }
+}
 
 @media only screen and (max-width: 1199px) {
   .menu--horizontal .header__menu {

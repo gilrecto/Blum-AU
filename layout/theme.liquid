@@ -127,7 +127,9 @@
     {%- endcapture -%}
 
     {{ loox_optimized }}
-    {%- render 'klaviyo_onsite_integration' -%}
+    {%- unless customer.b2b? -%}
+      {%- render 'klaviyo_onsite_integration' -%}
+    {%- endunless -%}
 
     <script type="lazyload2" data-src="{{ 'fbqSearchKeyword.js' | asset_url }}"></script>
     

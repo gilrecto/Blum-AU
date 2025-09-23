@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "[LOTR] Header Group",
@@ -62,22 +71,22 @@
           "type": "mega_menu",
           "settings": {
             "menu_item_name": "SHOP",
-            "show_menu_item_name": true,
+            "show_menu_item_name": false,
             "apply_menu_image_to": "not_use",
             "menu_level_2_image_size": "small",
             "menu_level_3_image_size": "small",
             "image_ratio": "auto",
             "inherit_color_scheme": false,
             "color_scheme": "scheme-2",
-            "primary_image": "shopify:\/\/shop_images\/MBUS_Menu-Banner_1.jpg",
-            "primary_heading": "The American Robin",
-            "primary_link": "shopify:\/\/products\/american-robin",
+            "primary_image": "shopify://shop_images/MBAU_Menu_Banner_1.jpg",
+            "primary_heading": "Blue Wren",
+            "primary_link": "shopify://products/blue-wren",
             "image_overlay_opacity_first": 30,
             "image_overlay_color_first": "",
             "image_content_color_first": "",
-            "secondary_image": "shopify:\/\/shop_images\/MBUS_Menu-Banner_2.jpg",
-            "secondary_heading": "The Cardinal",
-            "secondary_link": "shopify:\/\/products\/the-cardinal",
+            "secondary_image": "shopify://shop_images/MBAU_Menu_Banner_2.jpg",
+            "secondary_heading": "Swift Parrot",
+            "secondary_link": "shopify://products/birdlife-x-metalbird-swift-parrot",
             "image_overlay_opacity_second": 30,
             "image_overlay_color_second": "",
             "image_content_color_second": ""
@@ -87,22 +96,22 @@
           "type": "mega_menu",
           "settings": {
             "menu_item_name": "EXPLORE",
-            "show_menu_item_name": true,
+            "show_menu_item_name": false,
             "apply_menu_image_to": "not_use",
             "menu_level_2_image_size": "small",
             "menu_level_3_image_size": "small",
             "image_ratio": "auto",
             "inherit_color_scheme": false,
             "color_scheme": "scheme-2",
-            "primary_image": "shopify:\/\/shop_images\/MBUS_Menu-Banner_1.jpg",
-            "primary_heading": "The American Robin",
-            "primary_link": "shopify:\/\/products\/american-robin",
+            "primary_image": "shopify://shop_images/MBAU_Menu_Banner_1.jpg",
+            "primary_heading": "Blue Wren",
+            "primary_link": "shopify://products/blue-wren",
             "image_overlay_opacity_first": 30,
             "image_overlay_color_first": "",
             "image_content_color_first": "",
-            "secondary_image": "shopify:\/\/shop_images\/MBUS_Menu-Banner_2.jpg",
-            "secondary_heading": "The Cardinal",
-            "secondary_link": "shopify:\/\/products\/the-cardinal",
+            "secondary_image": "shopify://shop_images/MBAU_Menu_Banner_2.jpg",
+            "secondary_heading": "Swift Parrot",
+            "secondary_link": "shopify://products/birdlife-x-metalbird-swift-parrot",
             "image_overlay_opacity_second": 30,
             "image_overlay_color_second": "",
             "image_content_color_second": ""

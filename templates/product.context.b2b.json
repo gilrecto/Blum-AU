@@ -19,6 +19,10 @@
         "464319e1-4bc6-46f9-b77b-687d98610afa": {
           "disabled": true,
           "settings": {}
+        },
+        "manifest_ai_chatbot_reviews_summarizer_agjLQ4": {
+          "disabled": true,
+          "settings": {}
         }
       },
       "block_order": [
