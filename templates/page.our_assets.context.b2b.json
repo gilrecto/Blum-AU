@@ -12,5 +12,41 @@
   "context": {
     "b2b": true
   },
-  "sections": {}
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "2eb0c16f-4730-47ee-8445-724140c1c620": {
+          "settings": {
+            "img_1": "shopify://shop_images/Wholesale___Willie_Wagtail.png",
+            "img_2": "shopify://shop_images/Wholesale___Tawny_Frogmouth.png",
+            "img_3": "shopify://shop_images/Wholesale___Kookaburra.png",
+            "img_4": "shopify://shop_images/Wholesale___Blue_Wren.png",
+            "img_5": "shopify://shop_images/Wholesale___Pair_of_Magpies.png",
+            "img_6": "shopify://shop_images/Wholesale___Lyrebird.png",
+            "img_7": "shopify://shop_images/Wholesale___Boobook.png",
+            "img_8": "shopify://shop_images/Wholesale___Magpie.png",
+            "img_9": "shopify://shop_images/Wholesale___Blue_Wren_and_Chicks.png",
+            "img_10": "shopify://shop_images/Wholesale___Hanging_Feeder.png"
+          }
+        },
+        "c29517d9-1103-4917-8643-1c2a587a048e": {
+          "settings": {
+            "img_1": "shopify://shop_images/Wholesale___Pair_of_Kookaburra.png",
+            "img_2": "shopify://shop_images/Wholesale___Emu.png",
+            "img_5": "shopify://shop_images/Wholesale___Cockatoo.png",
+            "img_6": "shopify://shop_images/Wholesale___Wedge-tail.png",
+            "img_7": "shopify://shop_images/Wholesale___Bowl_Feeder.png",
+            "img_8": "shopify://shop_images/Wholesale___Pair_of_Lorikeets.png",
+            "img_9": "shopify://shop_images/Wholesale___Penguin.png",
+            "img_10": "shopify://shop_images/Wholesale___Spinebill.png"
+          }
+        }
+      },
+      "block_order": [
+        "2eb0c16f-4730-47ee-8445-724140c1c620",
+        "c29517d9-1103-4917-8643-1c2a587a048e"
+      ]
+    }
+  }
 }
