@@ -225,7 +225,7 @@
                                     assign target_blank_lv2 = 'target = "_blank"'
                                   endif
                                 -%}
-                                <a href="{{ child_link.url }}" {{ target_blank_lv2 }} class="menu__link menu__link-lv2 d-block {{ child_link.current | default: '' | replace: 'true', 'menu__link--active' }}">{{ child_link.title }}</a>
+                                <a href="{{ child_link.url }}" {{ target_blank_lv2 }} class="menu__link menu__link-lv2 d-block {{ child_link.current | default: '' | replace: 'true', 'menu__link--active' }}" aria-label="{{ child_link.title }}">{{ child_link.title }}</a>
                               {%- endif -%}
                             </li>
                           {%- endfor -%}

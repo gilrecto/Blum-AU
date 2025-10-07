@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -459,7 +468,7 @@
     "product": {
       "add_to_cart": "Add to cart",
       "description": "Description",
-      "on_sale": "Sale",
+      "on_sale": "Save",
       "product_variants": "Product variants",
       "include_taxes": "Tax included.",
       "in_stock_html": "<b>In stock: {{ stock }}<\/b>",
@@ -471,7 +480,7 @@
       "read_more": "Read more",
       "card": {
         "quick_shop": "Quick shop",
-        "save_percent": "Sale {{ save_amount }}%",
+        "save_percent": "Save {{ save_amount }}",
         "save_percent_up_to": "Sale up to {{ save_amount }}%",
         "votes": "votes"
       },

@@ -113,7 +113,7 @@
           <span class="badge badge--sale d-inline-block fw-700">
             <span class="d-inline-block badge-text">
               {%- liquid
-                assign save_amount =  product.compare_at_price | minus: product.price | times: 1.0 | divided_by: product.compare_at_price | times: 100 | round
+                assign save_amount =  product.compare_at_price | minus: product.price | money
                 if product.has_only_default_variant
                   echo 'products.product.card.save_percent' | t: save_amount: save_amount
                 else

@@ -229,6 +229,28 @@
                         price_sale_bold: 'fw-700',
                         price_style: 'h4 mr-16'
                       %}
+
+                      {%- if product.selected_or_first_available_variant.compare_at_price
+                          > product.selected_or_first_available_variant.price
+                      -%}
+                        {%- liquid
+                          assign discount_cost = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price
+                          assign discount_percent = discount_cost | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round: 2
+                        -%}
+                        <div class="product__badge mt-8 mb-8 ts:absolute ts:top-0 ts:right-0">
+                          <span class="sale-badge subtext d-inline-block p-relative fw-700">
+                            <span class="p-relative zi-1 tt-up">
+                              {{- 'products.product.on_sale' | t }}
+                              {% if settings.currency_code_enabled %}
+                                {{- discount_cost | money_with_currency -}}
+                              {% else %}
+                                {{- discount_cost | money -}}
+                              {% endif %}
+                              {% comment %} ({{ discount_percent }}%) {% endcomment %}
+                            </span>
+                          </span>
+                        </div>
+                      {%- endif -%}
                     </div>
                     {%- render 'product-rating',
                       product: product,
@@ -237,27 +259,6 @@
                     -%}
                   </div>
                 </div>
-                {% if product.selected_or_first_available_variant.compare_at_price
-                    > product.selected_or_first_available_variant.price
-                %}
-                  {%- liquid
-                    assign discount_cost = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price
-                    assign discount_percent = discount_cost | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round: 2
-                  -%}
-                  <div class="product__badge mt-8 mb-8 ts:absolute ts:top-0 ts:right-0">
-                    <span class="sale-badge subtext d-inline-block p-relative fw-700">
-                      <span class="p-relative zi-1 tt-up">
-                        {{- 'products.product.on_sale' | t }}
-                        {% if settings.currency_code_enabled %}
-                          {{- discount_cost | money_with_currency -}}
-                        {% else %}
-                          {{- discount_cost | money -}}
-                        {% endif %}
-                        ({{ discount_percent }}%)
-                      </span>
-                    </span>
-                  </div>
-                {% endif %}
               </div>
             {%- when 'social_share' -%}
               <div

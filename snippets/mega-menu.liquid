@@ -58,7 +58,7 @@
           <li class="menu__item p-relative">
             {%- if child_link.links != blank -%}
               <div class="menu__grandchild d-none">
-                <a href="{{ child_link.url }}" {{ target_blank_lv2 }} class="menu__link menu__link-lv2 d-flex fd-column gap-12 m-zero">
+                <a href="{{ child_link.url }}" {{ target_blank_lv2 }} class="menu__link menu__link-lv2 d-flex fd-column gap-12 m-zero" aria-label="{{ child_link.title }}">
                   {%- if enable_menu_image_lv2 and child_link.object.featured_image -%}
                     {%- liquid
                       assign image_class_lv2 = 'w-100 h-100 menu-item-media--' | append: promo_block.settings.menu_level_2_image_size
@@ -106,7 +106,7 @@
                 </ul>
               </details>
             {%- else -%}
-              <a href="{{ child_link.url }}" {{ target_blank_lv2 }} class="menu__link menu__link-lv2 m-zero d-flex fd-column gap-12">
+              <a href="{{ child_link.url }}" {{ target_blank_lv2 }} class="menu__link menu__link-lv2 m-zero d-flex fd-column gap-12" aria-label="{{ child_link.title }}">
                 {%- if enable_menu_image_lv2 and child_link.object.featured_image -%}
                   {%- liquid
                     assign image_class_lv2 = 'w-100 h-100 menu-item-media--' | append: promo_block.settings.menu_level_2_image_size
