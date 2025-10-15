@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "IndustryInc-Base";
+  src: url('https://cdn.shopify.com/s/files/1/0600/9985/4532/files/IndustryInc-Base.woff?v=1663560931') format('woff'),
+    url("https://cdn.shopify.com/s/files/1/0600/9985/4532/files/IndustryInc-Base.woff2?v=1663560931") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+body.klaviyo-bis-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15px;
+}
+#container {
+  margin-top: 0 !important;
+}
+#klaviyo-bis-modal .close {
+  font-weight: 400;
+  font-family: 'Avenir Next';
+}
+#klaviyo-bis-modal .modal-title {
+  font-size: clamp(25px, 2.5vw, 30px);
+  line-height: 1;
+}
+#klaviyo-bis-modal .modal-title ~ p {
+  margin: 15px 0 10px;
+  font: 18px/1.25 'Avenir Next', sans-serif;
+}
+#klaviyo-bis-modal form input#email {
+  font-family: 'Avenir Next', sans-serif;
+  height: clamp(35px, 3vw, 45px);
+}
+#klaviyo-bis-modal form .btn {
+  font-size: clamp(15px, 1.35vw, 20px);
+  font-weight: 400;
+  line-height: 1;
+  padding: clamp(12px, 1.25vw, 15px);
+  border-radius: 4px;
+  transition: all .3s ease-in-out;
+}
+#klaviyo-bis-modal form .btn:hover {
+  background: #000000;
+  border-color: #00000;
+}
+#klaviyo-bis-modal .alert-success {
+  font-family: 'Avenir Next';
+  font-size: 14px;
+  margin: 0;
+}

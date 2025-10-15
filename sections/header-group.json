@@ -42,7 +42,7 @@
             "custom_text_color": "",
             "custom_icon_color": "",
             "enable_icon": true,
-            "text": "FREE SHIPPING OVER $150+",
+            "text": "FREE SHIPPING OVER $150",
             "font_style": "marquee-font--body",
             "icon_source": "custom_svg",
             "options_icon": "check",
@@ -56,7 +56,7 @@
             "custom_text_color": "",
             "custom_icon_color": "",
             "enable_icon": true,
-            "text": "BUY 2 BIRDS GET A FREEMINI",
+            "text": "BUY 2 FULL-PRICED BIRDS | GET A FREE MINI",
             "font_style": "marquee-font--body",
             "icon_source": "custom_svg",
             "options_icon": "check",
@@ -81,7 +81,7 @@
         "slope_style": "none",
         "item_size": "custom",
         "custom_item_size": 12,
-        "scroll_direction": "right",
+        "scroll_direction": "left",
         "remove_padding_top": true,
         "remove_padding_bottom": true
       }

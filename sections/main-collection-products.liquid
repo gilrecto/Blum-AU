@@ -404,7 +404,19 @@
           {%- paginate collection.products by section.settings.item_per_page -%}
             <div id="loadMoreContainer" class="products rw gap-unequal js-product-grid js-animate anm" data-id="{{ section.id }}" role="region" aria-label="{{- 'accessibility.collection_results' | t -}}">
               {%- for product in collection.products -%}
-                {%- unless product.price == 0 or product.tags contains settings.no_view_tag or product.available == false -%}
+                {%- liquid
+                  assign sold_out_product = true
+
+                  if product.available == false
+                    if product.tags contains 'COMIN BACK REAL SOON' or product.tags contains 'COMIN BACK SOON' or product.tags contains "COMIN' BACK REAL SOON" or product.tags contains "MBB COMING SOON"
+                      assign sold_out_product = false
+                    endif
+                  else
+                    assign sold_out_product = false
+                  endif
+                -%}
+
+                {%- unless product.price == 0 or product.tags contains settings.no_view_tag or sold_out_product -%}
                   <div class="clm js-seq-animate anm anm-fadeInUp" style="--w-xs: {{ col_mobile }}; {{ item_width }} --duration: .6s;">
                     {% render 'card-product', product: product, show_vendor: settings.show_product_vendor, show_color_swatch: settings.show_color_swatches, show_sale_badge: settings.show_sale_badge, enable_quick_buy: settings.enable_quick_buy, item_per_row: col_mobile, show_second_image: settings.show_second_image, ratio: settings.product_card_image_ratio, card_content_inner: card_content_inner, section: section, is_first: forloop.first %}
                   </div>

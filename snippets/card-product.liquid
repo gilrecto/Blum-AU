@@ -20,6 +20,7 @@
       assign loading = "eager"
       assign fetchpriority = "high"
     endif
+    assign notify_me = false
 
   assign section_id = section.id | md5 | truncate: 12, ""
   assign random_number =  "now" | date: "%N" | append: section_id | append: product.id
@@ -95,6 +96,12 @@
   if btn_label_type == 'text'
     assign btn_label_type = 'btn-text'
   endif
+
+  if product.available == false
+    if product.tags contains 'COMIN BACK REAL SOON' or product.tags contains 'COMIN BACK SOON' or product.tags contains "COMIN' BACK REAL SOON" or product.tags contains "MBB COMING SOON"
+      assign notify_me = true
+    endif
+  endif
 %}
 
 <div class="product product-card{{ card_classes }}{{ secondary_image_class }} w-100 p-relative bg-transparent o-hidden" style="--overlay: {{ overlay_opacity }}">
@@ -102,11 +109,13 @@
     <div class="card__badge-container p-absolute top-xs d-flex zi-1 w-100 between-xs {{ settings.badges_position }}">
       <div class="card__badge product__badge {{ badge_style_class }} {{ settings.badges_position }} d-flex fd-column {{ badge_position_class }} ts:!mt-0">
         {%- if settings.show_sold_out_badge and product.available == false -%}
-          <span class="badge badge--oos d-inline-block fw-700">
-            <span class="d-inline-block badge-text">
-              {{ 'products.product.sold_out' | t }}
+          {%- unless notify_me -%}
+            <span class="badge badge--oos d-inline-block fw-700">
+              <span class="d-inline-block badge-text">
+                {{ 'products.product.sold_out' | t }}
+              </span>
             </span>
-          </span>
+          {%- endunless -%}
         {%- endif -%}
   
         {%- if settings.show_sale_badge and show_sale_badge and product.compare_at_price != null and product.compare_at_price > product.price -%}
@@ -196,14 +205,20 @@
       {{ secondary_image }}
     </a>
     {%- unless customer.b2b? -%}
-      <div class="product__quickbuy p-absolute zi-1 {{ enable_quick_buy | default: ' d-none' | replace: 'true', ' d-flex' }}">
-        <button class="btn btn-icon {{ btn_label_type }} btn-secondary btn-small no-js-hidden" aria-label="{{ "products.product.card.quick_shop" | t }}" aria-haspopup="true" type="button" data-product-url="{{ product.url | split: "?" | first }}?view=quick-view" onclick="window.dialogQuickShop.showModal(this);">
-          {%- if settings.quickshop_btn_type == 'text' -%}
-            <span class="ts:max-[1025px]:hidden">{{ settings.quickshop_btn_text | default: 'Quick View' }}</span>
-            {% render 'icon-cart', class: 'ts:min-[1025px]:hidden' %}
-          {%- endif -%}
-        </button>
-      </div>
+      {%- if notify_me -%}
+        <div class='klaviyo-product-container ts:max-[1025px]:hidden' id='klaviyo-data-handle-{{ product.handle }}' data-klaviyo-handle='{{ product.handle }}'>
+          <div class="product__quickbuy klaviyo-button-container"></div>
+        </div>
+      {%- else -%}
+        <div class="product__quickbuy p-absolute zi-1 {{ enable_quick_buy | default: ' d-none' | replace: 'true', ' d-flex' }}">
+          <button class="btn btn-icon {{ btn_label_type }} btn-secondary btn-small no-js-hidden" aria-label="{{ "products.product.card.quick_shop" | t }}" aria-haspopup="true" type="button" data-product-url="{{ product.url | split: "?" | first }}?view=quick-view" onclick="window.dialogQuickShop.showModal(this);">
+            {%- if settings.quickshop_btn_type == 'text' -%}
+              <span class="ts:max-[1025px]:hidden">{{ settings.quickshop_btn_text | default: 'Quick View' }}</span>
+              {% render 'icon-cart', class: 'ts:min-[1025px]:hidden' %}
+            {%- endif -%}
+          </button>
+        </div>
+      {%- endif -%}
     {%- endunless -%}
   </div>
   <div class="card__content{{ card_content_classes }} w-100 wb-break-word">
