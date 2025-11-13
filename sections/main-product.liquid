@@ -50,6 +50,20 @@
       </a>
       {%- if section.settings.media_layout contains 'slideshow' -%}
         <div class="product__media-wrapper--single-with-thumbnails p-sticky top-0">
+          {%- liquid
+            assign add_label = settings.show_mb_sale_badge
+            assign label = settings.sale_label
+            assign prod_selector = settings.prod_selector
+          -%}
+          
+          {%- render 'mb_sale_labels', 
+            product_tags: product.tags, 
+            add_label: add_label,
+            label: label,
+            prod_selector: prod_selector,
+            available: product.available
+          -%}
+
           <sht-prd-slideshow
             role="status"
             class="product-slideshow d-block p-relative"
@@ -126,6 +140,20 @@
         </div>
       {%- else -%}
         <div class="product__media-wrapper--gallery-grid" id="productMediaGalleryGrid-{{ section.id }}">
+          {%- liquid
+            assign add_label = settings.show_mb_sale_badge
+            assign label = settings.sale_label
+            assign prod_selector = settings.prod_selector
+          -%}
+          
+          {%- render 'mb_sale_labels', 
+            product_tags: product.tags, 
+            add_label: add_label,
+            label: label,
+            prod_selector: prod_selector,
+            available: product.available
+          -%}
+          
           <sht-prd-slideshow
             role="status"
             class="product-slideshow"

@@ -1,31 +1,29 @@
 /*
  * ------------------------------------------------------------
-  * IMPORTANT: The contents of this file are auto-generated.
-   *
-    * This file may be updated by the Shopify admin theme editor
-     * or related systems. Please exercise caution as any changes
-      * made to this file may be overwritten.
-       * ------------------------------------------------------------
-        */
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "mb_media_banner_XNMH3U": {
       "type": "mb_media_banner",
       "blocks": {
-        "heading_V69hUb": {
-          "type": "heading",
+        "textarea_TJJj6G": {
+          "type": "textarea",
           "settings": {
-            "type": "title",
-            "heading_text": "Nail the Moment.",
-            "font_family": "ts:!font-buckwheat",
-            "heading_size": "ts:!text-3xl",
-            "text_transform": "ts:uppercase"
+            "text_block": "<h2 class=\"main-heading ts:!font-buckwheat ts:uppercase\">\n<span>Black Friday Sale</span>\n<discount>\n<num>25</num>\n<percent>%<small>Off</small></percent>\n</discount>\n<span>SITEWIDE<span>\n</span></span>\n</h2>",
+            "custom_css": "{%- style -%}\n#shopify-section-{{ section.id }} .banner-contents .rte.text-block {\n   font-size: 3.5vw;\n   line-height: 0.8;\n}\n#shopify-section-{{ section.id }} .banner-contents .main-heading {\n  font-size: 100%;\n  line-height: 0.8;\n  margin: 0;\n}\n#shopify-section-{{ section.id }} .banner-contents .main-heading > span {\n  display: block;\n}\n#shopify-section-{{ section.id }} .banner-contents .main-heading > discount {\n  font-size: 550%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#shopify-section-{{ section.id }} .banner-contents .main-heading > discount percent {\n  display: flex;\n  flex-direction: column;\n  font-size: 70%;\n}\n#shopify-section-{{ section.id }} .banner-contents .main-heading > discount percent small {\n   font-size: 35%;\n}\n#shopify-section-{{ section.id }} .banner-contents .main-heading ~ p {\n   background-color: var(--ts-color-red);\n   padding: 1rem;\n   color: var(--color-page-body);\n   font-size: 35%;\n   line-height: 1;\n   letter-spacing: 0.25em;\n   font-weight: 600;\n   margin-top: 1.4rem;\n}\n\n@media only screen and (max-width: 767px) {\n  #shopify-section-{{ section.id }} .banner-contents .rte.text-block {\n   font-size: 5vw;\n   max-width: max-content;\n   margin: 0 auto;\n  }\n #shopify-section-{{ section.id }} .s-header__buttons .btn {\n   font-size: 1.2rem;\n  }\n}\n{%- endstyle -%}"
           }
         },
-        "richtext_Q8YTne": {
+        "richtext_EbW36h": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
-            "richtext_content": "<p>A memory. A gift. A story hammered in steel.</p>"
+            "richtext_content": "<p>Rich Text Content</p>"
           }
         },
         "buttons_8WYkAP": {
@@ -33,46 +31,38 @@
           "settings": {
             "button_url": "shopify://collections/all-birds",
             "button_text": "SHOP THE BIRDS",
-            "btn_style": "btn-primary"
-          }
-        },
-        "image_RA7R6i": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/birdlife_au.svg"
+            "btn_style": "btn-secondary"
           }
         }
       },
       "block_order": [
-        "heading_V69hUb",
-        "richtext_Q8YTne",
-        "buttons_8WYkAP",
-        "image_RA7R6i"
+        "textarea_TJJj6G",
+        "richtext_EbW36h",
+        "buttons_8WYkAP"
       ],
       "custom_css": [
-        ".contents-wrapper h2 {line-height: 0.8 !important;}",
-        ".banner-contents .rte {font-family: var(--ts-font-buckwheat); font-size: clamp(1.27em, 3vw, 2.4em); text-transform: uppercase;}",
-        "@media only screen and (min-width: 1200px) {.contents-wrapper {padding-left: 5vw; } .s-header__buttons > a.btn {padding: 0 2.55em; transform: scale(1.18); }}"
+        ".s-header__buttons {margin-top: calc(var(--spacing) * 2);}",
+        ".s-header__buttons a.btn {background-color: var(--ts-color-red);}"
       ],
       "name": "Media Banner",
       "settings": {
         "color_scheme": "scheme-2",
-        "banner_type": "video",
-        "banner_height": 80,
+        "banner_type": "image",
+        "banner_height": 100,
         "add_overlay": true,
         "overlay_opacity": 0.2,
-        "video": "shopify://files/videos/MBAU_New Desktop_Landing Page_Banner_1920x1100.mp4",
-        "mb_video": "shopify://files/videos/MBAU_Tablet_Landing Page_Banner_575x700.mp4",
-        "content_alignment_h": "ts:md:items-start",
+        "banner_image": "shopify://shop_images/homepage_blackfriday_banner_2025.jpg",
+        "banner_img_mb": "shopify://shop_images/homepage_blackfriday_banner_2025_mob.jpg",
+        "content_alignment_h": "ts:md:items-center",
         "content_alignment_v": "ts:md:justify-center",
         "text_alignment": "center",
         "content_alignment_h_mobile": "ts:items-center",
-        "content_alignment_v_mobile": "ts:justify-end",
+        "content_alignment_v_mobile": "ts:justify-start",
         "text_alignment_mobile": "center",
-        "top_spacing": 0,
-        "bottom_spacing": 1,
-        "top_spacing_mobile": 0,
-        "bottom_spacing_mobile": 7.5
+        "top_spacing": 0.5,
+        "bottom_spacing": 0,
+        "top_spacing_mobile": 8.5,
+        "bottom_spacing_mobile": 0
       }
     },
     "running_text_iUThEF": {
@@ -207,7 +197,7 @@
       ],
       "name": "Featured Collections",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "heading": "FLOCK FAVOURITES",
         "subheading": "",
         "description": "",

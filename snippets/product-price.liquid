@@ -11,7 +11,8 @@
 {%- liquid
   assign price_regular = ' d-block'
   assign price_sale = ' d-none'
-
+  assign onsale = false
+  
   assign compare_at_price = target.compare_at_price
   assign compare_at_price_dsp = compare_at_price | money
 
@@ -28,11 +29,42 @@
     assign money_price_dsp = 'products.product.price.from_price_html' | t: price: money_price_dsp
   endif
 
-  if compare_at_price > price
+  if settings.show_mb_sale_badge and settings.enable_discount_display
+    assign prod_selector = settings.prod_selector
+    assign selectors = prod_selector| split: ', '
+
+    for selector in selectors
+      if product.tags contains selector
+        assign onsale = true
+      endif
+    endfor
+  endif
+
+  if compare_at_price > price or onsale
     assign price_regular = ' d-none'
     assign price_sale = ' d-flex middle-xs fw-wrap'
   endif
 -%}
+
+{%- if onsale -%}
+  {% assign price = price | money_without_currency | times: 1 %}
+  {% assign custom_discount = settings.discount_amount | times: 1 %}
+
+  {% if settings.discount_type == 'percent' %}
+    {% assign percent_value = custom_discount | times: 1.0 | divided_by: 100 %}
+    {% assign discount_amount = price | times: percent_value %}
+    {% assign sale_price = price | minus: discount_amount | times: 100 %}
+  {% else %}
+    {% assign sale_price = price | minus: custom_discount | times: 100 %}
+  {% endif %}
+
+  {%- if settings.discount_type == 'final_price'  -%}
+    {% assign final_sale_price = custom_discount | times: 100 | money %}
+    {% assign money_price_dsp = compare_at_price_dsp %}
+  {%- else -%}
+    {% assign final_sale_price = sale_price | money %}
+  {%- endif -%}
+{%- endif -%}
 
 <span class="price {{ price_class }} {{ sold_out }}">
   <span class="price__regular {{ price_regular }}">
@@ -44,13 +76,21 @@
   <span class="price__sale {{ price_sale }} {{ content_align }}">
     <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
     <span class="price-item price-item--last mt-4 mb-4 d-inline-block {{ price_style | default: 'mr-8' }}">
-      {{- money_price_dsp -}}
+      {%- if onsale -%}
+        {{- final_sale_price -}}
+      {%- else -%}
+        {{- money_price_dsp -}}
+      {%- endif -%}
     </span>
-    {%- if compare_at_price %}
+    {%- if compare_at_price or onsale %}
       <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
       <span class="d-inline-block">
         <s class="price-item price-item--regular color-light subtext {{ price_sale_bold }}">
-          {{ compare_at_price_dsp }}
+          {%- if onsale -%}
+            {{- money_price_dsp -}}
+          {%- else -%}
+            {{ compare_at_price_dsp }}
+          {%- endif -%}
         </s>
       </span>
     {%- endif -%}

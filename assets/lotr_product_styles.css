@@ -218,10 +218,20 @@ body .sticky_form .sticky-add-to-cart:hover {
   opacity: 0.5;
   pointer-events: none;
 }
+.product__sticky-info .product-btn-atc span.js-product-form-submit-btn-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
 .product__sticky-info .product-btn-atc .price .price__regular {
   display: inline !important;
 }
-.product__sticky-info .product-btn-atc .price .price__regular span.price-item {
+.product__sticky-info .product-btn-atc .price .price__regular.d-none {
+  display: none !important;
+}
+.product__sticky-info .product-btn-atc .price .price__regular span.price-item,
+.product__sticky-info .product-btn-atc span.js-product-form-submit-btn-text .price-item--last {
   margin: 0 !important;
 }
 .lotr-product .lp-rte .heading {

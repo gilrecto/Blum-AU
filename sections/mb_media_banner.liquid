@@ -162,6 +162,11 @@
             <div class="rte ts:md:mt-8 ts:mt-4" {{ block.shopify_attributes }}>
               {{ block.settings.richtext_content }}
             </div>
+        {% when 'textarea' %}
+          <div class="rte text-block{% unless section.blocks.size > 1 %} ts:md:mt-8 ts:mt-4{% endunless %}" {{ block.shopify_attributes }}>
+            {{ block.settings.text_block }}
+          </div>
+          {{ block.settings.custom_css }}
         {% endcase %}
       {%- endfor -%}
 
@@ -653,20 +658,20 @@
       ]
     },
     {
-      "type": "caption_link",
-      "name": "Caption",
+      "type": "textarea",
+      "name": "Text block",
       "limit": 1,
       "settings": [
         {
-          "type": "text",
-          "id": "label",
-          "label": "Caption Text",
-          "default": "Caption"
+          "type": "textarea",
+          "id": "text_block",
+          "label": "Text Block"
         },
         {
-          "type": "url",
-          "id": "link",
-          "label": "Caption URL"
+          "type": "liquid",
+          "id": "custom_css",
+          "label": "Custom Styles",
+          "default": "{% style %} Add you custom styles here. {% endstyle %}"
         }
       ]
     },

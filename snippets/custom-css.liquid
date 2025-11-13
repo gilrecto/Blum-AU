@@ -18,7 +18,23 @@
 		transform: none !important;
 	}
 	.badge {
+		text-transform: uppercase;
 		font-size: clamp(10px, 1.35vw, 14px);
+	}
+	.badge.mbp-badge {
+		background-color: var(--ts-color-putty);
+	}
+	.badge.mbr-badge {
+		background-color: var(--ts-color-red);
+	}
+	.badge.mbb-badge {
+		background-color: var(--ts-color-black);
+	}
+	.product__media-wrapper .badge {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 1;
 	}
 	.menu-dropdown .menu__link[aria-label="SALE"] {
 		color: var(--ts-color-red);

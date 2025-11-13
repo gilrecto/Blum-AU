@@ -35,6 +35,11 @@
       },
       "blocks": {},
       "block_order": []
+    },
+    "promotional_timer_bar_tLchmi": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }

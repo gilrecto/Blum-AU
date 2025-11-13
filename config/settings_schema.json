@@ -1081,6 +1081,24 @@
         "visible_if": "{{ settings.enable_quick_buy == true and settings.quickshop_btn_type == 'text' }}"
       },
       {
+        "type": "select",
+        "id": "quick_add_behavior",
+        "label": "Quick add behavior",
+        "info": "Choose how the quick add button behaves when clicked",
+        "options": [
+          {
+            "value": "popup",
+            "label": "Open popup"
+          },
+          {
+            "value": "direct",
+            "label": "Direct add to cart"
+          }
+        ],
+        "default": "popup",
+        "visible_if": "{{ settings.enable_quick_buy == true }}"
+      },
+      {
         "type": "header",
         "content": "t:general.settings.custom_badge_heading.label",
         "info": "t:general.settings.custom_badge_heading.info"
@@ -1119,6 +1137,27 @@
         "id": "show_sale_badge",
         "label": "t:general.settings.show_sale_badge.label",
         "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_mb_sale_badge",
+        "label": "Add Custom Sale Badge",
+        "default": false,
+        "info": "Tick to show custom sale badge. Enter custom label below input box."
+      },
+      {
+        "type": "text",
+        "id": "sale_label",
+        "label": "Custom Badge Label",
+        "info": "Use the default Metalbird color code (MBP = putty, MBR = red, MBB = black), i.e. 'MBR sale'",
+        "visible_if": "{{ settings.show_mb_sale_badge == true }}"
+      },
+      {
+        "type": "textarea",
+        "id": "prod_selector",
+        "label": "Product tags",
+        "info": "Enter product tags for products to have the custom sale badge. For multiple tags use comma as separator.",
+        "visible_if": "{{ settings.show_mb_sale_badge == true }}"
       },
       {
         "type": "checkbox",
@@ -1163,6 +1202,47 @@
           }
         ],
         "default": "tilt"
+      },
+      {
+        "type": "header",
+        "content": "Price Discount",
+        "info": "Custom price discount display.",
+        "visible_if": "{{ settings.show_mb_sale_badge == true }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_discount_display",
+        "label": "Enable Discount Display",
+        "default": false,
+        "info": "Tick to show dynamic price discount.",
+        "visible_if": "{{ settings.show_mb_sale_badge == true }}"
+      },
+      {
+        "type": "select",
+        "id": "discount_type",
+        "label": "Discount Type",
+        "options": [
+          {
+            "value": "percent",
+            "label": "Percentage"
+          },
+          {
+            "value": "fixed_amount",
+            "label": "Fixed Amount"
+          },
+          {
+            "value": "final_price",
+            "label": "Final Price"
+          }
+        ],
+        "default": "percent",
+        "visible_if": "{{ settings.show_mb_sale_badge == true and settings.enable_discount_display == true }}"
+      },
+      {
+        "type": "number",
+        "id": "discount_amount",
+        "label": "Amount",
+        "visible_if": "{{ settings.show_mb_sale_badge == true and settings.enable_discount_display == true }}"
       }
     ]
   },

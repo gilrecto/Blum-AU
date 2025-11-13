@@ -1,0 +1,36 @@
+{%- unless customer.b2b? -%}
+    {% if add_label and label != blank %}
+        {% liquid
+            assign selectors = prod_selector| split: ', '
+            assign label = label | downcase
+            assign with_label = false
+            assign badge_class = ''
+
+            for selector in selectors
+            if product_tags contains selector
+                assign with_label = true
+            endif
+            endfor
+
+            if label contains 'mbp' or label contains 'MBP'
+            assign mb_tag = label | replace: 'mbp ', '' | replace: 'MBP ', ''
+            assign badge_class = 'mbp-badge'
+            elsif label contains 'mbr' or  label contains 'MBR'
+            assign mb_tag = label | replace: 'mbr ', '' | replace: 'MBR ', ''
+            assign badge_class = 'mbr-badge'
+            elsif label contains 'mbb' or  label contains 'MBB'
+            assign mb_tag = label | replace: 'mbb ', '' | replace: 'MBB ', ''
+            assign badge_class = 'mbb-badge'
+            else
+            assign mb_tag = label
+            assign badge_class = 'mbr-badge'
+            endif
+        %}
+
+        {% if with_label and available %}
+            <span class="badge badge--sale {{ badge_class }} d-inline-block fw-700">
+            <span class="d-inline-block badge-text">{{- mb_tag -}}</span>
+            </span>
+        {% endif %}
+    {% endif %}
+{%- endunless -%}

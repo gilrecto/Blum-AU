@@ -111,6 +111,9 @@
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
     <script id="theme-file-js" src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    {%- if settings.quick_add_behavior == 'direct' -%}
+      <script src="{{ 'component-quick-add-direct.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
     {%- if settings.product_rating_app == 'judge_me' -%}
       <script src="{{ 'component-rating.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}

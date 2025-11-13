@@ -22,12 +22,12 @@
         ".s-header__title {font-size: clamp(25px, 2.6vw, 38px);}"
       ],
       "settings": {
-        "header-da6ed48e016051b9c1af3ecc980bf8b0": null,
+        "header-2750dd71543e6f442cdacf921f833136": null,
         "color_scheme": "",
         "subheading": "",
         "heading": "TOP SELLING BIRDS",
         "description": "",
-        "header-a91c25bdacf42c046372befe456b0b60": null,
+        "header-146ba904e8ef0a1a235d56c0af6e27e8": null,
         "desktop_layout": "grid",
         "style_card": "card",
         "items_per_row_on_desktop": "4",
@@ -38,10 +38,10 @@
         "show_navigation": false,
         "remove_padding_top": false,
         "remove_padding_bottom": false,
-        "header-6d61893a8f5a91fcbf3444e0e0629284": null,
+        "header-5811cad66feb7fbdb8495610c2dbc531": null,
         "show_view_all_button": false,
         "button_text": "See all products",
-        "header-28818f829413af8daaef98989cc8e33e": null,
+        "header-b9d4fa7d6dfd607eb4724b3877934294": null,
         "badge_text": "",
         "badge_color": "color-accent-1",
         "badge_position": "p-badge--top-right",
@@ -79,10 +79,16 @@
         "banner_image": "shopify://shop_images/hp_banner_kookaburras_2024.jpg",
         "banner_img_mb": "shopify://shop_images/hp_banner_kookaburras_mob_2024.jpg",
         "text_alignment": "left",
-        "bottom_spacing_mobile": 2.5
+        "bottom_spacing_mobile": 2.5,
+        "content_alignment_h": "ts:md:items-start",
+        "content_alignment_v": "ts:md:justify-center",
+        "content_alignment_v_mobile": "ts:justify-end",
+        "top_spacing": 0,
+        "top_spacing_mobile": 0
       },
       "blocks": {
-        "richtext_Q8YTne": {
+        "richtext_EbW36h": {
+          "disabled": false,
           "settings": {
             "richtext_content": "<p>We Focus On Delivering Premium Quality, Beautifully Crafted Products That Produce Leading Financial Returns, Supported With Exceptional Service And Best Of All.. Proudly Made Right Here In Australia!</p>"
           }
@@ -96,7 +102,7 @@
         }
       },
       "block_order": [
-        "richtext_Q8YTne",
+        "richtext_EbW36h",
         "buttons_8WYkAP"
       ]
     }
