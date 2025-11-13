@@ -71,6 +71,7 @@
     "enable_quick_buy": true,
     "quickshop_btn_type": "text",
     "quickshop_btn_text": "Add To Cart",
+    "quick_add_behavior": "direct",
     "custom_badge_metafield": "custom.badge",
     "show_sale_badge": true,
     "show_mb_sale_badge": true,
