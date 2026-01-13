@@ -132,25 +132,21 @@
           {%- endunless -%}
         {%- endif -%}
   
-        {%- if settings.show_sale_badge and show_sale_badge and product.compare_at_price != null and product.compare_at_price > product.price -%}
+        {%- if settings.show_sale_badge and show_sale_badge and product.compare_at_price_max > product.price_min -%}
           <span class="badge badge--sale d-inline-block fw-700">
-            <span class="d-inline-block badge-text">
-              {%- liquid
-                assign save_amount =  product.compare_at_price | minus: product.price | money
-                if product.has_only_default_variant
-                  echo 'products.product.card.save_percent' | t: save_amount: save_amount
-                else
-                  assign save_amount = 0
-                  for variant in product.variants
-                    assign saving = variant.compare_at_price | minus: variant.price | times: 1.0 | divided_by: variant.compare_at_price | times: 100 | round
-                    assign save_amount = saving | at_least: save_amount
-                  endfor
-                  echo 'products.product.card.save_percent_up_to' | t: save_amount: save_amount
-                endif
-              -%}
-            </span>
-          </span>
-        {%- endif -%}
+          <span class="d-inline-block badge-text">
+        {%- liquid
+             assign compare_price = product.compare_at_price_max
+             assign current_price = product.price_min
+
+             assign discount = compare_price | minus: current_price
+             assign percentage = discount | times: 100 | divided_by: compare_price | round
+
+             echo percentage | append: '% Off'
+         -%}
+       </span>
+     </span>
+    {%- endif -%}
         {%- if settings.show_new_in_badge and is_new_product -%}
           <span class="badge badge--new d-inline-block fw-700">
             <span class="d-inline-block badge-text">

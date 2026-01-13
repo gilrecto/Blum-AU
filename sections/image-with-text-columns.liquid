@@ -38,16 +38,30 @@
               {%- endcapture -%}
 
               <sht-carousel-itm role="listitem" tabindex="-1" class="clm js-carousel-item anm anm-fadeInUp fd-column" style="--w-xs:12;--w-sm: 6;--w-md: {{- md -}}; --delay: {{ forloop.index | times: 0.05 -}}s; --duration: .6s">
-                {% render 'image',
-                  image_item: image_item,
-                  ratio: section.settings.image_ratio,
-                  image_wrap_classes: 'w-100',
-                  overlay_content: overlay_content
-                %}
-                <div class="card__content card__content--outer wb-break-word w-100{% if section.settings.overlay_content_mobile %} ts:max-[769px]:hidden{% endif %}">
-                  <h3 class="h5 hide-empty mb-0{% if section.settings.overlay_content_mobile %} ts:hidden{% endif %}">{{- block.settings.heading | escape -}}</h3>
-                  <div class="hide-empty mt-8 text-block">{{- block.settings.description -}}</div>
-                </div>
+                {%- capture card__content -%}
+                  {% render 'image',
+                    image_item: image_item,
+                    ratio: section.settings.image_ratio,
+                    image_wrap_classes: 'w-100',
+                    overlay_content: overlay_content
+                  %}
+                  <div class="card__content card__content--outer wb-break-word w-100{% if section.settings.overlay_content_mobile %} ts:max-[769px]:hidden{% endif %}">
+                    <h3 class="h5 hide-empty mb-0{% if section.settings.overlay_content_mobile %} ts:hidden{% endif %}">{{- block.settings.heading | escape -}}</h3>
+                    <div class="hide-empty mt-8 text-block">{{- block.settings.description -}}</div>
+
+                    {%- if block.settings.show_button and block.settings.link != blank -%}
+                      <a href="{{ block.settings.link }}" class="btn btn-{{ block.settings.btn_type }} btn-large mt-lg-32 mt-md-24 mt-16 hide-empty">{{ block.settings.button_text }}</a>
+                    {%- endif -%}
+                  </div>
+                {%- endcapture -%}
+                
+                {% if block.settings.link != blank and block.settings.show_button == false %}
+                  <a href="{{ block.settings.link }}" class="link" title="{{ block.settings.heading | escape }}" aria-label="{{ block.settings.heading | escape }}">
+                    {{ card__content }}
+                  </a>
+                {% else %}
+                  {{ card__content }}
+                {% endif %}
               </sht-carousel-itm>
             {% endfor %}
           </div>
@@ -300,6 +314,41 @@
           "id": "description",
           "label": "t:general.settings.description.label",
           "default": "<p>Share information about your products, policies or services.</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:general.settings.link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show Button",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Label",
+          "default": "Button",
+          "visible_if": "{{ block.settings.show_button == true }}"
+        },
+        {
+          "type": "select",
+          "id": "btn_type",
+          "label": "Button Type",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary Button"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary Button"
+            }
+          ],
+          "default": "primary",
+          "visible_if": "{{ block.settings.show_button == true }}"
         }
       ]
     }

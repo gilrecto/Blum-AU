@@ -20,7 +20,7 @@
           "type": "heading",
           "settings": {
             "type": "title",
-            "heading_text": "Open. Hammer. <em>Create .<\/em>",
+            "heading_text": "Open. Hammer. <em>Create .</em>",
             "font_family": "ts:!font-heading",
             "heading_size": "ts:!text-2xl",
             "text_transform": "ts:normal-case"
@@ -29,7 +29,7 @@
         "richtext_KQ6tBU": {
           "type": "richtext",
           "settings": {
-            "richtext_content": "<p>Be The Artist in your own backyard<\/p>"
+            "richtext_content": "<p>Be The Artist in your own backyard</p>"
           }
         }
       },
@@ -50,8 +50,8 @@
         "banner_height": 35,
         "add_overlay": false,
         "overlay_opacity": 0.5,
-        "banner_image": "shopify:\/\/shop_images\/alwayson_collection_banner_2025.jpg",
-        "banner_img_mb": "shopify:\/\/shop_images\/alwayson_collection_banner_2025_mob.jpg",
+        "banner_image": "shopify://shop_images/alwayson_collection_banner_2025.jpg",
+        "banner_img_mb": "shopify://shop_images/alwayson_collection_banner_2025_mob.jpg",
         "content_alignment_h": "ts:md:items-start",
         "content_alignment_v": "ts:md:justify-center",
         "text_alignment": "left",

@@ -401,7 +401,8 @@
           </div>
         {%- else -%}
           <h2 class="visually-hidden">{{ collection.title | escape }}</h2>
-          {%- paginate collection.products by section.settings.item_per_page -%}
+          {% comment %} section.settings.item_per_page {% endcomment %}
+          {%- paginate collection.products by 999 -%}
             <div id="loadMoreContainer" class="products rw gap-unequal js-product-grid js-animate anm" data-id="{{ section.id }}" role="region" aria-label="{{- 'accessibility.collection_results' | t -}}">
               {%- for product in collection.products -%}
                 {%- liquid

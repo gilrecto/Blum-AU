@@ -52,3 +52,18 @@
   ]
 }
 {% endschema %}
+
+{%style %}
+  /* Hide Add To Cart for Christmas Essentials Gift Pack on the Gift Shop page */
+  #mb-gift-shop-lp button.js-quick-add-direct[data-product-handle="christmas-essentials-gift-pack"] {
+    display: none !important;
+  }
+  /* Hide Add To Cart for Christmas Favourites Gift Pack on the Gift Shop page */
+  #mb-gift-shop-lp button.js-quick-add-direct[data-product-handle="christmas-favourites-gift-pack"] {
+    display: none !important;
+  }
+  /* Hide Add To Cart for Christmas Signature Gift Pack on the Gift Shop page */
+  #mb-gift-shop-lp button.js-quick-add-direct[data-product-handle="christmas-signature-gift-pack"] {
+    display: none !important;
+  }
+{% endstyle %}

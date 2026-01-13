@@ -1,0 +1,232 @@
+#mb-gift-shop-lp {
+  overflow: hidden;
+}
+#mb-gift-shop-lp .shopify-section.mb-featured-collections {
+  position: relative;
+}
+.mb-gift-shop-prods .multi-products-block {
+  padding-bottom: 6rem;
+}
+.mb-gift-shop-prods .ctnr-banner {
+  padding-inline: 1.5rem;
+}
+.mb-gift-shop-prods .multi-products-block .ctnr {
+  @media (max-width: 767px) {
+    padding-inline: calc(var(--spacing) * 1);
+  }
+}
+.mb-gift-shop-prods .multi-products-block .title-area {
+  margin-bottom: 8vw;
+}
+.mb-gift-shop-prods .multi-products-block .product-card {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  text-align: center;
+}
+.mb-gift-shop-prods .block-title {
+  display: inline;
+  font-family: var(--ts-font-buckwheat);
+  font-size: clamp(2.8rem, 3.5vw, 4.5rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  background-color: var(--color-page-bg);
+}
+.mb-gift-shop-prods .card-media-wrapper .card__media {
+  border-radius: 50%;
+  border: 1px solid #c8c1a8;
+}
+.mb-gift-shop-prods .card-media-wrapper img.xmas-ball {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+.mb-gift-shop-prods .multi-products-block .product-card .card__heading {
+  font-family: var(--font-body-family);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1.6vw, 2rem);
+  overflow: hidden;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.mb-gift-shop-prods .multi-products-block .product-card .price {
+  font-weight: 500;
+}
+.mb-gift-shop-prods .multi-products-block .product-card .price .price-item {
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
+}
+.mb-gift-shop-prods .multi-products-block .product-card .price s.price-item {
+  font-size: 80%;
+}
+.mb-gift-shop-prods .multi-products-block .product-card .product__quickbuy,
+.mb-gift-shop-prods .multi-products-block .product-card .price .price__sale {
+  justify-content: center;
+}
+.mb-gift-shop-prods .multi-products-block .product-card .product__quickbuy .btn {
+  padding: 1rem clamp(1.5rem, 3vw, 4rem);
+  border-radius: 60px;
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem) !important;
+}
+
+@media only screen and (min-width: 576px) {
+  .mb-gift-shop-prods .multi-products-block .title-area {
+    margin-bottom: 8vw;
+  }
+  .mb-gift-shop-prods .multi-products-block .product-card {
+    max-width: 98%;
+  }
+  .mb-gift-shop-prods .multi-products-block {
+    padding: 4rem 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .mb-gift-shop-prods .multi-products-block .product-card {
+    max-width: 95%;
+  }
+  .mb-gift-shop-prods .multi-products-block {
+    padding: 6rem 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .mb-gift-shop-prods .multi-products-block .product-card {
+    max-width: 90%;
+  }
+  .mb-gift-shop-prods .multi-products-block {
+    padding: 7rem 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .mb-gift-shop-prods .multi-products-block .product-card {
+    max-width: 85%;
+  }
+  .mb-gift-shop-prods .multi-products-block {
+    padding: 10rem 0;
+  }
+}
+
+#mb-gift-shop-lp .section[data-ui-component="Image With Text Columns Section"] {
+  position: relative;
+}
+
+#mb-gift-shop-lp .shopify-section.media-banner:first-of-type .banner-media--image:after,
+#mb-gift-shop-lp .shopify-section.mb-featured-collections:before,
+#mb-gift-shop-lp .shopify-section.mb-featured-collections:after,
+#mb-gift-shop-lp .section[data-ui-component="Image With Text Columns Section"]:before,
+#mb-gift-shop-lp .section[data-ui-component="Image With Text Columns Section"]:after,
+.mb-gift-shop-prods .gift-shop-products:after,
+.mb-gift-shop-prods .multi-products-block:before,
+.mb-gift-shop-prods .multi-products-block:after {
+	content: "";
+	position: absolute;
+	background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#mb-gift-shop-lp .shopify-section.media-banner:first-of-type .banner-media--image:after {
+  bottom: 0;
+  right: 0;
+  width: 14.896vw;
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars1.png?v=1732261391);
+  height: 5.521vw;
+}
+#mb-gift-shop-lp .shopify-section.mb-featured-collections:before,
+#mb-gift-shop-lp .section[data-ui-component="Image With Text Columns Section"]:before {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars2.png?v=1732261391);
+  top: 0;
+  right: 0;
+  width: 12.708vw;
+  height: 16.615vw;
+}
+#mb-gift-shop-lp .shopify-section.mb-featured-collections:after,
+#mb-gift-shop-lp .section[data-ui-component="Image With Text Columns Section"]:after {
+	background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars3.png?v=1732261391);
+  bottom: 0;
+  left: 0;
+  width: 22.708vw;
+  height: 30vw;
+}
+.mb-gift-shop-prods .gift-shop-products:after {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars11.png?v=1732261391);
+  bottom: 0;
+  left: 0;
+  width: 8.594vw;
+  height: 8.281vw;
+}
+.mb-gift-shop-prods .multi-products-block.flockin-the-stockin:before {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars4.png?v=1732261391);
+  top: 0;
+  left: 0;
+  width: 12.448vw;
+  height: 8.281vw;
+}
+.mb-gift-shop-prods .multi-products-block.flockin-the-stockin:after {
+    background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars5.png?v=1732261391);
+  bottom: 0;
+  right: 0;
+  width: 9.271vw;
+  height: 7.813vw;
+}
+.mb-gift-shop-prods .multi-products-block.gifts-for-the-homeowner:before {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars6.png?v=1732261391);
+  top: 0;
+  right: 0;
+  width: 5.677vw;
+  height: 8.073vw;
+}
+.mb-gift-shop-prods .multi-products-block.gifts-for-her::after {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars7.png?v=1732261391);
+  bottom: 0;
+  left: 0;
+  width: 11.146vw;
+  height: 7.813vw;
+}
+.mb-gift-shop-prods .multi-products-block.gifts-for-him:before {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars8.png?v=1732261391);
+  top: 0;
+  left: 0;
+  width: 5.677vw;
+  height: 8.073vw;
+}
+.mb-gift-shop-prods .multi-products-block.for-the-bird-enthusiast::after {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars9.png?v=1732261391);
+  bottom: 0;
+  right: 0;
+  width: 8.594vw;
+  height: 19.948vw;
+}
+.mb-gift-shop-prods .multi-products-block.top-gifts-for-the-happy-couple::before {
+  background-image: url(https://cdn.shopify.com/s/files/1/0258/6558/4714/files/stars10.png?v=1732261391);
+  top: 0;
+  right: 0;
+  width: 15.208vw;
+  height: 20.573vw;
+}
+/* Hide Add To Cart for Christmas Essentials Gift Pack on the Gift Shop page */
+#mb-gift-shop-lp button.js-quick-add-direct[data-product-handle="christmas-essentials-gift-pack"] {
+  display: none !important;
+}
+/* Hide Add To Cart for Christmas Favourites Gift Pack on the Gift Shop page */
+#mb-gift-shop-lp button.js-quick-add-direct[data-product-handle="christmas-favourites-gift-pack"] {
+  display: none !important;
+}
+/* Hide Add To Cart for Christmas Signature Gift Pack on the Gift Shop page */
+#mb-gift-shop-lp button.js-quick-add-direct[data-product-handle="christmas-signature-gift-pack"] {
+  display: none !important;
+}

@@ -3,7 +3,8 @@
   assign items_to_show = section.settings.items_to_show | default: 8
   assign card_content_inner = true
   assign mobile_grid_view = false
-  assign skeleton_loading = section.settings.enable_skeleton 
+  assign skeleton_loading = section.settings.enable_skeleton
+  assign center_mode_slides = section.settings.spotlight_slides_per_view | times: 1
 
   if section.settings.style_card == 'card'
     assign card_content_inner = false
@@ -91,7 +92,7 @@
               -%}
 
               {% for product in products limit: items_to_show %}
-                {%- unless product.price == 0 or product.tags contains settings.no_view_tag or product.id == product_id -%}
+                {%- unless product.tags contains settings.no_view_tag or product.id == product_id -%}
                   <div class="swiper-slide js-carousel-item anm anm-fadeInUp" role="group" aria-roledescription="Slide" aria-label="{{ 'accessibility.slide' | t }} {{ forloop.index }} {{ 'accessibility.of' | t }} {{ forloop.length }}" style="--w-xs:12;--w-sm:6;--w-md:{{- md -}}; --delay: {{ forloop.index | times: 0.05 -}}s; --duration: .6s; {{ overlay_color }}; {{ content_color }};" data-item-index="{{ forloop.index }}">
                     {% render 'card-product',
                       product: product,
@@ -111,6 +112,30 @@
                   </div>
                 {%- endunless -%}
               {% endfor %}
+
+              {%- if section.settings.carousel_effect == 'spotlight' and items_to_show == center_mode_slides -%}
+                {% for product in products limit: items_to_show %}
+                  {%- unless product.tags contains settings.no_view_tag or product.id == product_id -%}
+                    <div class="swiper-slide js-carousel-item anm anm-fadeInUp" role="group" aria-roledescription="Slide" aria-label="{{ 'accessibility.slide' | t }} {{ forloop.index }} {{ 'accessibility.of' | t }} {{ forloop.length }}" style="--w-xs:12;--w-sm:6;--w-md:{{- md -}}; --delay: {{ forloop.index | times: 0.05 -}}s; --duration: .6s; {{ overlay_color }}; {{ content_color }};" data-item-index="{{ forloop.index }}">
+                      {% render 'card-product',
+                        product: product,
+                        show_vendor: settings.show_product_vendor,
+                        show_color_swatch: settings.show_color_swatches,
+                        show_sale_badge: settings.show_sale_badge,
+                        enable_quick_buy: settings.enable_quick_buy,
+                        ratio: section.settings.image_ratio,
+                        card_content_inner: card_content_inner,
+                        image_width: '320, 450, 550, 750',
+                        overlay_opacity: section.settings.image_overlay_opacity,
+                        section: section,
+                        is_first: forloop.first,
+                        color_rating_star: false,
+                        star_rating_overlay: rating_star_color
+                      %}
+                    </div>
+                  {%- endunless -%}
+                {% endfor %}
+              {%- endif -%}
             {%- else -%}
               {%- for i in (1..10) -%}
                 <div class="swiper-slide" tabindex="0" role="group" aria-roledescription="Slide" aria-label="{{ 'accessibility.slide' | t }} {{ forloop.index }} {{ 'accessibility.of' | t }} {{ forloop.length }}" style="--w-xs:12;--w-sm:6;--w-md:{{- md -}}; --delay: {{ forloop.index | times: 0.05 -}}s; --duration: .6s; {{ overlay_color }}; {{ content_color }};" data-item-index="{{ forloop.index }}">
@@ -211,7 +236,7 @@
             spaceBetween: 20,
           },
           1200: {
-            slidesPerView: {% if section.settings.carousel_effect == 'spotlight' %}5{% else %}{{ section.settings.slides_per_view | default: 5 }}{% endif %},
+            slidesPerView: {% if section.settings.carousel_effect == 'spotlight' %}{{ section.settings.spotlight_slides_per_view | default: 5 }}{% else %}{{ section.settings.slides_per_view | default: 5 }}{% endif %},
             spaceBetween: 25,
           }
         }
@@ -221,7 +246,6 @@
     }
   });
 </script>
-
 {% schema %}
 {
   "name": "[MB] Featured Collections",
@@ -334,7 +358,28 @@
       "max": 6,
       "step": 1,
       "default": 5,
-      "info": "Only applies to standard carousel"
+      "visible_if": "{{ section.settings.carousel_effect == 'standard' }}"
+    },
+    {
+      "type": "select",
+      "id": "spotlight_slides_per_view",
+      "label": "Slides per view (Desktop)",
+      "default": "5",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "7",
+          "label": "7"
+        }
+      ],
+      "visible_if": "{{ section.settings.carousel_effect == 'spotlight' }}"
     },
     {
       "type": "checkbox",

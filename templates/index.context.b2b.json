@@ -22,12 +22,12 @@
         ".s-header__title {font-size: clamp(25px, 2.6vw, 38px);}"
       ],
       "settings": {
-        "header-2750dd71543e6f442cdacf921f833136": null,
+        "header-b45b328956c3a7c9b94cbb889e86af66": null,
         "color_scheme": "",
         "subheading": "",
         "heading": "TOP SELLING BIRDS",
         "description": "",
-        "header-146ba904e8ef0a1a235d56c0af6e27e8": null,
+        "header-2ef5d1b0a6eb67333ec554842506cb05": null,
         "desktop_layout": "grid",
         "style_card": "card",
         "items_per_row_on_desktop": "4",
@@ -38,10 +38,10 @@
         "show_navigation": false,
         "remove_padding_top": false,
         "remove_padding_bottom": false,
-        "header-5811cad66feb7fbdb8495610c2dbc531": null,
+        "header-a593daa1785783643af5aeea10da3de3": null,
         "show_view_all_button": false,
         "button_text": "See all products",
-        "header-b9d4fa7d6dfd607eb4724b3877934294": null,
+        "header-eebbcc7d61e8dd08747bda5d97a98849": null,
         "badge_text": "",
         "badge_color": "color-accent-1",
         "badge_position": "p-badge--top-right",
@@ -61,54 +61,9 @@
         "collection_EPjXN"
       ],
       "name": "t:sections.featured_collection.name"
-    },
-    "mb_media_banner_XNMH3U": {
-      "custom_css": [
-        ".contents-wrapper {max-width: 90vw;}",
-        ".banner-contents .rte {font-size: clamp(1.6rem, 1.9vw, 3.6rem); line-height: 1.4; margin-top: 0;}",
-        ".s-header__buttons {margin-top: calc(var(--spacing) * 2.5); padding: 0;}",
-        "@media only screen and (min-width: 1200px) {.s-header__buttons > a.btn {padding: 0 2.55em; }}",
-        "@media only screen and (min-width: 768px) {.contents-wrapper {max-width: 50vw; }}"
-      ],
-      "settings": {
-        "color_scheme": "scheme-2",
-        "banner_type": "image",
-        "banner_height": 80,
-        "add_overlay": true,
-        "overlay_opacity": 0.2,
-        "banner_image": "shopify://shop_images/hp_banner_kookaburras_2024.jpg",
-        "banner_img_mb": "shopify://shop_images/hp_banner_kookaburras_mob_2024.jpg",
-        "text_alignment": "left",
-        "bottom_spacing_mobile": 2.5,
-        "content_alignment_h": "ts:md:items-start",
-        "content_alignment_v": "ts:md:justify-center",
-        "content_alignment_v_mobile": "ts:justify-end",
-        "top_spacing": 0,
-        "top_spacing_mobile": 0
-      },
-      "blocks": {
-        "richtext_EbW36h": {
-          "disabled": false,
-          "settings": {
-            "richtext_content": "<p>We Focus On Delivering Premium Quality, Beautifully Crafted Products That Produce Leading Financial Returns, Supported With Exceptional Service And Best Of All.. Proudly Made Right Here In Australia!</p>"
-          }
-        },
-        "buttons_8WYkAP": {
-          "settings": {
-            "button_url": "shopify://collections/wholesale",
-            "button_text": "VIEW THE BIRDS",
-            "btn_style": "btn-primary"
-          }
-        }
-      },
-      "block_order": [
-        "richtext_EbW36h",
-        "buttons_8WYkAP"
-      ]
     }
   },
   "order": [
-    "mb_media_banner_XNMH3U",
     "featured_collections_FzyzL"
   ]
 }

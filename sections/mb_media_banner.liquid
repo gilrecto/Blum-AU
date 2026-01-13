@@ -35,6 +35,10 @@
     </div>
   {%- endif -%}
 
+  {%- if setting.banner_link != blank -%}
+    <a href="{{ setting.banner_link }}" class="ts:relative ts:w-full ts:h-auto ts:row-span-full ts:col-span-full ts:z-10 ts:opacity-0">Cusom Link</a>
+  {%- endif -%}
+
   <div class="banner-media banner-media--{{ setting.banner_type }} ts:relative ts:w-full ts:h-auto ts:row-span-full ts:col-span-full ts:pointer-events:none">
     {%- if setting.banner_type == 'video' and setting.video != blank -%}
       {%- liquid
@@ -340,6 +344,11 @@
       "label": "Mobile Banner Video Poster",
       "info": "Video fallback image",
       "visible_if": "{{ section.settings.banner_type == 'video' }}"
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Link"
     },
     {
       "type": "header",

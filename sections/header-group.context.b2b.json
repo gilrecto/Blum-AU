@@ -13,11 +13,6 @@
     "b2b": true
   },
   "sections": {
-    "running_content_ppJNgX": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
     "header": {
       "custom_css": [
         ".header {padding-top: 1rem; padding-bottom: 1rem;}",

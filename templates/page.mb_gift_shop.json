@@ -1,0 +1,248 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.gift_shop",
+  "wrapper": "div#mb-gift-shop-lp",
+  "sections": {
+    "mb_media_banner_48cpd3": {
+      "type": "mb_media_banner",
+      "blocks": {
+        "textarea_TMFn3H": {
+          "type": "textarea",
+          "settings": {
+            "text_block": "<h1>\n<span class=\"ts:block\">Have yourself a </span>\nMETALBIRD\n<span class=\"ts:block\">Christmas</span>\n</h1>",
+            "custom_css": "{% style %}\n#shopify-section-{{ section.id }} .rte.text-block {\n  margin-top: 0;\n}\n#shopify-section-{{ section.id }} .text-block h1 {\n  font-family: var(--ts-font-buckwheat);\n  color: #ffffff;\n  font-size: 8.85vw;\n  line-height: 1;\n  max-width: max-content;\n  margin: 0 auto;\n}\n#shopify-section-{{ section.id }} .text-block h1 span {\n  font-family: 'Julietta Messie';\n}\n#shopify-section-{{ section.id }} .text-block h1 span:first-of-type {\n  text-align: left;\n  font-size: 55%;\n  line-height: 0.75;\n  margin-left: -2.6vw;\n}\n#shopify-section-{{ section.id }} .text-block h1 span:last-of-type {\n  text-align: right;\n  font-size: 125%;\n  line-height: 1.1;\n  margin-right: -0.5vw;\n}\n{% endstyle %}"
+          }
+        }
+      },
+      "block_order": [
+        "textarea_TMFn3H"
+      ],
+      "name": "Media Banner",
+      "settings": {
+        "color_scheme": "",
+        "banner_type": "image",
+        "banner_height": 100,
+        "add_overlay": false,
+        "overlay_opacity": 0.5,
+        "banner_image": "shopify://shop_images/giftshop_banner_2025.jpg",
+        "content_alignment_h": "ts:md:items-center",
+        "content_alignment_v": "ts:md:justify-center",
+        "text_alignment": "center",
+        "content_alignment_h_mobile": "ts:items-center",
+        "content_alignment_v_mobile": "ts:justify-center",
+        "text_alignment_mobile": "center",
+        "top_spacing": 0,
+        "bottom_spacing": 0,
+        "top_spacing_mobile": 0,
+        "bottom_spacing_mobile": 0
+      }
+    },
+    "featured_collections_swiper_KhPCAQ": {
+      "type": "featured-collections-swiper",
+      "blocks": {
+        "product_list_cnjVmT": {
+          "type": "product_list",
+          "settings": {
+            "product_list": [
+              "christmas-essentials-gift-pack",
+              "christmas-favourites-gift-pack",
+              "christmas-signature-gift-pack"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "product_list_cnjVmT"
+      ],
+      "custom_css": [
+        ".s-header__title {font-family: var(--ts-font-buckwheat);}",
+        "@media (min-width: 1025px) {.ctnr {padding-inline: calc(var(--spacing) * 8); }}"
+      ],
+      "name": "Featured Collections",
+      "settings": {
+        "color_scheme": "scheme-ec4c45d9-ee74-4718-a160-6ace4a077ba3",
+        "heading": "christmas bundles",
+        "subheading": "",
+        "description": "",
+        "content_align": "ta-center",
+        "carousel_effect": "spotlight",
+        "enable_grayscale": false,
+        "style_card": "card",
+        "enable_skeleton": true,
+        "items_to_show": 3,
+        "slides_per_view": 3,
+        "spotlight_slides_per_view": "3",
+        "show_pagination": false,
+        "show_navigation": true,
+        "enable_loop": true,
+        "enable_autoplay": false,
+        "autoplay_delay": 3000,
+        "destroy_swiper": false,
+        "mobile_colmns": "2",
+        "show_view_all_button": false,
+        "button_text": "See all products",
+        "btn_type": "btn-primary",
+        "image_ratio": "auto",
+        "image_overlay_opacity": 30,
+        "section_mask_overlay_color": "",
+        "section_content_overlay_color": "",
+        "star_rating_overlay": "",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false
+      }
+    },
+    "mb_gift_shop_products_tkQkLb": {
+      "type": "mb-gift-shop-products",
+      "blocks": {
+        "multi_prod_eyGDqC": {
+          "type": "multi_prod",
+          "settings": {
+            "product_list": [
+              "wooden-hanging-decorations",
+              "baby-bird-pack",
+              "baby-kookaburra"
+            ],
+            "limit": 3,
+            "title": "Flockin The Stockin’",
+            "label": "",
+            "btn_label": "",
+            "container": "ctnr",
+            "color": "#000000"
+          }
+        },
+        "multi_prod_Pek9WB": {
+          "type": "multi_prod",
+          "settings": {
+            "product_list": [
+              "kookaburra-plant-stake",
+              "bird-feeder",
+              "magpieplant-stake"
+            ],
+            "limit": 3,
+            "title": "Gifts For The Homeowner",
+            "label": "",
+            "btn_label": "",
+            "container": "ctnr",
+            "color": "#000000"
+          }
+        },
+        "multi_prod_JHQyHr": {
+          "type": "multi_prod",
+          "settings": {
+            "product_list": [
+              "willie-wagtail-regular",
+              "blue-wren-and-chicks",
+              "lyrebird"
+            ],
+            "limit": 3,
+            "title": "Gifts For Her",
+            "label": "",
+            "btn_label": "",
+            "container": "ctnr",
+            "color": "#000000"
+          }
+        },
+        "multi_prod_dL9TCW": {
+          "type": "multi_prod",
+          "settings": {
+            "product_list": [
+              "kookaburra",
+              "fell-beast",
+              "cockatoo"
+            ],
+            "limit": 3,
+            "title": "Gifts For Him",
+            "label": "",
+            "btn_label": "",
+            "container": "ctnr",
+            "color": "#000000"
+          }
+        },
+        "multi_prod_kVQknT": {
+          "type": "multi_prod",
+          "settings": {
+            "product_list": [
+              "birdlife-x-metalbird-regent-honeyeater",
+              "birdlife-x-metalbird-bird-water-feeder",
+              "birdlife-x-metalbird-swift-parrot"
+            ],
+            "limit": 3,
+            "title": "For The Bird Enthusiast",
+            "label": "",
+            "btn_label": "",
+            "container": "ctnr",
+            "color": "#000000"
+          }
+        },
+        "multi_prod_zBMeHJ": {
+          "type": "multi_prod",
+          "settings": {
+            "product_list": [
+              "pair-of-kookaburras-large",
+              "pair-of-lorikeets",
+              "e-gift-card-including-shipping"
+            ],
+            "limit": 3,
+            "title": "Top Gifts For The Happy Couple",
+            "label": "",
+            "btn_label": "",
+            "container": "ctnr",
+            "color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "multi_prod_eyGDqC",
+        "multi_prod_Pek9WB",
+        "multi_prod_JHQyHr",
+        "multi_prod_dL9TCW",
+        "multi_prod_kVQknT",
+        "multi_prod_zBMeHJ"
+      ],
+      "name": "Gift Shop Products",
+      "settings": {
+        "color_scheme": "scheme-ec4c45d9-ee74-4718-a160-6ace4a077ba3",
+        "title": "",
+        "text": "",
+        "remove_padding_top": false,
+        "remove_padding_bottom": false
+      }
+    },
+    "mb_media_banner_gBpGD8": {
+      "type": "mb_media_banner",
+      "name": "Media Banner",
+      "settings": {
+        "color_scheme": "",
+        "banner_type": "image",
+        "banner_height": 100,
+        "add_overlay": false,
+        "overlay_opacity": 0.5,
+        "banner_image": "shopify://shop_images/gift_shop_footer_2025.jpg",
+        "content_alignment_h": "ts:md:items-center",
+        "content_alignment_v": "ts:md:justify-center",
+        "text_alignment": "center",
+        "content_alignment_h_mobile": "ts:items-center",
+        "content_alignment_v_mobile": "ts:justify-center",
+        "text_alignment_mobile": "center",
+        "top_spacing": 0,
+        "bottom_spacing": 0,
+        "top_spacing_mobile": 0,
+        "bottom_spacing_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "mb_media_banner_48cpd3",
+    "featured_collections_swiper_KhPCAQ",
+    "mb_gift_shop_products_tkQkLb",
+    "mb_media_banner_gBpGD8"
+  ]
+}
