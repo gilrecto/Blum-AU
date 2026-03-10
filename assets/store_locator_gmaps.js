@@ -28,7 +28,7 @@ class StoreLocator extends HTMLElement {
       if (window.google && window.google.maps) return resolve();
 
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAsBUxoOO7A3eMT7r_GfhUZBFLf_TDp-rM&callback=initMapAPI&libraries=marker`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=SECRET_KEY&callback=initMapAPI&libraries=marker`;
       script.async = true;
       script.defer = true;
       window.initMapAPI = resolve;
