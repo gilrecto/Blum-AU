@@ -15,7 +15,7 @@
     }
 
     async initMap() {
-      mapboxgl.accessToken = 'pk.eyJ1IjoibWJnaWwiLCJhIjoiY205cWtkdDY0MWNvaTJrc2U0OWlhN21jNCJ9.DYZamX-BEPu-Q52dSd-iHg';
+      mapboxgl.accessToken = 'ACCESS_TOKEN';
       this.map = new mapboxgl.Map({
         container: this.querySelector('#map'),
         style: 'mapbox://styles/mbgil/cm9htlmo1000z01so9pzcccru',
